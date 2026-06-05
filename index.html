@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cybersakurax.github.io/Break-The-Waku/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M9.5 27 L18 40.5 L24 29.5 L30 40.5 L38.5 27' fill='none' stroke='%2315B6C7' stroke-width='7.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='14' r='7' fill='%231B2A4A'/%3E%3Ccircle cx='30' cy='17.5' r='5.5' fill='%23FF7A59'/%3E%3Cpath d='M40 5.5 C40.6 9.4 41.6 10.4 45.5 11 C41.6 11.6 40.6 12.6 40 16.5 C39.4 12.6 38.4 11.6 34.5 11 C38.4 10.4 39.4 9.4 40 5.5 Z' fill='%23FFC24B'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='370.38%20318.94%20130.81%20107.06'%3E%3Cpath%20d='M379.38%20376.62%20C386.50%20403.54%20393.62%20417.00%20400.75%20417.00%20C408.67%20417.00%20415.79%20405.92%20422.12%20383.75'%20fill='none'%20stroke='%2315B6C7'%20stroke-width='14.84'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M422.12%20383.75%20C429.25%20405.92%20436.38%20417.00%20443.50%20417.00%20C453.79%20417.00%20464.88%20394.04%20476.75%20348.12'%20fill='none'%20stroke='%2315B6C7'%20stroke-width='14.84'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Ccircle%20cx='407.88'%20cy='356.44'%20r='13.65'%20fill='%231B2A4A'/%3E%3Ccircle%20cx='437.56'%20cy='356.44'%20r='8.43'%20fill='%23FF7A59'/%3E%3Cpath%20d='M483.88%20327.94%20C483.88%20333.48%20486.65%20336.25%20492.19%20336.25%20C486.65%20336.25%20483.88%20339.02%20483.88%20344.56%20C483.88%20339.02%20481.10%20336.25%20475.56%20336.25%20C481.10%20336.25%20483.88%20333.48%20483.88%20327.94%20Z'%20fill='%23FFC24B'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -173,7 +173,7 @@
     box-shadow: 0 10px 30px -16px rgba(27,42,74,.35);
   }
   .brand { display: flex; align-items: center; gap: 0.6rem; margin-inline-end: auto; }
-  .brand-mark { width: 34px; height: 34px; flex: none; }
+  .brand-mark { height: 32px; width: auto; flex: none; }
   .brand-name { font-family: var(--font-display); font-weight: 900; font-size: var(--text-md); color: var(--navy); line-height: 1.1; }
   .brand-sub { font-size: 0.66rem; color: var(--ink-2); font-weight: 500; letter-spacing: .04em; }
   .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
@@ -501,12 +501,14 @@
   <div class="container">
     <nav class="nav" id="nav" aria-label="メインナビゲーション">
       <a href="#top" class="brand" aria-label="ワクコエラボ ホーム">
-        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M9.5 27 L18 40.5 L24 29.5 L30 40.5 L38.5 27" fill="none" stroke="#15B6C7" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="16" cy="14" r="7" fill="#1B2A4A"/><circle cx="30" cy="17.5" r="5.5" fill="#FF7A59"/><path d="M40 5.5 C40.6 9.4 41.6 10.4 45.5 11 C41.6 11.6 40.6 12.6 40 16.5 C39.4 12.6 38.4 11.6 34.5 11 C38.4 10.4 39.4 9.4 40 5.5 Z" fill="#FFC24B"/>
+        <svg class="brand-mark" viewBox="370.38 318.94 130.81 107.06" aria-hidden="true">
+          <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="407.88" cy="356.44" r="13.65" fill="#1B2A4A"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FF7A59"/>
+          <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFC24B"/>
         </svg>
         <span>
-          <span class="brand-name">ワクコエラボ</span>
+          <span class="brand-name">ワクコエ<span style="color:var(--coral)">ラボ</span></span>
           <span class="brand-sub">発育AIコーチ</span>
         </span>
       </a>
@@ -942,9 +944,11 @@
     <div class="foot-meta">
       <div class="foot-brand">
         <div class="brand">
-          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M9.5 27 L18 40.5 L24 29.5 L30 40.5 L38.5 27" fill="none" stroke="#15B6C7" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="16" cy="14" r="7" fill="#1B2A4A"/><circle cx="30" cy="17.5" r="5.5" fill="#FF7A59"/><path d="M40 5.5 C40.6 9.4 41.6 10.4 45.5 11 C41.6 11.6 40.6 12.6 40 16.5 C39.4 12.6 38.4 11.6 34.5 11 C38.4 10.4 39.4 9.4 40 5.5 Z" fill="#FFC24B"/>
+          <svg class="brand-mark" viewBox="370.38 318.94 130.81 107.06" aria-hidden="true">
+            <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="407.88" cy="356.44" r="13.65" fill="#FFFFFF"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FFFFFF"/>
+            <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFFFFF"/>
           </svg>
           <span>
             <span class="brand-name">ワクコエラボ</span>
