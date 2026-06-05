@@ -1,0 +1,59 @@
+/* Hallmark · design tokens — ワクコエラボ (wakukoelab)
+ * Locked to the official Brand Basic Guide v1.0 (2026).
+ * Colours are HEX per the guide for exact fidelity; -ink tokens are AA-accessible
+ * derivations for coloured text on light paper.
+ * Fonts: Zen Maru Gothic (display/logo) + Zen Kaku Gothic New (body), Google Fonts (SIL OFL).
+ */
+:root {
+  /* Brand canon */
+  --navy:        #1B2A4A;   /* 親・基調色 */
+  --turquoise:   #15B6C7;   /* W・メイン */
+  --coral:       #FF7A59;   /* 子・アクセント */
+  --sun:         #FFC24B;   /* きらめき・補助 */
+
+  /* Accessible derivations (text-on-light) */
+  --teal-ink:    #0A6E7A;
+  --coral-ink:   #B23E18;
+  --navy-soft:   #33456A;
+  --navy-deep:   #12203A;
+  --sun-ink:     #9A6B00;
+
+  /* Neutrals */
+  --paper:       #FCFDFD;
+  --paper-cool:  #ECF6F7;
+  --paper-warm:  #FFF5EE;
+  --surface:     #ffffff;
+  --ink:         #1B2A4A;
+  --ink-2:       #51607A;
+  --ink-3:       #5C6478;
+  --rule:        rgba(27,42,74,.10);
+  --rule-2:      rgba(27,42,74,.18);
+  --on-navy:     #EAF4F5;
+  --on-navy-2:   rgba(234,244,245,.64);
+  --surf-light:  rgba(255,255,255,.06);
+  --hair-light:  rgba(255,255,255,.12);
+  --focus:       #0A6E7A;
+
+  /* Type */
+  --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif;
+  --font-body:    "Zen Kaku Gothic New", "Hiragino Sans", "Meiryo", "Yu Gothic", sans-serif;
+
+  --text-xs: 0.78rem; --text-sm: 0.875rem; --text-base: 1rem; --text-md: 1.125rem;
+  --text-lg: 1.375rem; --text-xl: 1.75rem; --text-2xl: 2.1875rem; --text-3xl: 2.7rem;
+  --text-display: clamp(3rem, 8vw + 0.5rem, 5.25rem);
+  --text-display-s: clamp(2.1rem, 4.5vw + 0.5rem, 3.4rem);
+
+  /* Space (4pt) */
+  --space-3xs: 0.25rem; --space-2xs: 0.5rem; --space-xs: 0.75rem;
+  --space-sm: 1rem; --space-md: 1.5rem; --space-lg: 2rem;
+  --space-xl: 3rem; --space-2xl: 4.5rem; --space-3xl: 7rem;
+
+  /* Radius / shadow / motion */
+  --radius-card: 18px; --radius-sm: 12px; --radius-pill: 999px;
+  --shadow-soft: 0 14px 34px -18px rgba(27,42,74,.30);
+  --shadow-lift: 0 22px 48px -20px rgba(27,42,74,.38);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:  cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 200ms; --dur-mid: 360ms;
+}
