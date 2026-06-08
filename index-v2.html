@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>ワクコエラボ｜「早くしなさい」と言いたくない夜に、もう一案。</title>
+  <meta name="description" content="診断名がなくても大丈夫。グレーゾーンの子と暮らす親のための発育AIコーチ。困った行動を1行入れると、30秒で責めない声かけが2〜3案。ワクコエラボの先行βを募集中です。" />
+  <meta property="og:title" content="ワクコエラボ｜「早くしなさい」と言いたくない夜に、もう一案。" />
+  <meta property="og:description" content="グレーゾーンの子と暮らす親のための発育AIコーチ。今日の困りごとを、責めない声かけと小さな発見に変えていきます。先行β募集中。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cybersakurax.github.io/Break-The-Waku/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='360.59%20297.27%20150.4%20150.4'%3E%3Cpath%20d='M379.38%20376.62%20C386.50%20403.54%20393.62%20417.00%20400.75%20417.00%20C408.67%20417.00%20415.79%20405.92%20422.12%20383.75'%20fill='none'%20stroke='%2315B6C7'%20stroke-width='14.84'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M422.12%20383.75%20C429.25%20405.92%20436.38%20417.00%20443.50%20417.00%20C453.79%20417.00%20464.88%20394.04%20476.75%20348.12'%20fill='none'%20stroke='%2315B6C7'%20stroke-width='14.84'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Ccircle%20cx='407.88'%20cy='356.44'%20r='13.65'%20fill='%231B2A4A'/%3E%3Ccircle%20cx='437.56'%20cy='356.44'%20r='8.43'%20fill='%23FF7A59'/%3E%3Cpath%20d='M483.88%20327.94%20C483.88%20333.48%20486.65%20336.25%20492.19%20336.25%20C486.65%20336.25%20483.88%20339.02%20483.88%20344.56%20C483.88%20339.02%20481.10%20336.25%20475.56%20336.25%20C481.10%20336.25%20483.88%20333.48%20483.88%20327.94%20Z'%20fill='%23FFC24B'/%3E%3C/svg%3E" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+  /* Hallmark · genre: playful · macrostructure: Split Studio · theme: brand-locked (wakukoelab Brand Basic Guide v1.0)
+   * 親一点集中・大胆削減・視覚化版（v2） / audience: グレーゾーンの子の親 · use: 先行β登録 · tone: soft
+   * nav: N5 floating pill · footer: Ft5 statement · honest: 統計=実データ8.8%のみ / 会話=「一例」明記
+   */
+  @font-face{ font-family:'Zen Maru Lat'; font-style:normal; font-weight:700; font-display:swap;
+    src:url(https://fonts.gstatic.com/s/zenmarugothic/v19/o-0XIpIxzW5b-RxT-6A8jWAtCp-cUW1yO5Cb.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; size-adjust:110%; }
+  @font-face{ font-family:'Zen Maru Lat'; font-style:normal; font-weight:900; font-display:swap;
+    src:url(https://fonts.gstatic.com/s/zenmarugothic/v19/o-0XIpIxzW5b-RxT-6A8jWAtCp-caW9yO5Cb.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; size-adjust:110%; }
+  @font-face{ font-family:'Zen Maru Fig'; font-style:normal; font-weight:900; font-display:swap;
+    src:url(https://fonts.gstatic.com/s/zenmarugothic/v19/o-0XIpIxzW5b-RxT-6A8jWAtCp-caW9yO5Cb.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; size-adjust:120%; }
+
+  :root {
+    --navy:#1B2A4A; --turquoise:#15B6C7; --coral:#FF7A59; --sun:#FFC24B;
+    --teal-ink:#0A6E7A; --coral-ink:#B23E18; --navy-soft:#33456A; --navy-deep:#12203A; --sun-ink:#9A6B00;
+    --paper:#FCFDFD; --paper-cool:#ECF6F7; --paper-warm:#FFF5EE; --surface:#ffffff;
+    --ink:#1B2A4A; --ink-2:#51607A; --ink-3:#5C6478;
+    --rule:rgba(27,42,74,.10); --rule-2:rgba(27,42,74,.18);
+    --on-navy:#EAF4F5; --on-navy-2:rgba(234,244,245,.64); --hair-light:rgba(255,255,255,.12);
+    --focus:#0A6E7A;
+    --font-display-plain:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic UI",sans-serif;
+    --font-display:"Zen Maru Lat","Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic UI",sans-serif;
+    --font-display-fig:"Zen Maru Fig","Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic UI",sans-serif;
+    --font-body:"Zen Kaku Gothic New","Hiragino Sans","Meiryo","Yu Gothic",sans-serif;
+    --text-xs:0.78rem; --text-sm:0.875rem; --text-base:1rem; --text-md:1.125rem;
+    --text-lg:1.375rem; --text-xl:1.75rem; --text-2xl:2.1875rem; --text-3xl:2.7rem;
+    --space-2xs:0.5rem; --space-xs:0.75rem; --space-sm:1rem; --space-md:1.5rem; --space-lg:2rem; --space-xl:3rem;
+    --radius-card:18px; --radius-sm:12px; --radius-pill:999px;
+    --shadow-soft:0 14px 34px -18px rgba(27,42,74,.30); --shadow-lift:0 22px 48px -20px rgba(27,42,74,.38);
+    --ease-out:cubic-bezier(0.16,1,0.3,1); --dur-short:200ms;
+    --max:1080px; --z-nav:100;
+  }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; overflow-x:clip; }
+  body { font-family:var(--font-body); background:var(--paper); color:var(--ink); line-height:1.8; font-size:var(--text-base); overflow-x:clip; -webkit-font-smoothing:antialiased; text-autospace:normal; padding-inline:max(0px,env(safe-area-inset-left)); }
+  a { color:inherit; text-decoration:none; }
+  svg { display:block; }
+  ::selection { background:var(--sun); color:var(--navy); }
+  .container { width:100%; max-width:var(--max); margin:0 auto; padding-inline:clamp(1.1rem,4vw,2rem); }
+  h1,h2,h3,h4 { font-family:var(--font-display); font-weight:700; line-height:1.25; letter-spacing:-0.01em; overflow-wrap:anywhere; min-width:0; }
+  :where(a,button,input,summary):focus-visible { outline:3px solid var(--focus); outline-offset:3px; border-radius:6px; }
+  section { padding-block:clamp(3.5rem,8vw,6rem); position:relative; scroll-margin-top:6rem; }
+  .eyebrow { display:inline-flex; align-items:center; gap:var(--space-2xs); font-family:var(--font-display); font-weight:700; font-size:var(--text-sm); color:var(--teal-ink); letter-spacing:.02em; margin-bottom:var(--space-sm); }
+  .eyebrow::before { content:""; width:18px; height:2px; background:var(--coral); border-radius:2px; }
+  .sec-title { font-size:var(--text-2xl); font-weight:900; margin-bottom:var(--space-sm); color:var(--navy); }
+  .sec-lead { color:var(--ink-2); font-size:var(--text-md); max-width:48ch; line-height:1.85; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:var(--space-2xs); padding:0.85rem 1.5rem; border-radius:var(--radius-pill); font-family:var(--font-display); font-weight:700; font-size:var(--text-base); cursor:pointer; border:2px solid transparent; white-space:nowrap; min-height:48px; transition:transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+  .btn .ar { transition:transform var(--dur-short) var(--ease-out); }
+  .btn-primary { background:var(--teal-ink); color:#fff; box-shadow:var(--shadow-soft); }
+  .btn-secondary { background:var(--surface); color:var(--navy); border-color:var(--coral); }
+  @media (hover:hover) { .btn-primary:hover { transform:translateY(-2px); box-shadow:var(--shadow-lift); } .btn-secondary:hover { transform:translateY(-2px); background:var(--paper-warm); } .btn:hover .ar { transform:translateX(3px); } }
+  .btn:active { transform:translateY(0); }
+  .nav-wrap { position:sticky; top:0; z-index:var(--z-nav); padding-top:clamp(0.6rem,2vw,1rem); }
+  .nav { display:flex; align-items:center; gap:var(--space-md); max-width:var(--max); margin:0 auto; padding:0.55rem 0.7rem 0.55rem 1.1rem; background:rgba(252,253,253,.82); backdrop-filter:blur(14px) saturate(1.4); -webkit-backdrop-filter:blur(14px) saturate(1.4); border:1px solid var(--rule); border-radius:var(--radius-pill); box-shadow:var(--shadow-soft); }
+  .brand { display:flex; align-items:center; gap:var(--space-2xs); font-family:var(--font-display); font-weight:900; }
+  .brand-mark { width:30px; height:30px; flex-shrink:0; }
+  .brand-sub { font-size:var(--text-xs); color:var(--ink-3); font-weight:500; letter-spacing:.02em; }
+  .brand-name { font-size:var(--text-md); letter-spacing:.01em; line-height:1.05; color:var(--navy); display:block; }
+  .nav-links { display:flex; gap:var(--space-md); list-style:none; margin-left:auto; }
+  .nav-links a { font-size:var(--text-sm); font-weight:700; color:var(--navy-soft); transition:color var(--dur-short) var(--ease-out); }
+  @media (hover:hover) { .nav-links a:hover { color:var(--teal-ink); } }
+  .nav-cta { font-family:var(--font-display); font-weight:700; font-size:var(--text-sm); background:var(--coral); color:#fff; padding:0.5rem 1.1rem; border-radius:var(--radius-pill); transition:transform var(--dur-short) var(--ease-out), background-color var(--dur-short); }
+  @media (hover:hover) { .nav-cta:hover { background:var(--coral-ink); transform:translateY(-1px); } }
+  .nav-toggle { display:none; background:none; border:none; color:var(--navy); padding:0.4rem; cursor:pointer; }
+  .nav-toggle svg { width:24px; height:24px; }
+  .hero { padding-top:clamp(2rem,5vw,3.5rem); overflow:hidden; }
+  .hero-grid { display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(1.5rem,4vw,3rem); align-items:center; }
+  .badge { display:inline-flex; align-items:center; gap:var(--space-2xs); font-family:var(--font-display); font-weight:700; font-size:var(--text-sm); color:var(--teal-ink); background:var(--paper-cool); border:1px solid var(--rule); padding:0.4rem 0.9rem; border-radius:var(--radius-pill); margin-bottom:var(--space-md); }
+  .badge .dot { width:8px; height:8px; border-radius:50%; background:var(--coral); }
+  .hero-catch { font-family:var(--font-display); font-weight:900; font-size:clamp(1.95rem,3.4vw + 0.95rem,3.05rem); line-height:1.38; letter-spacing:-0.01em; color:var(--navy); margin-bottom:var(--space-md); }
+  .hero-catch .hl { color:var(--coral-ink); }
+  .hero-catch .qt { color:var(--teal-ink); }
+  .hero-sub { font-size:var(--text-md); color:var(--ink-2); margin-bottom:var(--space-lg); max-width:40ch; line-height:1.9; }
+  .hero-btns { display:flex; gap:var(--space-sm); flex-wrap:wrap; margin-bottom:var(--space-lg); }
+  .trust { display:flex; flex-wrap:wrap; gap:var(--space-xs) var(--space-md); }
+  .pill { display:inline-flex; align-items:center; gap:var(--space-2xs); font-size:var(--text-sm); font-weight:700; color:var(--navy-soft); }
+  .pill::before { content:"✓"; color:var(--teal-ink); font-weight:900; }
+  .hero-card { background:linear-gradient(160deg,var(--surface),var(--paper-cool)); border:1px solid var(--rule); border-radius:var(--radius-card); padding:clamp(1.3rem,3vw,2rem); box-shadow:var(--shadow-soft); }
+  .hc-h { font-family:var(--font-display); font-weight:900; font-size:var(--text-lg); color:var(--navy); margin-bottom:var(--space-md); }
+  .reframe { display:grid; gap:var(--space-xs); }
+  .reframe-row { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:var(--space-xs); }
+  .reframe .from { background:var(--paper-warm); color:var(--coral-ink); padding:0.5rem 0.75rem; border-radius:var(--radius-sm); font-size:var(--text-sm); font-weight:700; text-align:center; }
+  .reframe .arrow { color:var(--teal-ink); font-weight:900; }
+  .reframe .to { background:var(--paper-cool); color:var(--teal-ink); padding:0.5rem 0.75rem; border-radius:var(--radius-sm); font-size:var(--text-sm); font-weight:700; text-align:center; }
+  .reframe-foot { margin-top:var(--space-sm); font-size:var(--text-sm); color:var(--ink-2); line-height:1.7; }
+  .empathy { background:var(--paper-cool); }
+  .empathy-head { max-width:44ch; }
+  .bubbles { display:flex; flex-wrap:wrap; gap:var(--space-sm); margin-top:var(--space-lg); }
+  .bubble { background:var(--surface); border:1px solid var(--rule); border-radius:18px 18px 18px 4px; padding:0.75rem 1.15rem; font-size:var(--text-md); color:var(--navy); font-weight:500; box-shadow:var(--shadow-soft); }
+  .bubble:nth-child(even) { border-radius:18px 18px 4px 18px; background:var(--paper-warm); color:var(--coral-ink); border-color:rgba(178,62,24,.16); }
+  .empathy-foot { display:grid; grid-template-columns:auto 1fr; gap:clamp(1.2rem,4vw,2.5rem); align-items:center; margin-top:var(--space-xl); padding:clamp(1.4rem,3vw,2rem); border-radius:var(--radius-card); background:var(--surface); border:1px solid var(--rule); }
+  .empathy-stat { text-align:center; border-right:1px solid var(--rule); padding-right:clamp(1rem,3vw,2rem); }
+  .empathy-stat .n { font-family:var(--font-display-fig); font-weight:900; font-size:clamp(2.8rem,8vw,4rem); color:var(--coral-ink); line-height:1; font-variant-numeric:tabular-nums; }
+  .empathy-stat .n small { font-size:0.5em; font-weight:700; }
+  .empathy-stat .l { font-size:var(--text-xs); color:var(--ink-2); margin-top:var(--space-2xs); line-height:1.5; }
+  .empathy-foot p { font-size:var(--text-md); color:var(--navy); line-height:1.85; }
+  .empathy-foot p b { color:var(--coral-ink); }
+  .empathy-lead { margin-top:var(--space-lg); font-size:var(--text-md); color:var(--ink-2); line-height:1.95; max-width:52ch; }
+  .how-grid { display:grid; grid-template-columns:0.9fr 1.1fr; gap:clamp(1.5rem,4vw,3rem); align-items:center; }
+  .how-copy .sec-lead { margin-bottom:var(--space-md); max-width:40ch; }
+  .how-link { display:inline-flex; align-items:center; gap:var(--space-2xs); font-family:var(--font-display); font-weight:700; color:var(--teal-ink); font-size:var(--text-md); border-bottom:2px solid var(--turquoise); padding-bottom:2px; }
+  .how-link .ar { transition:transform var(--dur-short) var(--ease-out); }
+  @media (hover:hover) { .how-link:hover .ar { transform:translateX(3px); } }
+  .chat { display:grid; gap:var(--space-sm); background:linear-gradient(165deg,var(--surface),var(--paper-cool)); border:1px solid var(--rule); border-radius:var(--radius-card); padding:clamp(1.3rem,3vw,1.8rem); box-shadow:var(--shadow-soft); }
+  .msg { max-width:90%; }
+  .msg .who { font-family:var(--font-display); font-weight:700; font-size:var(--text-xs); color:var(--ink-3); margin-bottom:0.3rem; letter-spacing:.02em; }
+  .msg .body { padding:0.85rem 1.1rem; border-radius:16px; font-size:var(--text-sm); line-height:1.75; }
+  .msg.user { justify-self:end; }
+  .msg.user .who { text-align:right; }
+  .msg.user .body { background:var(--navy); color:var(--on-navy); border-bottom-right-radius:4px; }
+  .msg.ai .body { background:var(--paper-warm); color:var(--navy); border:1px solid rgba(178,62,24,.14); border-bottom-left-radius:4px; }
+  .msg.tip .body { background:var(--surface); border:1px solid var(--rule-2); display:grid; grid-template-columns:auto 1fr; gap:0.7rem; align-items:start; }
+  .tip-k { font-family:var(--font-display); font-weight:900; color:var(--teal-ink); background:var(--paper-cool); width:1.5rem; height:1.5rem; border-radius:8px; display:grid; place-items:center; font-size:var(--text-sm); }
+  .msg.tip:nth-of-type(4) .tip-k { color:var(--coral-ink); background:var(--paper-warm); }
+  .chat-note { font-size:var(--text-xs); color:var(--ink-3); text-align:right; margin-top:0.1rem; }
+  .why-list { margin-top:var(--space-lg); border-top:1px solid var(--rule-2); }
+  .why-item { display:grid; grid-template-columns:auto auto 1fr; gap:var(--space-md); align-items:center; padding-block:var(--space-md); border-bottom:1px solid var(--rule-2); }
+  .why-ic { width:46px; height:46px; border-radius:14px; display:grid; place-items:center; background:var(--paper-cool); color:var(--teal-ink); flex:none; }
+  .why-item:nth-child(2) .why-ic { background:var(--paper-warm); color:var(--coral-ink); }
+  .why-item:nth-child(3) .why-ic { background:rgba(255,194,75,.18); color:var(--sun-ink); }
+  .why-ic svg { width:26px; height:26px; }
+  .why-k { font-family:var(--font-display); font-weight:900; font-size:var(--text-lg); color:var(--navy); white-space:nowrap; }
+  .why-d { font-size:var(--text-md); color:var(--ink-2); line-height:1.8; }
+  .why-note { margin-top:var(--space-lg); padding:var(--space-md) var(--space-lg); border-radius:var(--radius-sm); background:var(--navy); color:var(--on-navy); font-size:var(--text-sm); line-height:1.9; }
+  .why-note b { color:var(--turquoise); }
+  .flow-list { margin-top:var(--space-lg); display:grid; gap:0; max-width:780px; }
+  .flow-step { display:grid; grid-template-columns:auto 1fr; gap:var(--space-md); padding-block:var(--space-md); border-top:2px solid var(--rule-2); align-items:start; }
+  .flow-step:last-child { border-bottom:2px solid var(--rule-2); }
+  .flow-num { font-family:var(--font-display-plain); font-weight:900; font-size:var(--text-xl); color:var(--turquoise); line-height:1; font-variant-numeric:tabular-nums; }
+  .flow-step:nth-child(2) .flow-num { color:var(--coral); }
+  .flow-step:nth-child(3) .flow-num { color:var(--sun-ink); }
+  .flow-step h3 { font-size:var(--text-md); color:var(--navy); margin-bottom:0.2rem; }
+  .flow-step p { font-size:var(--text-sm); color:var(--ink-2); line-height:1.8; max-width:60ch; }
+  .cta { background:var(--paper-warm); border-top:1px solid var(--rule); }
+  .cta-head { max-width:42ch; }
+  .cta-cards { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-md); margin-top:var(--space-lg); }
+  .cta-card { background:var(--surface); border-radius:var(--radius-card); border:1px solid var(--rule); padding:var(--space-lg); display:flex; flex-direction:column; }
+  .cta-card h3 { font-size:var(--text-lg); color:var(--navy); margin-bottom:0.4rem; }
+  .cta-card p { color:var(--ink-2); font-size:var(--text-sm); line-height:1.8; margin-bottom:var(--space-md); flex:1; }
+  .cta-card .btn { width:100%; }
+  .cta-note { margin-top:var(--space-md); padding:var(--space-md); border-radius:var(--radius-sm); background:var(--surface); border:1px solid var(--rule); color:var(--ink-2); font-size:var(--text-sm); line-height:1.85; }
+  .cta-note b { color:var(--navy); }
+  footer { background:var(--navy); color:var(--on-navy); padding-top:clamp(3rem,7vw,5rem); }
+  .foot-statement { font-family:var(--font-display); font-weight:900; font-size:var(--text-3xl); line-height:1.35; max-width:16ch; }
+  .foot-statement .tq { color:var(--turquoise); }
+  .foot-statement .co { color:var(--coral); }
+  .foot-meta { display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--space-lg); padding-block:clamp(2rem,5vw,3rem); margin-top:clamp(2rem,5vw,3rem); border-top:1px solid var(--hair-light); }
+  .foot-brand .brand-name { color:#fff; }
+  .foot-brand .brand-sub { color:var(--on-navy-2); }
+  .foot-note { font-size:var(--text-xs); line-height:1.85; max-width:52ch; color:var(--on-navy-2); }
+  .foot-note b { color:var(--on-navy); }
+  .foot-copy { text-align:center; padding-block:var(--space-md); border-top:1px solid var(--hair-light); font-size:var(--text-xs); color:rgba(234,244,245,.62); }
+  .rise { opacity:0; transform:translateY(14px); animation:rise 0.7s var(--ease-out) forwards; }
+  .rise.d1 { animation-delay:.06s; } .rise.d2 { animation-delay:.14s; } .rise.d3 { animation-delay:.22s; } .rise.d4 { animation-delay:.30s; }
+  @keyframes rise { to { opacity:1; transform:none; } }
+  @media (max-width:60rem) {
+    .hero-grid { grid-template-columns:1fr; }
+    .hero-card { max-width:480px; }
+    .how-grid { grid-template-columns:1fr; }
+    .empathy-foot { grid-template-columns:1fr; }
+    .empathy-stat { border-right:none; border-bottom:1px solid var(--rule); padding-right:0; padding-bottom:var(--space-md); }
+    .cta-cards { grid-template-columns:1fr; }
+  }
+  @media (max-width:52rem) {
+    .nav { flex-wrap:wrap; row-gap:0.45rem; }
+    .nav-links, .nav-cta { display:none; }
+    .nav-toggle { display:inline-grid; }
+    .nav.open { border-radius:var(--radius-card); }
+    .nav.open .nav-links { display:flex; flex-direction:column; align-items:stretch; flex-basis:100%; order:3; gap:0.15rem; padding-top:0.5rem; border-top:1px solid var(--rule); }
+    .nav.open .nav-links a { padding:0.8rem 0.9rem; border-radius:12px; }
+    .nav.open .nav-cta { display:inline-flex; justify-content:center; flex-basis:100%; order:4; }
+  }
+  @media (max-width:40rem) {
+    .why-item { grid-template-columns:auto 1fr; row-gap:0.2rem; }
+    .why-item .why-d { grid-column:2 / -1; }
+    .reframe-row { grid-template-columns:1fr; text-align:left; gap:0.1rem; }
+    .reframe-row .from { text-align:left; }
+    .reframe-row .arrow { display:none; }
+    .btn { width:100%; white-space:normal; }
+    .hero-btns .btn { width:100%; }
+    .msg { max-width:100%; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    html { scroll-behavior:auto; }
+    *,*::before,*::after { animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+    .rise { opacity:1; transform:none; }
+  }
+  </style>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <div class="container">
+    <nav class="nav" id="nav" aria-label="メインナビゲーション">
+      <a href="#top" class="brand" aria-label="ワクコエラボ ホーム">
+        <svg class="brand-mark" viewBox="370.38 318.94 130.81 107.06" aria-hidden="true">
+          <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="407.88" cy="356.44" r="13.65" fill="#1B2A4A"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FF7A59"/>
+          <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFC24B"/>
+        </svg>
+        <span>
+          <span class="brand-name">ワクコエ<span style="color:var(--coral)">ラボ</span></span>
+          <span class="brand-sub">発育AIコーチ</span>
+        </span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#empathy">こんな夜に</a></li>
+        <li><a href="#how">しくみ</a></li>
+        <li><a href="#flow">参加の流れ</a></li>
+      </ul>
+      <a href="#cta" class="nav-cta">先行登録</a>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+  </div>
+</div>
+
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="badge rise"><span class="dot"></span>β準備中 ― 先行ユーザー募集中</span>
+        <h1 class="hero-catch rise d1"><span class="qt">「早くしなさい」</span>と<br>言いたくない夜に、<span class="hl">もう一案。</span></h1>
+        <p class="hero-sub rise d2">診断名がなくても、大丈夫。グレーゾーンの子と暮らす親のための発育AIコーチです。今日の困りごとを、責めない声かけと小さな発見に変えていきます。</p>
+        <div class="hero-btns rise d3">
+          <a href="#cta" class="btn btn-primary">先行案内を受け取る <span class="ar">→</span></a>
+          <a href="#how" class="btn btn-secondary">どう動くのか見る</a>
+        </div>
+        <div class="trust rise d4" aria-label="安心して参加できる条件">
+          <span class="pill">無料β</span>
+          <span class="pill">診断名不要</span>
+          <span class="pill">本名不要</span>
+          <span class="pill">いつでも辞退OK</span>
+        </div>
+      </div>
+      <aside class="hero-card rise d3">
+        <p class="hc-h">「違い」の見方を、変える。</p>
+        <div class="reframe">
+          <div class="reframe-row"><span class="from">落ち着きのなさ</span><span class="arrow">→</span><span class="to">行動力</span></div>
+          <div class="reframe-row"><span class="from">こだわり</span><span class="arrow">→</span><span class="to">探求心</span></div>
+          <div class="reframe-row"><span class="from">マイペース</span><span class="arrow">→</span><span class="to">集中力</span></div>
+        </div>
+        <p class="reframe-foot">同じ行動も、見方を変えれば「その子の才能の原石」。ワクコエラボは、そのスイッチを毎日そっと押すお手伝いをします。</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="empathy" id="empathy">
+  <div class="container">
+    <div class="empathy-head">
+      <h2 class="sec-title">こんな夜、ありませんか。</h2>
+      <p class="sec-lead">正解のない判断が、1日に何十回。専門書を読む時間も、相談の予約もないまま、今日も過ぎていく――。</p>
+    </div>
+    <div class="bubbles" aria-label="よくある親の困りごと">
+      <span class="bubble">また片付けてない…</span>
+      <span class="bubble">お友達とうまく遊べない</span>
+      <span class="bubble">夜、なかなか切り替えられない</span>
+      <span class="bubble">何度言っても、響かない</span>
+      <span class="bubble">つい、強く言ってしまった</span>
+    </div>
+    <div class="empathy-foot">
+      <div class="empathy-stat">
+        <div class="n">8.8<small>%</small></div>
+        <div class="l">通常学級で学習・行動に<br>著しい困難を抱える児童</div>
+      </div>
+      <p>35人のクラスに、約3人。<b>同じ悩みを抱える家庭は、あなただけではありません。</b>その多くが診断のないまま、「困った子」と呼ばれています。</p>
+    </div>
+    <p class="empathy-lead">ワクコエラボは、その夜の「あと一言」をそっと差し出すために生まれました。子どもを変えるためではなく、親子の毎日を、少しだけ軽くするために。</p>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="container">
+    <div class="how-grid">
+      <div class="how-copy">
+        <span class="eyebrow">How it works</span>
+        <h2 class="sec-title">困った行動を、1行入れるだけ。</h2>
+        <p class="sec-lead">30秒で、責めない声かけが2〜3案。AIはまず、ここまで頑張ってきたあなたを「全肯定」するところから始めます。</p>
+        <p class="sec-lead">試した結果を残せば、次の提案が少しずつ、あなたの子に近づいていきます。音声でもテキストでも、片手で完結。</p>
+        <a href="#cta" class="how-link">先行βで試してみる <span class="ar">→</span></a>
+      </div>
+      <div class="chat" aria-label="声かけ提案の表示例">
+        <div class="msg user">
+          <div class="who">あなた</div>
+          <div class="body">夜、お風呂に入りたがらない</div>
+        </div>
+        <div class="msg ai">
+          <div class="who">ワクコエAI</div>
+          <div class="body">毎晩の切り替え、本当におつかれさまです。お子さんは今、目の前のことに夢中なのかもしれませんね。こんな声かけはいかがでしょう。</div>
+        </div>
+        <div class="msg ai tip">
+          <div class="who">声かけ案</div>
+          <div class="body"><span class="tip-k">A</span><span>「あと5分でお風呂タイムだよ」と、終わりを先に予告してみる</span></div>
+        </div>
+        <div class="msg ai tip">
+          <div class="who">声かけ案</div>
+          <div class="body"><span class="tip-k">B</span><span>好きなおもちゃを1つ、お風呂の「相棒」として連れていく</span></div>
+        </div>
+        <p class="chat-note">※ 表示は一例です。試した結果（○△×）が次の提案に活きていきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="container">
+    <span class="eyebrow">Our promise</span>
+    <h2 class="sec-title">「正しさ」ではなく、「動ける」を。</h2>
+    <p class="sec-lead">機能を増やすことではなく、親が動けない理由を減らすこと。ワクコエラボが守る3つの約束です。</p>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div class="why-k">診断しません</div>
+        <div class="why-d">チェックリストも、病名判定も、レッテルもありません。求めるのは、今日あった出来事の「1行」だけです。</div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/><path d="M4 6h2M4 12h2M4 18h2" opacity=".5"/></svg></div>
+        <div class="why-k">押し付けません</div>
+        <div class="why-d">A案・B案を出すだけ。どれを選ぶかも、選ばないことも、いつもあなたが決められます。</div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
+        <div class="why-k">責めません</div>
+        <div class="why-d">AIはまず、頑張ってきた親をねぎらいます。声かけの提案は、そのあとに。あなたを追い詰めません。</div>
+      </div>
+    </div>
+    <p class="why-note">提案の言葉は、<b>ABA（応用行動分析）・SST（ソーシャルスキルトレーニング）・TEACCH</b> など、学術的に確立された支援プログラムの知見を下敷きに設計しています。</p>
+  </div>
+</section>
+
+<section class="flow-section" id="flow">
+  <div class="container">
+    <span class="eyebrow">Beta Program</span>
+    <h2 class="sec-title">先行β参加の流れ</h2>
+    <p class="sec-lead">登録後にいきなり個人情報や診断名を求めることはありません。無理のない範囲から始められます。</p>
+    <div class="flow-list">
+      <div class="flow-step">
+        <div class="flow-num">1.0</div>
+        <div>
+          <h3>先行登録</h3>
+          <p>メールで参加希望を送るだけ。保護者・支援者・施設関係者、どなたでも登録できます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2.0</div>
+        <div>
+          <h3>案内が届く</h3>
+          <p>βの開始時期、参加条件、ヒアリングの候補日などをお送りします。気が向いたタイミングで大丈夫です。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3.0</div>
+        <div>
+          <h3>βを試す</h3>
+          <p>準備ができ次第、責めない声かけの手応えを一緒に確かめます。合わなければ、いつでも辞退できます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="container">
+    <div class="cta-head">
+      <span class="eyebrow">Join Us</span>
+      <h2 class="sec-title">先行βに、参加しませんか。</h2>
+      <p class="sec-lead">子どもを変えるためではなく、親子の毎日を少し軽くするために。先行ユーザー・ヒアリング協力者を無料で募集しています。</p>
+    </div>
+    <div class="cta-cards">
+      <div class="cta-card">
+        <h3>先行案内を受け取る</h3>
+        <p>β招待・進捗共有・参加条件をお届けします。まずは「興味あり」だけでも大丈夫です。</p>
+        <a href="mailto:contact@wakukoelabo.jp?subject=%E5%85%88%E8%A1%8C%E6%A1%88%E5%86%85%E7%99%BB%E9%8C%B2%E5%B8%8C%E6%9C%9B&body=%E5%85%88%E8%A1%8C%E6%A1%88%E5%86%85%E3%82%92%E5%B8%8C%E6%9C%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0D%0A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%88%E3%83%8B%E3%83%83%E3%82%AF%E3%83%8D%E3%83%BC%E3%83%A0%E5%8F%AF%EF%BC%89%EF%BC%9A%0D%0A%E7%AB%8B%E5%A0%B4%EF%BC%88%E4%BF%9D%E8%AD%B7%E8%80%85%E3%83%BB%E6%94%AF%E6%8F%B4%E8%80%85%E3%83%BB%E6%96%BD%E8%A8%AD%E9%96%A2%E4%BF%82%E8%80%85%E3%81%AA%E3%81%A9%EF%BC%89%EF%BC%9A%0D%0A%E9%96%A2%E5%BF%83%E3%81%AE%E3%81%82%E3%82%8B%E5%86%85%E5%AE%B9%EF%BC%9A" class="btn btn-primary">1分で登録する <span class="ar">→</span></a>
+      </div>
+      <div class="cta-card">
+        <h3>ヒアリングに協力する</h3>
+        <p>日々の困りごと、既存サービスで続かなかった理由、欲しい安心感を聞かせてください。</p>
+        <a href="mailto:contact@wakukoelabo.jp?subject=%E3%83%92%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E5%8F%82%E5%8A%A0%E5%B8%8C%E6%9C%9B&body=%E3%83%92%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E5%8F%82%E5%8A%A0%E3%82%92%E5%B8%8C%E6%9C%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0D%0A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%88%E3%83%8B%E3%83%83%E3%82%AF%E3%83%8D%E3%83%BC%E3%83%A0%E5%8F%AF%EF%BC%89%EF%BC%9A%0D%0A%E7%AB%8B%E5%A0%B4%EF%BC%88%E4%BF%9D%E8%AD%B7%E8%80%85%E3%83%BB%E6%94%AF%E6%8F%B4%E8%80%85%E3%83%BB%E6%96%BD%E8%A8%AD%E9%96%A2%E4%BF%82%E8%80%85%E3%81%AA%E3%81%A9%EF%BC%89%EF%BC%9A%0D%0A%E8%A9%B1%E3%81%9B%E3%82%8B%E6%9B%9C%E6%97%A5%E3%83%BB%E6%99%82%E9%96%93%E5%B8%AF%EF%BC%9A%0D%0A%E8%A9%B1%E3%81%97%E3%81%9F%E3%81%84%E3%83%86%E3%83%BC%E3%83%9E%EF%BC%9A" class="btn btn-secondary">30分話す</a>
+      </div>
+    </div>
+    <div class="cta-note">
+      <b>安心して参加いただくために：</b>ワクコエラボは医学的な診断や治療を行うサービスではありません。先行βでは本名や診断名の入力は必須ではなく、いただいた内容はプロダクト改善とご案内のためにのみ扱います。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="foot-statement">ワクをコエ、<br><span class="tq">ワクワク</span>の<span class="co">コエ</span>へ。</p>
+    <div class="foot-meta">
+      <div class="foot-brand">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="370.38 318.94 130.81 107.06" aria-hidden="true">
+            <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="407.88" cy="356.44" r="13.65" fill="#FFFFFF"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FFFFFF"/>
+            <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFFFFF"/>
+          </svg>
+          <span>
+            <span class="brand-name">ワクコエラボ</span>
+            <span class="brand-sub">wakukoelab ／ Break The Waku!</span>
+          </span>
+        </div>
+      </div>
+      <p class="foot-note">
+        <b>本ページの内容は開発中の構想を含みます。</b>提供内容・時期は変更になる可能性があります。ワクコエラボは医学的な診断・治療・助言を行うものではありません。現在プロトタイプ開発中。先行ユーザー（無料）とヒアリング協力者を募集しています。
+      </p>
+    </div>
+  </div>
+  <div class="foot-copy">© 2026 ワクコエラボ — Break The Waku! All rights reserved.</div>
+</footer>
+
+<script>
+  (function () {
+    var nav = document.getElementById('nav');
+    var toggle = document.getElementById('navToggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    });
+    nav.querySelectorAll('.nav-links a, .nav-cta').forEach(function (a) {
+      a.addEventListener('click', function () {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
