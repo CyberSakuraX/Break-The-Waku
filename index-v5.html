@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>ワクコエラボ｜「違い」を「間違い」にしない ― ニューロダイバーシティの自由研究ラボ</title>
+  <meta name="description" content="グレーゾーンの子と家族の毎日を、責めない声かけと小さな発見に変える。ニューロダイバーシティの才能を解き放つ自由研究ラボ「ワクコエラボ」。この挑戦に共感・応援・協力・共創してくれる仲間を募集中。" />
+  <meta property="og:title" content="ワクコエラボ｜「違い」を「間違い」にしない" />
+  <meta property="og:description" content="グレーゾーンの子と家族のための挑戦に、応援・協力・共創で加わる仲間を募集中。ニューロダイバーシティの自由研究ラボ。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cybersakurax.github.io/Break-The-Waku/index-v5.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='360.59%20297.27%20150.4%20150.4'%3E%3Cpath%20d='M379.38%20376.62%20C386.50%20403.54%20393.62%20417.00%20400.75%20417.00%20C408.67%20417.00%20415.79%20405.92%20422.12%20383.75'%20fill='none'%20stroke='%2315B6C7'%20stroke-width='14.84'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M422.12%20383.75%20C429.25%20405.92%20436.38%20417.00%20443.50%20417.00%20C453.79%20417.00%20464.88%20394.04%20476.75%20348.12'%20fill='none'%20stroke='%2315B6C7'%20stroke-width='14.84'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Ccircle%20cx='407.88'%20cy='356.44'%20r='13.65'%20fill='%231B2A4A'/%3E%3Ccircle%20cx='437.56'%20cy='356.44'%20r='8.43'%20fill='%23FF7A59'/%3E%3Cpath%20d='M483.88%20327.94%20C483.88%20333.48%20486.65%20336.25%20492.19%20336.25%20C486.65%20336.25%20483.88%20339.02%20483.88%20344.56%20C483.88%20339.02%20481.10%20336.25%20475.56%20336.25%20C481.10%20336.25%20483.88%20333.48%20483.88%20327.94%20Z'%20fill='%23FFC24B'/%3E%3C/svg%3E" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+  /* ワクコエラボ v5 — ワクワク版（イラスト＋図解／低テキスト）
+   * ベース: v4 のブランドCSSを継承。ヒーローに切り絵イラスト、各セクションはSVG図解で文字を削減。
+   * design-system: official brand guide (locked) · nav: N5 floating pill · footer: Ft5 statement + Ft8 marquee
+   */
+  @font-face{font-family:'Zen Maru Lat';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/zenmarugothic/v19/o-0XIpIxzW5b-RxT-6A8jWAtCp-cUW1yO5Cb.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;size-adjust:110%;}
+  @font-face{font-family:'Zen Maru Lat';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/zenmarugothic/v19/o-0XIpIxzW5b-RxT-6A8jWAtCp-caW9yO5Cb.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;size-adjust:110%;}
+
+  :root {
+    --navy:#1B2A4A; --turquoise:#15B6C7; --coral:#FF7A59; --sun:#FFC24B;
+    --teal-ink:#0A6E7A; --coral-ink:#B23E18; --navy-soft:#33456A; --navy-deep:#12203A; --sun-ink:#8A5F00;
+    --paper:#FCFDFD; --paper-cool:#ECF6F7; --paper-warm:#FFF5EE; --surface:#ffffff;
+    --ink:#1B2A4A; --ink-2:#51607A; --ink-3:#5C6478; --rule:rgba(27,42,74,.10); --rule-2:rgba(27,42,74,.18);
+    --on-navy:#EAF4F5; --on-navy-2:rgba(234,244,245,.66); --surf-light:rgba(255,255,255,.06); --hair-light:rgba(255,255,255,.12);
+    --focus:#0A6E7A;
+    --font-display:"Zen Maru Lat","Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic UI",sans-serif;
+    --font-display-plain:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic UI",sans-serif;
+    --font-body:"Zen Kaku Gothic New","Hiragino Sans","Meiryo","Yu Gothic",sans-serif;
+    --text-xs:0.78rem; --text-sm:0.875rem; --text-base:1rem; --text-md:1.125rem; --text-lg:1.375rem; --text-xl:1.75rem; --text-2xl:2.1875rem; --text-3xl:2.7rem;
+    --text-display:clamp(2.4rem,6vw + 0.5rem,4rem); --text-display-s:clamp(2rem,4.5vw + 0.5rem,3.2rem);
+    --space-2xs:0.5rem; --space-xs:0.75rem; --space-sm:1rem; --space-md:1.5rem; --space-lg:2rem; --space-xl:3rem;
+    --radius-card:18px; --radius-sm:12px; --radius-pill:999px;
+    --shadow-soft:0 14px 34px -18px rgba(27,42,74,.30); --shadow-lift:0 22px 48px -20px rgba(27,42,74,.38);
+    --ease-out:cubic-bezier(0.16,1,0.3,1); --ease-in-out:cubic-bezier(0.65,0,0.35,1); --dur-short:200ms;
+    --max:1080px; --z-nav:100;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;overflow-x:clip;}
+  body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.8;font-size:var(--text-base);overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;text-autospace:normal;padding-inline:max(0px,env(safe-area-inset-left));}
+  a{color:inherit;text-decoration:none;} svg{display:block;} img{max-width:100%;display:block;}
+  ::selection{background:var(--sun);color:var(--navy);}
+  .container{width:100%;max-width:var(--max);margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.25;letter-spacing:-0.01em;overflow-wrap:anywhere;min-width:0;}
+  :where(a,button,input,summary):focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px;}
+
+  section{padding-block:clamp(3.2rem,7vw,5.5rem);position:relative;scroll-margin-top:6rem;}
+  .eyebrow{display:inline-flex;align-items:center;gap:var(--space-2xs);font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);color:var(--teal-ink);letter-spacing:.02em;margin-bottom:var(--space-sm);}
+  .eyebrow::before{content:"";width:18px;height:2px;background:var(--coral);border-radius:2px;}
+  .sec-title{font-size:var(--text-2xl);font-weight:900;margin-bottom:var(--space-sm);line-height:1.3;}
+  .sec-lead{color:var(--ink-2);font-size:var(--text-md);max-width:48ch;line-height:1.85;}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2xs);padding:0.85rem 1.5rem;border-radius:var(--radius-pill);font-family:var(--font-display);font-weight:700;font-size:var(--text-base);cursor:pointer;border:2px solid transparent;white-space:nowrap;min-height:48px;transition:transform var(--dur-short) var(--ease-out),box-shadow var(--dur-short) var(--ease-out),background-color var(--dur-short) var(--ease-out);}
+  .btn .ar{transition:transform var(--dur-short) var(--ease-out);}
+  .btn-primary{background:var(--teal-ink);color:#fff;box-shadow:var(--shadow-soft);}
+  .btn-secondary{background:var(--surface);color:var(--navy);border-color:var(--coral);}
+  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--rule-2);}
+  @media (hover:hover){.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift);}.btn-secondary:hover{transform:translateY(-2px);background:var(--paper-warm);}.btn-ghost:hover{background:var(--paper-cool);border-color:var(--teal-ink);}.btn:hover .ar{transform:translateX(3px);}}
+  .btn:active{transform:translateY(0);}
+
+  /* NAV */
+  .nav-wrap{position:sticky;top:0;z-index:var(--z-nav);padding-top:clamp(0.6rem,2vw,1rem);}
+  .nav{display:flex;align-items:center;gap:var(--space-md);max-width:var(--max);margin:0 auto;padding:0.55rem 0.7rem 0.55rem 1.1rem;background:rgba(252,253,253,.82);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid var(--rule);border-radius:var(--radius-pill);box-shadow:0 10px 30px -16px rgba(27,42,74,.35);}
+  .brand{display:flex;align-items:center;gap:0.6rem;margin-inline-end:auto;}
+  .brand-mark{height:32px;width:auto;flex:none;}
+  .brand-name{font-family:var(--font-display);font-weight:900;font-size:var(--text-md);color:var(--navy);line-height:1.1;}
+  .brand-sub{font-size:0.66rem;color:var(--ink-2);font-weight:500;letter-spacing:.04em;}
+  .nav-links{display:flex;align-items:center;gap:0.2rem;list-style:none;}
+  .nav-links a{padding:0.5rem 0.85rem;border-radius:var(--radius-pill);font-size:var(--text-sm);font-weight:500;color:var(--ink-2);white-space:nowrap;transition:color var(--dur-short),background-color var(--dur-short);}
+  @media (hover:hover){.nav-links a:hover{color:var(--navy);background:var(--paper-cool);}}
+  .nav-cta{padding:0.55rem 1.15rem;border-radius:var(--radius-pill);font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);background:var(--navy);color:#fff;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center;transition:transform var(--dur-short),background-color var(--dur-short);}
+  @media (hover:hover){.nav-cta:hover{background:var(--navy-soft);transform:translateY(-1px);}}
+  .nav-toggle{display:none;width:44px;height:44px;border:none;background:transparent;cursor:pointer;align-items:center;justify-content:center;border-radius:12px;color:var(--navy);}
+  .nav-toggle svg{width:24px;height:24px;}
+
+  /* HERO */
+  .hero{padding-top:clamp(1.4rem,3vw,2.4rem);padding-bottom:clamp(2.4rem,6vw,4rem);overflow:clip;}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(620px 460px at 96% 0%,rgba(21,182,199,.14),transparent 60%),radial-gradient(640px 480px at 2% 110%,rgba(255,194,75,.12),transparent 62%);}
+  .hero-grid{display:grid;grid-template-columns:0.92fr 1.08fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:var(--space-2xs);padding:0.4rem 0.9rem;border-radius:var(--radius-pill);background:var(--sun);color:var(--navy);font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--coral-ink);box-shadow:0 0 0 4px rgba(178,62,24,.25);animation:pulse 2.4s var(--ease-in-out) infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(178,62,24,.25);}50%{box-shadow:0 0 0 8px rgba(178,62,24,.06);}}
+  .hero-sig{font-family:var(--font-display-plain);font-weight:900;font-size:clamp(1.2rem,3vw,1.6rem);letter-spacing:-0.01em;color:var(--teal-ink);display:inline-block;margin:var(--space-md) 0 0.2rem;}
+  .hero-catch{font-family:var(--font-display);font-weight:900;font-size:var(--text-display-s);line-height:1.3;letter-spacing:-0.01em;color:var(--navy);margin-bottom:var(--space-sm);}
+  .hero-catch .tq{color:var(--teal-ink);} .hero-catch .co{color:var(--coral-ink);}
+  .hero-sub{color:var(--ink-2);font-size:var(--text-md);max-width:42ch;line-height:1.85;margin-bottom:var(--space-lg);}
+  .hero-btns{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-bottom:var(--space-md);}
+  .trust{display:flex;flex-wrap:wrap;gap:var(--space-2xs);}
+  .pill{padding:0.4rem 0.85rem;border-radius:var(--radius-pill);background:var(--surface);border:1px solid var(--rule-2);color:var(--ink-2);font-size:var(--text-xs);font-weight:700;}
+  .hero-illust{position:relative;}
+  .hero-illust img{width:100%;height:auto;border-radius:var(--radius-card);}
+  .hero-illust figcaption{position:absolute;left:6%;bottom:5%;background:rgba(27,42,74,.92);color:#fff;font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);padding:0.5rem 0.9rem;border-radius:var(--radius-pill);box-shadow:var(--shadow-soft);}
+  .hero-illust figcaption .co{color:var(--sun);}
+
+  .rise{opacity:0;transform:translateY(14px);animation:rise 0.7s var(--ease-out) forwards;}
+  .rise.d1{animation-delay:.06s;}.rise.d2{animation-delay:.14s;}.rise.d3{animation-delay:.22s;}.rise.d4{animation-delay:.30s;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+
+  /* PROBLEM — 35人に3人 ピクトグラム */
+  .problem{background:var(--surface);border-block:1px solid var(--rule);}
+  .pict-grid{display:grid;grid-template-columns:1fr 0.9fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;margin-top:var(--space-md);}
+  .people-svg{width:100%;max-width:460px;height:auto;}
+  .people-svg .pp{fill:#CBD3DF;} .people-svg .hl{fill:var(--coral);}
+  .pict-num{font-family:var(--font-display);font-weight:900;color:var(--navy);font-size:clamp(2.4rem,6vw,3.4rem);line-height:1.1;}
+  .pict-num .hl{color:var(--coral-ink);}
+  .pict-lead{color:var(--ink-2);font-size:var(--text-md);line-height:1.85;margin-top:var(--space-sm);max-width:42ch;}
+  .pict-lead b{color:var(--teal-ink);}
+  .mini-stats{display:flex;flex-wrap:wrap;gap:var(--space-md);margin-top:var(--space-lg);}
+  .mini{flex:1 1 150px;}
+  .mini .n{font-family:var(--font-display);font-weight:900;font-size:var(--text-xl);color:var(--navy);}
+  .mini .l{color:var(--ink-2);font-size:var(--text-sm);line-height:1.6;}
+  .src{color:var(--ink-3);font-size:var(--text-xs);margin-top:var(--space-lg);line-height:1.7;}
+
+  /* STORY */
+  .story-grid{display:grid;grid-template-columns:1fr 0.9fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;}
+  .quote-block{background:var(--navy);color:var(--on-navy);border-radius:var(--radius-card);padding:clamp(1.8rem,4vw,2.6rem);box-shadow:var(--shadow-soft);}
+  .quote-block .q{font-family:var(--font-display);font-weight:900;font-size:var(--text-xl);line-height:1.5;}
+  .quote-block .q .tq{color:var(--turquoise);} .quote-block .q .co{color:var(--coral);}
+  .quote-block .q-sub{color:var(--on-navy-2);font-size:var(--text-sm);margin-top:var(--space-md);line-height:1.8;}
+
+  /* SHIFT — before/after */
+  .shift{background:var(--paper-cool);}
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(0.8rem,2.5vw,1.6rem);align-items:stretch;margin-top:var(--space-lg);}
+  .ba-card{background:var(--surface);border:1px solid var(--rule-2);border-radius:var(--radius-card);padding:clamp(1.2rem,3vw,1.8rem);text-align:center;}
+  .ba-card .k{font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);color:var(--ink-3);}
+  .ba-card .big{font-family:var(--font-display);font-weight:900;font-size:var(--text-xl);margin:0.3rem 0;}
+  .ba-card p{font-size:var(--text-sm);line-height:1.7;}
+  .ba-card.old{opacity:.85;} .ba-card.old .big{color:var(--ink-2);} .ba-card.old p{color:var(--ink-3);}
+  .ba-card.new{border-color:var(--turquoise);background:#fff;box-shadow:var(--shadow-soft);} .ba-card.new .k{color:var(--teal-ink);} .ba-card.new .big{color:var(--navy);} .ba-card.new p{color:var(--ink-2);}
+  .ba-arrow{display:grid;place-items:center;color:var(--coral);font-family:var(--font-display);font-weight:900;font-size:2rem;}
+
+  /* VISION */
+  .vision{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);color:var(--on-navy);}
+  .vision .eyebrow{color:var(--turquoise);} .vision .eyebrow::before{background:var(--sun);}
+  .vision .sec-title{color:#fff;}
+  .vision-main{font-family:var(--font-display);font-weight:900;font-size:var(--text-display-s);line-height:1.45;margin:var(--space-md) 0 var(--space-xl);max-width:22ch;}
+  .vision-main .tq{color:var(--turquoise);} .vision-main .co{color:var(--coral);}
+  .values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-md);}
+  .value{padding:var(--space-md);border-radius:var(--radius-card);background:var(--surf-light);border:1px solid var(--hair-light);}
+  .value .ja{font-family:var(--font-display);font-weight:700;color:#fff;font-size:var(--text-md);margin-bottom:0.2rem;}
+  .value .de{color:var(--on-navy-2);font-size:var(--text-sm);line-height:1.7;}
+
+  /* CHALLENGE — 3軸アイコン */
+  .challenge{background:var(--paper);}
+  .first-step{margin-top:var(--space-lg);padding:clamp(1.3rem,3vw,1.8rem);border-radius:var(--radius-card);background:var(--navy);color:var(--on-navy);display:grid;grid-template-columns:1fr auto;gap:var(--space-md);align-items:center;box-shadow:var(--shadow-soft);}
+  .first-step .fs-k{font-family:var(--font-display);font-weight:700;font-size:var(--text-xs);letter-spacing:.06em;color:var(--turquoise);}
+  .first-step h3{color:#fff;font-size:var(--text-lg);margin:0.2rem 0;line-height:1.45;}
+  .first-step p{color:var(--on-navy-2);font-size:var(--text-sm);line-height:1.7;}
+  .first-step .fs-flag{display:inline-flex;align-items:center;gap:0.4rem;padding:0.4rem 0.9rem;border-radius:var(--radius-pill);background:var(--sun);color:var(--navy);font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);white-space:nowrap;height:max-content;}
+  .axis-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-md);margin-top:var(--space-md);}
+  .acard{border-radius:var(--radius-card);border:1px solid var(--rule);background:var(--surface);padding:var(--space-lg);text-align:center;}
+  .axis-ic{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto var(--space-sm);}
+  .axis-ic svg{width:32px;height:32px;}
+  .acard:nth-child(1) .axis-ic{background:rgba(21,182,199,.14);color:var(--teal-ink);}
+  .acard:nth-child(2) .axis-ic{background:var(--paper-warm);color:var(--coral-ink);}
+  .acard:nth-child(3) .axis-ic{background:rgba(255,194,75,.20);color:var(--sun-ink);}
+  .acard .axis{font-family:var(--font-display);font-weight:700;font-size:var(--text-xs);letter-spacing:.04em;color:var(--ink-3);}
+  .acard .aname{font-family:var(--font-display);font-weight:900;font-size:var(--text-md);color:var(--navy);margin:0.1rem 0 0.3rem;}
+  .acard p{color:var(--ink-2);font-size:var(--text-sm);line-height:1.7;}
+  .acard .state{display:inline-block;margin-top:var(--space-sm);padding:0.25rem 0.7rem;border-radius:var(--radius-pill);font-size:var(--text-xs);font-weight:700;}
+  .acard .state.live{background:var(--sun);color:var(--navy);} .acard .state.soon{background:var(--paper-cool);color:var(--ink-2);border:1px solid var(--rule);}
+  .challenge-note{margin-top:var(--space-md);font-size:var(--text-sm);color:var(--ink-3);}
+
+  /* NOW — compact chips */
+  .now{background:var(--surface);border-block:1px solid var(--rule);}
+  .now-chips{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-md);}
+  .chip{display:flex;align-items:center;gap:0.6rem;padding:0.7rem 1.1rem;border-radius:var(--radius-pill);background:var(--paper);border:1px solid var(--rule-2);font-size:var(--text-sm);color:var(--navy);font-weight:500;}
+  .chip b{font-family:var(--font-display);font-weight:700;}
+  .chip .d{width:9px;height:9px;border-radius:50%;background:var(--turquoise);flex:none;}
+  .chip:nth-child(2) .d{background:var(--coral);} .chip:nth-child(3) .d{background:var(--sun);} .chip:nth-child(4) .d{background:var(--navy-soft);}
+
+  /* JOIN */
+  .join{background:var(--paper-warm);border-top:1px solid var(--rule);}
+  .join-illust{margin:var(--space-md) auto var(--space-lg);max-width:560px;}
+  .join-illust img{width:100%;height:auto;border-radius:var(--radius-card);}
+  .join-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);}
+  .join-card{background:var(--surface);border-radius:var(--radius-card);border:1px solid var(--rule);padding:var(--space-lg);display:flex;flex-direction:column;position:relative;overflow:hidden;}
+  .join-card::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--turquoise);}
+  .join-card:nth-child(2)::before{background:var(--sun);} .join-card:nth-child(3)::before{background:var(--coral);} .join-card:nth-child(4)::before{background:var(--navy);}
+  .join-card:nth-child(4){background:var(--paper-cool);}
+  .join-k{font-family:var(--font-display);font-weight:700;font-size:var(--text-xs);letter-spacing:.05em;color:var(--teal-ink);}
+  .join-card:nth-child(2) .join-k{color:var(--sun-ink);} .join-card:nth-child(3) .join-k{color:var(--coral-ink);} .join-card:nth-child(4) .join-k{color:var(--navy);}
+  .join-card h3{font-size:var(--text-lg);color:var(--navy);margin:0.2rem 0 0.4rem;}
+  .join-card p{color:var(--ink-2);font-size:var(--text-sm);line-height:1.8;margin-bottom:var(--space-md);flex:1;}
+  .join-card .btn{width:100%;}
+  .share{display:flex;flex-wrap:wrap;gap:var(--space-2xs);}
+  .share .btn{width:auto;flex:1 1 auto;padding-inline:1rem;font-size:var(--text-sm);}
+  .share-x{background:var(--navy);color:#fff;} @media (hover:hover){.share-x:hover{background:var(--navy-soft);transform:translateY(-2px);}}
+  .share-line{background:#06C755;color:var(--navy);} @media (hover:hover){.share-line:hover{filter:brightness(1.05);transform:translateY(-2px);}}
+  .copy-ok{font-size:var(--text-xs);color:var(--teal-ink);font-weight:700;margin-top:var(--space-2xs);min-height:1.2em;}
+  .join-note{margin-top:var(--space-md);padding:var(--space-md);border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--rule);color:var(--ink-2);font-size:var(--text-sm);line-height:1.85;}
+  .join-note b{color:var(--navy);}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:var(--on-navy);padding-top:clamp(3rem,7vw,5rem);}
+  .foot-statement{font-family:var(--font-display);font-weight:900;font-size:var(--text-3xl);line-height:1.35;max-width:16ch;}
+  .foot-statement .tq{color:var(--turquoise);} .foot-statement .co{color:var(--coral);}
+  .marquee{margin-top:clamp(2rem,5vw,3rem);overflow:clip;border-block:1px solid var(--hair-light);padding-block:0.9rem;}
+  .marquee-track{display:inline-flex;gap:0;white-space:nowrap;will-change:transform;animation:scroll 32s linear infinite;}
+  .marquee-track span{font-family:var(--font-display);font-weight:700;font-size:var(--text-md);color:rgba(234,244,245,.7);padding-inline:1.2rem;}
+  .marquee-track span::after{content:"·";margin-left:2.4rem;color:var(--turquoise);}
+  @keyframes scroll{to{transform:translateX(-50%);}}
+  @media (hover:hover){.marquee:hover .marquee-track{animation-play-state:paused;}}
+  .foot-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-lg);padding-block:clamp(2rem,5vw,3rem);}
+  .foot-brand .brand-name{color:#fff;} .foot-brand .brand-sub{color:var(--on-navy-2);}
+  .foot-note{font-size:var(--text-xs);line-height:1.85;max-width:52ch;color:var(--on-navy-2);} .foot-note b{color:var(--on-navy);}
+  .foot-copy{text-align:center;padding-block:var(--space-md);border-top:1px solid var(--hair-light);font-size:var(--text-xs);color:rgba(234,244,245,.62);}
+
+  /* MOBILE */
+  @media (max-width:60rem){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-illust{order:-1;max-width:560px;}
+    .pict-grid,.story-grid{grid-template-columns:1fr;}
+    .axis-grid,.values{grid-template-columns:1fr;}
+  }
+  @media (max-width:52rem){
+    .nav{flex-wrap:wrap;row-gap:0.45rem;}
+    .nav-links,.nav-cta{display:none;}
+    .nav-toggle{display:inline-grid;}
+    .nav.open{border-radius:var(--radius-card);}
+    .nav.open .nav-links{display:flex;flex-direction:column;align-items:stretch;flex-basis:100%;order:3;gap:0.15rem;padding-top:0.5rem;border-top:1px solid var(--rule);}
+    .nav.open .nav-links a{padding:0.8rem 0.9rem;border-radius:12px;}
+    .nav.open .nav-cta{display:inline-flex;justify-content:center;flex-basis:100%;order:4;}
+  }
+  @media (max-width:40rem){
+    .join-grid{grid-template-columns:1fr;}
+    .ba{grid-template-columns:1fr;} .ba-arrow{transform:rotate(90deg);}
+    .btn{width:100%;white-space:normal;} .hero-btns .btn{width:100%;} .share .btn{width:100%;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;}
+    .rise{opacity:1;transform:none;} .marquee-track{animation:none;transform:none;}
+  }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <div class="container">
+    <nav class="nav" id="nav" aria-label="メインナビゲーション">
+      <a href="#top" class="brand" aria-label="ワクコエラボ ホーム">
+        <svg class="brand-mark" viewBox="370.38 318.94 130.81 107.06" aria-hidden="true">
+          <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="407.88" cy="356.44" r="13.65" fill="#1B2A4A"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FF7A59"/>
+          <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFC24B"/>
+        </svg>
+        <span><span class="brand-name">ワクコエ<span style="color:var(--coral)">ラボ</span></span><span class="brand-sub">ニューロダイバーシティの自由研究ラボ</span></span>
+      </a>
+      <ul class="nav-links" id="navMenu">
+        <li><a href="#problem">課題</a></li>
+        <li><a href="#story">想い</a></li>
+        <li><a href="#challenge">構想</a></li>
+        <li><a href="#join">仲間になる</a></li>
+      </ul>
+      <a href="#join" class="nav-cta">仲間になる</a>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="badge rise"><span class="dot"></span>2026.6.14 先行β始動 ／ 仲間募集中</span>
+        <span class="hero-sig rise d1">Break The Waku!</span>
+        <h1 class="hero-catch rise d1">「この子は、<br>間違ってない」と<br>言える社会を、<span class="tq">いっしょに</span>。</h1>
+        <p class="hero-sub rise d2">グレーゾーンの子と家族の毎日を、責めない声かけと小さな発見に変える。この挑戦に加わる仲間を募集しています。</p>
+        <div class="hero-btns rise d3">
+          <a href="#join" class="btn btn-primary">この挑戦に加わる <span class="ar" aria-hidden="true">→</span></a>
+          <a href="#challenge" class="btn btn-secondary">構想を見る</a>
+        </div>
+        <div class="trust rise d4" aria-label="ワクコエラボの立ち位置">
+          <span class="pill">当事者の家族発</span><span class="pill">診断しない・責めない</span><span class="pill">福岡発・2026</span>
+        </div>
+      </div>
+      <figure class="hero-illust rise d2">
+        <img src="assets/hero/hero-cutout_20260608_230019_00.png" width="1536" height="1024" alt="星を見る子・絵を描く子・ブロックを積む子・虫眼鏡で観察する子など、それぞれ夢中なことに没頭する子どもたちの切り絵風イラスト" />
+        <figcaption>「違い」は「間違い」じゃない。「<span class="co">特性</span>」だ。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="container">
+    <span class="eyebrow">いま、起きていること</span>
+    <h2 class="sec-title">「困った子」とされる前に、できることがある。</h2>
+    <div class="pict-grid">
+      <svg class="people-svg" viewBox="0 0 232 200" role="img" aria-label="35人のクラスに、約3人。学習や行動に特性上の困難を抱える子の割合（約8.8%）">
+        <defs><symbol id="pp" viewBox="0 0 24 30"><circle cx="12" cy="7" r="6"/><path d="M2 30 C2 19.5 6.5 16 12 16 C17.5 16 22 19.5 22 30 Z"/></symbol></defs>
+        <use class="pp" href="#pp" x="4" y="4" width="24" height="30"/><use class="pp" href="#pp" x="36" y="4" width="24" height="30"/><use class="pp" href="#pp" x="68" y="4" width="24" height="30"/><use class="pp" href="#pp" x="100" y="4" width="24" height="30"/><use class="pp" href="#pp" x="132" y="4" width="24" height="30"/><use class="pp" href="#pp" x="164" y="4" width="24" height="30"/><use class="pp" href="#pp" x="196" y="4" width="24" height="30"/>
+        <use class="pp" href="#pp" x="4" y="44" width="24" height="30"/><use class="pp" href="#pp" x="36" y="44" width="24" height="30"/><use class="pp hl" href="#pp" x="68" y="44" width="24" height="30"/><use class="pp" href="#pp" x="100" y="44" width="24" height="30"/><use class="pp" href="#pp" x="132" y="44" width="24" height="30"/><use class="pp" href="#pp" x="164" y="44" width="24" height="30"/><use class="pp" href="#pp" x="196" y="44" width="24" height="30"/>
+        <use class="pp" href="#pp" x="4" y="84" width="24" height="30"/><use class="pp" href="#pp" x="36" y="84" width="24" height="30"/><use class="pp" href="#pp" x="68" y="84" width="24" height="30"/><use class="pp" href="#pp" x="100" y="84" width="24" height="30"/><use class="pp" href="#pp" x="132" y="84" width="24" height="30"/><use class="pp hl" href="#pp" x="164" y="84" width="24" height="30"/><use class="pp" href="#pp" x="196" y="84" width="24" height="30"/>
+        <use class="pp" href="#pp" x="4" y="124" width="24" height="30"/><use class="pp hl" href="#pp" x="36" y="124" width="24" height="30"/><use class="pp" href="#pp" x="68" y="124" width="24" height="30"/><use class="pp" href="#pp" x="100" y="124" width="24" height="30"/><use class="pp" href="#pp" x="132" y="124" width="24" height="30"/><use class="pp" href="#pp" x="164" y="124" width="24" height="30"/><use class="pp" href="#pp" x="196" y="124" width="24" height="30"/>
+        <use class="pp" href="#pp" x="4" y="164" width="24" height="30"/><use class="pp" href="#pp" x="36" y="164" width="24" height="30"/><use class="pp" href="#pp" x="68" y="164" width="24" height="30"/><use class="pp" href="#pp" x="100" y="164" width="24" height="30"/><use class="pp" href="#pp" x="132" y="164" width="24" height="30"/><use class="pp" href="#pp" x="164" y="164" width="24" height="30"/><use class="pp" href="#pp" x="196" y="164" width="24" height="30"/>
+      </svg>
+      <div>
+        <div class="pict-num">35人に、<span class="hl">約3人</span>。</div>
+        <p class="pict-lead">通常学級で学習や行動に特性上の困難を抱える子は約8.8%。その多くが診断のないまま「グレーゾーン」と呼ばれ、<b>支援の空白地帯</b>に置かれています。これは、特別な誰かの話ではありません。</p>
+        <div class="mini-stats">
+          <div class="mini"><div class="n">約50万人</div><div class="l">全国で3〜12歳の<br>グレーゾーンの子（推定）</div></div>
+          <div class="mini"><div class="n">72.8%</div><div class="l">困難を抱える子のうち<br>医師の診断がない割合</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="src">出典：8.8%・診断なし割合は「通常の学級に在籍する特別な教育的支援を必要とする児童生徒に関する調査」（文部科学省, 2022）。グレーゾーン人口は当該データに基づく推定値です。</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div>
+        <span class="eyebrow">なぜ、私たちがやるのか</span>
+        <h2 class="sec-title">直したかったのは、子どもじゃなかった。</h2>
+        <p class="sec-lead">創業メンバー自身も、3人の子どもが「グレーゾーン」。ある夜、「なんでできないの」と強く言ってしまったとき、子どもが小さくこぼしました ―「ぼく、ダメな子だから」。直すべきは、子どもではなく、私たちの“見方”の方だったのかもしれません。それが出発点です。</p>
+      </div>
+      <div class="quote-block">
+        <p class="q">「<span class="tq">違い</span>」が「間違い」と<br>される社会を、<span class="co">変えたい</span>。</p>
+        <p class="q-sub">矯正ではなく、個性を誇れる場所を。一つのアプリの話ではなく、社会への挑戦です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHIFT -->
+<section class="shift" id="shift">
+  <div class="container">
+    <span class="eyebrow">変えたい「見方」</span>
+    <h2 class="sec-title">「教育」から「発育」へ。</h2>
+    <p class="sec-lead">変えたいのは、子どもではなく、社会の見方そのもの。</p>
+    <div class="ba">
+      <div class="ba-card old">
+        <div class="k">これまでの「教育」</div>
+        <div class="big">管理・矯正</div>
+        <p>欠点さがし／叱って直す</p>
+      </div>
+      <div class="ba-arrow" aria-hidden="true">→</div>
+      <div class="ba-card new">
+        <div class="k">これからの「発育」</div>
+        <div class="big">理解・伴走</div>
+        <p>才能さがし／ほめて伸ばす</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision" id="vision">
+  <div class="container">
+    <span class="eyebrow">私たちが信じる未来</span>
+    <h2 class="sec-title">私たちが信じる、未来。</h2>
+    <p class="vision-main"><span class="tq">ニューロダイバーシティ</span>の才能を解き放ち、<span class="co">誰もが自分らしく輝ける社会</span>を。</p>
+    <div class="values">
+      <div class="value"><div class="ja">できることに着目</div><div class="de">「直す」より先に「面白がる」。困りごとの奥の得意を、いっしょに探す。</div></div>
+      <div class="value"><div class="ja">スモールステップでいい</div><div class="de">いきなり変わらなくていい。今日の小さな一歩を見つけて、喜ぶ。</div></div>
+      <div class="value"><div class="ja">全員が「研究員」</div><div class="de">親も子も専門家も対等な研究員。治す側と治される側に、分けない。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE -->
+<section class="challenge" id="challenge">
+  <div class="container">
+    <span class="eyebrow">私たちの挑戦</span>
+    <h2 class="sec-title">アプリ1つで、終わらせない。</h2>
+    <p class="sec-lead">「ココロ・カラダ・シャカイ」の3軸で、子と家族を多面的に伴走していく構想です。</p>
+    <div class="first-step">
+      <div>
+        <div class="fs-k">FIRST STEP ― 最初の一歩</div>
+        <h3>発育AIコーチ「WAKU-LOG」、6/14に先行β。</h3>
+        <p>困った行動を1行入れると、その場で責めない声かけ案が返る相談機能から。先行βで体験できるのは、この相談機能ひとつだけです。</p>
+      </div>
+      <span class="fs-flag">2026.6.14 先行β</span>
+    </div>
+    <div class="axis-grid">
+      <div class="acard">
+        <div class="axis-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
+        <div class="axis">ココロ ／ HealthTech</div>
+        <div class="aname">WAKU-LOG</div>
+        <p>責めない声かけ案を返す発育AIコーチ。将来は特性の可視化も構想。</p>
+        <span class="state live">相談機能のみ・先行β準備中</span>
+      </div>
+      <div class="acard">
+        <div class="axis-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c0 3 2 4 2 7a4 4 0 0 1-8 0c0-3 2-4 2-7"/><path d="M12 21c5 0 8-3 8-7"/><path d="M14 12c0-2 2-4 5-4"/></svg></div>
+        <div class="axis">カラダ ／ D2C Food</div>
+        <div class="aname">Waku-GUMI</div>
+        <p>栄養面から集中力・安定感を支える機能性グミの構想。</p>
+        <span class="state soon">構想中</span>
+      </div>
+      <div class="acard">
+        <div class="axis-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="8" r="2.4"/><circle cx="18" cy="8" r="2.4"/><circle cx="12" cy="17" r="2.4"/><path d="M8 9 10.5 15M16 9 13.5 15"/></svg></div>
+        <div class="axis">シャカイ ／ EdTech</div>
+        <div class="aname">Waku-SPACE</div>
+        <p>創造性が価値になる場。放課後等デイサービスとの連携も視野に。</p>
+        <span class="state soon">構想中</span>
+      </div>
+    </div>
+    <p class="challenge-note">※ Waku-GUMI・Waku-SPACE は構想段階です。提供内容・時期は変更になる可能性があります。</p>
+  </div>
+</section>
+
+<!-- NOW -->
+<section class="now" id="now">
+  <div class="container">
+    <span class="eyebrow">いま地点</span>
+    <h2 class="sec-title">小さく、でも着実に。</h2>
+    <p class="sec-lead">大きな約束より、確かな一歩を。現在地を正直に共有します。</p>
+    <div class="now-chips">
+      <span class="chip"><span class="d"></span><b>6/14 先行β</b>：相談機能ひとつを開発中</span>
+      <span class="chip"><span class="d"></span><b>当事者の声</b>：先行登録・ヒアリングを募集中</span>
+      <span class="chip"><span class="d"></span><b>連携</b>：放課後等デイ・専門家と対話中</span>
+      <span class="chip"><span class="d"></span><b>チーム</b>：実装・デザイン・発達支援の知見</span>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="join" id="join">
+  <div class="container">
+    <span class="eyebrow">仲間になる</span>
+    <h2 class="sec-title">あなたの関わり方で、いっしょに。</h2>
+    <p class="sec-lead">大きなことでなくて大丈夫。「いいね」と広めてくれることも、立派な一歩です。</p>
+    <figure class="join-illust">
+      <img src="assets/hero/join-cutout_20260608_230738_00.png" width="1536" height="1024" alt="子どもも大人も輪になって、大きな星をいっしょに掲げる切り絵風イラスト" />
+    </figure>
+    <div class="join-grid">
+      <div class="join-card">
+        <div class="join-k">01 ― だれでも、いますぐ</div>
+        <h3>応援する・広める</h3>
+        <p>SNSでシェアしてください。届けたい家族に、そっと教えてくれるだけで、空白地帯の誰かに届きます。</p>
+        <div class="share">
+          <a class="btn share-x" id="shareX" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcybersakurax.github.io%2FBreak-The-Waku%2Findex-v5.html" target="_blank" rel="noopener" aria-label="Xでシェア">Xでシェア</a>
+          <a class="btn share-line" id="shareLine" href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fcybersakurax.github.io%2FBreak-The-Waku%2Findex-v5.html" target="_blank" rel="noopener" aria-label="LINEでシェア">LINEで送る</a>
+          <button class="btn btn-ghost" id="copyLink" type="button">リンクをコピー</button>
+        </div>
+        <p class="copy-ok" id="copyOk" role="status" aria-live="polite"></p>
+      </div>
+      <div class="join-card">
+        <div class="join-k">02 ― 支援者・専門家・施設の方へ</div>
+        <h3>協力する・つながる</h3>
+        <p>知見の提供、放課後等デイ等との連携、現場の声の共有など。メール1通から、ご相談だけでも大丈夫です。</p>
+        <a href="mailto:contact@wakukoelabo.jp?subject=%E5%8D%94%E5%8A%9B%E3%83%BB%E9%80%A3%E6%90%BA%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87&body=%E3%83%AF%E3%82%AF%E3%82%B3%E3%82%A8%E3%83%A9%E3%83%9C%E3%81%B8%E3%80%82%E5%8D%94%E5%8A%9B%E3%83%BB%E9%80%A3%E6%90%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%8A%E8%A9%B1%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%0D%0A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0D%0A%E3%81%94%E6%89%80%E5%B1%9E%E3%83%BB%E7%AB%8B%E5%A0%B4%EF%BC%9A%0D%0A%E3%81%94%E9%96%A2%E5%BF%83%E3%83%BB%E3%81%94%E6%8F%90%E6%A1%88%EF%BC%9A" class="btn btn-primary">連携を相談する <span class="ar" aria-hidden="true">→</span></a>
+      </div>
+      <div class="join-card">
+        <div class="join-k">03 ― 共創・出資をご検討の方へ</div>
+        <h3>共に育てる・出資を相談する</h3>
+        <p>事業パートナー、あるいは出資を通じて挑戦を後押ししてくださる方へ。構想・事業計画を個別にお話しします。</p>
+        <a href="mailto:contact@wakukoelabo.jp?subject=%E5%85%B1%E5%89%B5%E3%83%BB%E5%87%BA%E8%B3%87%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87&body=%E3%83%AF%E3%82%AF%E3%82%B3%E3%82%A8%E3%83%A9%E3%83%9C%E3%81%B8%E3%80%82%E5%85%B1%E5%89%B5%E3%83%BB%E5%87%BA%E8%B3%87%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%8A%E8%A9%B1%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%0D%0A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%E3%83%BB%E5%BE%A1%E7%A4%BE%E5%90%8D%EF%BC%9A%0D%0A%E3%81%94%E9%96%A2%E5%BF%83%E3%81%AE%E9%A0%98%E5%9F%9F%EF%BC%9A%0D%0A%E3%81%94%E9%80%A3%E7%B5%A1%E5%85%88%EF%BC%9A" class="btn btn-secondary">出資・共創を相談する</a>
+      </div>
+      <div class="join-card">
+        <div class="join-k">04 ― 当事者の家族の方へ</div>
+        <h3>先行βに参加する</h3>
+        <p>グレーゾーンの子と暮らす保護者の方は、このプロダクトのいちばんの主役です。無料・診断名不要・本名不要・いつでも辞退OK。</p>
+        <a href="mailto:contact@wakukoelabo.jp?subject=%E5%85%88%E8%A1%8C%CE%B2%E5%8F%82%E5%8A%A0%E5%B8%8C%E6%9C%9B&body=%E5%85%88%E8%A1%8C%CE%B2%E3%81%B8%E3%81%AE%E5%8F%82%E5%8A%A0%E3%82%92%E5%B8%8C%E6%9C%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0D%0A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%88%E3%83%8B%E3%83%83%E3%82%AF%E3%83%8D%E3%83%BC%E3%83%A0%E5%8F%AF%EF%BC%89%EF%BC%9A%0D%0A%E3%81%8A%E5%AD%90%E3%81%95%E3%82%93%E3%81%AE%E5%B9%B4%E9%BD%A2%EF%BC%9A%0D%0A%E9%96%A2%E5%BF%83%E3%81%AE%E3%81%82%E3%82%8B%E5%86%85%E5%AE%B9%EF%BC%9A" class="btn btn-ghost">先行βに参加する</a>
+      </div>
+    </div>
+    <div class="join-note">
+      <b>安心して関わっていただくために：</b>ワクコエラボは医学的な診断・治療・助言を行うサービスではありません。先行βでは本名や診断名の入力は必須ではなく、いただいた内容はプロダクト改善とご案内のためにのみ扱います。本ページの内容は開発中の構想を含み、提供内容・時期は変更になる可能性があります。
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p class="foot-statement">ワクをコエ、<br><span class="tq">ワクワク</span>の<span class="co">コエ</span>へ。</p>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Break The Waku!</span><span>ワクコエラボ</span><span>違いは特性</span><span>Focus Strengths</span><span>Small Steps Win</span><span>Build Together</span>
+      <span>Break The Waku!</span><span>ワクコエラボ</span><span>違いは特性</span><span>Focus Strengths</span><span>Small Steps Win</span><span>Build Together</span>
+    </div>
+  </div>
+  <div class="container">
+    <div class="foot-meta">
+      <div class="foot-brand">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="370.38 318.94 130.81 107.06" aria-hidden="true">
+            <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="407.88" cy="356.44" r="13.65" fill="#FFFFFF"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FFFFFF"/>
+            <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFFFFF"/>
+          </svg>
+          <span><span class="brand-name">ワクコエラボ</span><span class="brand-sub">wakukoelab ／ Break The Waku!</span></span>
+        </div>
+      </div>
+      <p class="foot-note"><b>本ページの内容は開発中の構想を含みます。</b>提供内容・時期・価格は変更になる可能性があります。ワクコエラボは医学的な診断・治療・助言を行うものではありません。共感・応援・協力・共創してくださる仲間、先行ユーザー（無料）、ヒアリング協力者を募集しています。</p>
+    </div>
+  </div>
+  <div class="foot-copy">© 2026 ワクコエラボ — Break The Waku! All rights reserved.</div>
+</footer>
+
+<script>
+  (function () {
+    var nav = document.getElementById('nav');
+    var toggle = document.getElementById('navToggle');
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+      });
+      nav.querySelectorAll('.nav-links a, .nav-cta').forEach(function (a) {
+        a.addEventListener('click', function () {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'メニューを開く');
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'メニューを開く');
+          toggle.focus();
+        }
+      });
+    }
+
+    var canonical = 'https://cybersakurax.github.io/Break-The-Waku/index-v5.html';
+    var here = window.location.href.split('#')[0];
+    var url = /^https?:\/\/(localhost|127\.|0\.0\.0\.0|192\.168\.|10\.|.*\.local)/.test(here) ? canonical : here;
+    var text = '「違うこと」は「間違い」じゃない。グレーゾーンの子と家族を、責めない見方で支える「ワクコエラボ」の挑戦、いいなと思ったのでシェア。35人クラスに約3人。誰かに届きますように。 #ワクコエラボ #ニューロダイバーシティ';
+    var x = document.getElementById('shareX');
+    if (x) x.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+    var line = document.getElementById('shareLine');
+    if (line) line.href = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url);
+
+    var copyBtn = document.getElementById('copyLink');
+    var copyOk = document.getElementById('copyOk');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        var done = function () { if (copyOk) { copyOk.textContent = 'リンクをコピーしました ✓'; setTimeout(function(){ copyOk.textContent=''; }, 2600); } };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(done).catch(function () { window.prompt('このリンクをコピーしてください', url); });
+        } else {
+          window.prompt('このリンクをコピーしてください', url);
+        }
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
