@@ -209,6 +209,54 @@
     *,*::before,*::after { animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
     .rise { opacity:1; transform:none; }
   }
+    /* ===== v3 ワクワク版: blob / sparkle / possibility switch ===== */
+    .hero{position:relative; overflow:hidden;}
+    .hero-grid{position:relative; z-index:1;}
+    .hero-bg{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
+    .blob{position:absolute; border-radius:50% 48% 52% 46%; filter:blur(26px); opacity:.30; animation:blobFloat 24s ease-in-out infinite;}
+    .blob-1{width:340px; height:340px; background:var(--coral); top:-90px; right:-70px;}
+    .blob-2{width:280px; height:280px; background:var(--sun); bottom:-110px; left:-50px; animation-delay:-9s;}
+    @keyframes blobFloat{
+      0%,100%{transform:translate(0,0) scale(1) rotate(0deg);}
+      33%{transform:translate(24px,-18px) scale(1.06) rotate(6deg);}
+      66%{transform:translate(-18px,16px) scale(.96) rotate(-5deg);}
+    }
+    .sparkle{position:absolute; pointer-events:none; color:var(--sun); animation:twinkle 4s ease-in-out infinite;}
+    .sparkle svg{display:block; width:100%; height:100%;}
+    .sparkle-a{width:14px; height:14px; top:16%; left:11%;}
+    .sparkle-b{width:10px; height:10px; top:64%; right:15%; color:var(--coral); animation-delay:-1.6s;}
+    .sparkle-c{width:16px; height:16px; top:28%; right:28%; color:var(--accent); animation-delay:-3s;}
+    @keyframes twinkle{
+      0%,100%{opacity:.12; transform:scale(.6) rotate(0deg);}
+      50%{opacity:.55; transform:scale(.95) rotate(80deg);}
+    }
+    .switch-card{position:relative; overflow:hidden; z-index:1;}
+    .switch-card::before{content:""; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .5s; background:radial-gradient(150px 90px at 82% 2%, rgba(242,183,5,.30), transparent 72%);}
+    .switch-card[data-on="true"]::before{opacity:1;}
+    .switch-head{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; position:relative; z-index:1;}
+    .switch-label{font-size:.8rem; font-weight:700; letter-spacing:.06em; color:var(--ink-soft);}
+    .switch-state{font-size:.72rem; font-weight:700; padding:4px 11px; border-radius:var(--radius-pill); background:var(--rule-2); color:var(--ink-soft); transition:background .3s,color .3s; white-space:nowrap;}
+    .switch-card[data-on="true"] .switch-state{background:var(--coral); color:#fff;}
+    .switch-stage{position:relative; z-index:1; min-height:118px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center;}
+    .switch-caption{font-size:.78rem; font-weight:700; letter-spacing:.04em; color:var(--ink-soft); transition:color .3s;}
+    .switch-card[data-on="true"] .switch-caption{color:var(--coral);}
+    .switch-term{font-size:clamp(1.4rem,4.4vw,1.9rem); font-weight:800; line-height:1.34; color:var(--ink); transition:opacity .24s ease,transform .24s ease;}
+    .switch-term.is-flip{opacity:0; transform:translateY(10px);}
+    .switch-control{position:relative; z-index:1; display:flex; justify-content:center; margin-top:4px;}
+    .toggle{appearance:none; -webkit-appearance:none; cursor:pointer; width:66px; height:34px; border-radius:var(--radius-pill); background:#cdc3b6; border:none; position:relative; transition:background .3s;}
+    .toggle::after{content:""; position:absolute; top:3px; left:3px; width:28px; height:28px; border-radius:50%; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.25); transition:transform .3s;}
+    .switch-card[data-on="true"] .toggle{background:var(--coral);}
+    .switch-card[data-on="true"] .toggle::after{transform:translateX(32px);}
+    .toggle:focus-visible{outline:3px solid var(--accent); outline-offset:3px;}
+    .switch-foot{position:relative; z-index:1; margin-top:16px; text-align:center; font-size:.78rem; color:var(--ink-soft); line-height:1.7;}
+    .switch-hint{display:inline-block; margin-top:4px; font-weight:700; color:#d6453b;}
+    .burst{position:absolute; z-index:2; pointer-events:none; color:var(--sun); animation:burst .72s ease-out forwards;}
+    @keyframes burst{
+      0%{opacity:1; transform:translate(0,0) scale(.4) rotate(0deg);}
+      100%{opacity:0; transform:translate(var(--bx),var(--by)) scale(1) rotate(140deg);}
+    }
+    @media(max-width:760px){ .switch-stage{min-height:100px;} }
+    /* ===== /v3 追加ここまで ===== */
   </style>
 </head>
 <body>
@@ -242,6 +290,13 @@
 </div>
 
 <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="sparkle sparkle-a"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+      <span class="sparkle sparkle-b"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+      <span class="sparkle sparkle-c"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+    </div>
   <div class="container">
     <div class="hero-grid">
       <div>
@@ -259,14 +314,22 @@
           <span class="pill">いつでも辞退OK</span>
         </div>
       </div>
-      <aside class="hero-card rise d3">
-        <p class="hc-h">「違い」の見方を、変える。</p>
-        <div class="reframe">
-          <div class="reframe-row"><span class="from">落ち着きのなさ</span><span class="arrow">→</span><span class="to">行動力</span></div>
-          <div class="reframe-row"><span class="from">こだわり</span><span class="arrow">→</span><span class="to">探求心</span></div>
-          <div class="reframe-row"><span class="from">マイペース</span><span class="arrow">→</span><span class="to">集中力</span></div>
+      <aside class="hero-card switch-card rise d3" id="switchCard" data-on="false">
+        <div class="switch-head">
+          <span class="switch-label">見方のスイッチ</span>
+          <span class="switch-state" id="switchState">いつもの見方</span>
         </div>
-        <p class="reframe-foot">同じ行動も、見方を変えれば「その子の才能の原石」。ワクコエラボは、そのスイッチを毎日そっと押すお手伝いをします。</p>
+        <div class="switch-stage" aria-live="polite" role="status">
+          <span class="switch-caption" id="switchCaption">そのまま見ると…</span>
+          <span class="switch-term" id="switchTerm">まわりのペースが苦手</span>
+        </div>
+        <div class="switch-control">
+          <button type="button" class="toggle" id="switchToggle" role="switch" aria-checked="false" aria-label="見方を切り替える：いまは『いつもの見方』"></button>
+        </div>
+        <p class="switch-foot">
+          スイッチを動かすと、見方が変わります。<br>
+          <span class="switch-hint">これ、ワクコエラボが一緒にやることです。</span>
+        </p>
       </aside>
     </div>
   </div>
@@ -454,6 +517,67 @@
       });
     });
   })();
+  (function () {
+    var card = document.getElementById('switchCard');
+    var toggle = document.getElementById('switchToggle');
+    if (!card || !toggle) return;
+    var termEl = document.getElementById('switchTerm');
+    var capEl = document.getElementById('switchCaption');
+    var stateEl = document.getElementById('switchState');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var pairs = [
+      { off: 'まわりのペースが苦手', on: '自分のリズムを守れる' },
+      { off: 'じっとしていられない', on: '好奇心のかたまり' },
+      { off: '切り替えが苦手',       on: 'とことん集中できる' },
+      { off: 'こだわりが強い',       on: '納得して動ける' }
+    ];
+    var idx = 0;
+    var on = false;
+    var flipping = false;
+    function paint(animate) {
+      card.setAttribute('data-on', on ? 'true' : 'false');
+      toggle.setAttribute('aria-checked', on ? 'true' : 'false');
+      var stateText = on ? 'らしさの見方' : 'いつもの見方';
+      capEl.textContent = on ? '見方を変えると！' : 'そのまま見ると…';
+      stateEl.textContent = stateText;
+      toggle.setAttribute('aria-label', '見方を切り替える：いまは『' + stateText + '』');
+      var word = on ? pairs[idx].on : pairs[idx].off;
+      if (!animate || reduce) { termEl.textContent = word; if (on && !reduce) burst(); return; }
+      flipping = true;
+      termEl.classList.add('is-flip');
+      setTimeout(function () {
+        termEl.textContent = word;
+        termEl.classList.remove('is-flip');
+        flipping = false;
+      }, 200);
+      if (on) burst();
+    }
+    function burst() {
+      var old = card.querySelectorAll('.burst');
+      for (var k = 0; k < old.length; k++) old[k].remove();
+      for (var n = 0; n < 8; n++) {
+        var s = document.createElement('span');
+        s.className = 'burst';
+        s.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>';
+        var ang = Math.random() * Math.PI * 2;
+        var dist = 42 + Math.random() * 56;
+        s.style.setProperty('--bx', Math.round(Math.cos(ang) * dist) + 'px');
+        s.style.setProperty('--by', Math.round(Math.sin(ang) * dist) + 'px');
+        s.style.left = '50%';
+        s.style.top = '44%';
+        card.appendChild(s);
+        (function (el) { setTimeout(function () { el.remove(); }, 760); })(s);
+      }
+    }
+    toggle.addEventListener('click', function () {
+      if (flipping) return;
+      if (on) { on = false; idx = (idx + 1) % pairs.length; }
+      else { on = true; }
+      paint(true);
+    });
+    paint(false);
+  })();
+
 </script>
 
 </body>
