@@ -98,6 +98,7 @@
   .trust{display:flex;flex-wrap:wrap;gap:var(--space-2xs);}
   .pill{padding:0.4rem 0.85rem;border-radius:var(--radius-pill);background:var(--surface);border:1px solid var(--rule-2);color:var(--ink-2);font-size:var(--text-xs);font-weight:700;}
   .hero-illust{position:relative;}
+  .hero-illust picture,.join-illust picture{display:contents;}
   .hero-illust img{width:100%;height:auto;border-radius:var(--radius-card);}
   .hero-illust figcaption{position:absolute;left:6%;bottom:5%;background:rgba(27,42,74,.92);color:#fff;font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);padding:0.5rem 0.9rem;border-radius:var(--radius-pill);box-shadow:var(--shadow-soft);}
   .hero-illust figcaption .co{color:var(--sun);}
@@ -291,7 +292,10 @@
         </div>
       </div>
       <figure class="hero-illust rise d2">
-        <img src="assets/hero/hero-cutout_20260608_230019_00.png" width="1536" height="1024" alt="星を見る子・絵を描く子・ブロックを積む子・虫眼鏡で観察する子など、それぞれ夢中なことに没頭する子どもたちの切り絵風イラスト" />
+        <picture>
+          <source type="image/webp" srcset="assets/hero/hero-cutout.webp" />
+          <img src="assets/hero/hero-cutout.jpg" width="1536" height="1024" fetchpriority="high" decoding="async" alt="星を見る子・絵を描く子・ブロックを積む子・虫眼鏡で観察する子など、それぞれ夢中なことに没頭する子どもたちの切り絵風イラスト" />
+        </picture>
         <figcaption>「違い」は「間違い」じゃない。「<span class="co">特性</span>」だ。</figcaption>
       </figure>
     </div>
@@ -441,7 +445,10 @@
     <h2 class="sec-title">あなたの関わり方で、いっしょに。</h2>
     <p class="sec-lead">大きなことでなくて大丈夫。「いいね」と広めてくれることも、立派な一歩です。</p>
     <figure class="join-illust">
-      <img src="assets/hero/join-cutout_20260608_230738_00.png" width="1536" height="1024" alt="子どもも大人も輪になって、大きな星をいっしょに掲げる切り絵風イラスト" />
+      <picture>
+        <source type="image/webp" srcset="assets/hero/join-cutout.webp" />
+        <img src="assets/hero/join-cutout.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="子どもも大人も輪になって、大きな星をいっしょに掲げる切り絵風イラスト" />
+      </picture>
     </figure>
     <div class="join-grid">
       <div class="join-card">
