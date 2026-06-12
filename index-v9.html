@@ -26,6 +26,8 @@
    * Claude Design の dc.html（ヒーローA確定・家族イラスト各所配置）を静的HTMLとして実装。
    * 文言: 一人称（実名なし）の当事者の声 × 肯定から入るトーンで全面改稿（AIっぽさ除去）。
    *       創業者レターの ABOUT 節を追加し、具体的な声かけ例・限界の正直な明示を追加。
+   * リサーチ反映(LP_RESEARCH.md): 強み/希望(Focus Strengths)節を新設、ヒーロー近傍に信頼ライン、
+   *       共感にVOC実語彙(私のせい/一見ふつうに見える)、プライバシー明示。NG表現(治す/普通になる)回避。
    */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -36,8 +38,28 @@
   @keyframes wkScroll{to{transform:translateX(-50%);}}
   @keyframes wkFloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg));}50%{transform:translateY(-10px) rotate(var(--r,0deg));}}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation-duration:.001ms !important;}}
+
+  /* skip link (a11y) */
+  .wk-skip{position:absolute;left:-9999px;top:0;z-index:200;background:#0A6E7A;color:#fff;padding:.6rem 1rem;border-radius:0 0 12px 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.85rem;text-decoration:none;}
+  .wk-skip:focus{left:0;}
+
+  /* iPhone mockup chrome（最新iPhone風：フレーム/Dynamic Island/ステータスバー/ホームインジケータ） */
+  .ipx{position:relative;background:linear-gradient(150deg,#56585d 0%,#2b2d31 40%,#191a1d 100%);border-radius:48px;padding:10px;box-shadow:0 32px 64px -24px rgba(27,42,74,.55),inset 0 0 0 1px rgba(255,255,255,.10),inset 0 0 3px 2px rgba(0,0,0,.45);}
+  .ipx-screen{position:relative;border-radius:39px;overflow:hidden;aspect-ratio:9/19.5;display:flex;flex-direction:column;}
+  .ipx-di{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:30%;max-width:98px;height:26px;background:#000;border-radius:999px;z-index:5;}
+  .ipx-sb{position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;height:40px;padding:0 17px 0 22px;font-family:'Zen Maru Gothic',sans-serif;}
+  .ipx-sb time{font-weight:700;font-size:.82rem;letter-spacing:.01em;}
+  .ipx-stat{display:inline-flex;align-items:center;gap:5px;}
+  .ipx-home{display:grid;place-items:center;padding:7px 0 9px;}
+  .ipx-home i{display:block;width:36%;max-width:128px;height:5px;border-radius:999px;}
+
   @media (max-width:900px){
-    [data-herogrid],[data-2col],[data-3col],[data-featcard]{grid-template-columns:1fr !important;}
+    [data-2col],[data-3col],[data-featcard]{grid-template-columns:1fr !important;}
+    [data-featcard] > div,[data-featvis]{min-width:0 !important;}
+  }
+  @media (max-width:760px){
+    [data-herogrid]{grid-template-columns:1fr !important;}
+    [data-herogrid] > div{min-width:0;}
     [data-herogrid] > div:last-child{order:-1;}
   }
   @media (max-width:620px){
@@ -46,16 +68,20 @@
   @media (max-width:560px){
     [data-2col][style*="repeat(2"]{grid-template-columns:1fr !important;}
   }
+  @media (max-width:430px){
+    [data-logo-sub]{display:none !important;}
+  }
   </style>
 </head>
 <body>
+<a href="#content" class="wk-skip">本文へスキップ</a>
 
 <div style="--navy:#1B2A4A;--turquoise:#15B6C7;--teal:#0A6E7A;--coral:#FF7A59;--coralink:#B23E18;--sun:#FFC24B;--sunink:#8A5F00;--paper:#FCFBF7;--mint:#EEF6F4;--warm:#FFF6EE;--ink2:#51607A;--rule:rgba(27,42,74,.10);font-family:'Zen Kaku Gothic New',sans-serif;overflow-x:clip;">
 
   <!-- NAV -->
   <div style="position:sticky;top:0;z-index:100;padding-top:clamp(.6rem,2vw,1rem);">
     <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
-      <nav style="display:flex;align-items:center;gap:1.4rem;padding:.55rem .7rem .55rem 1.2rem;background:rgba(252,251,247,.85);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(27,42,74,.10);border-radius:999px;box-shadow:0 10px 30px -16px rgba(27,42,74,.35);">
+      <nav aria-label="グローバルナビゲーション" style="display:flex;align-items:center;gap:1.4rem;padding:.55rem .7rem .55rem 1.2rem;background:rgba(252,251,247,.85);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(27,42,74,.10);border-radius:999px;box-shadow:0 10px 30px -16px rgba(27,42,74,.35);">
         <a href="#top" style="display:flex;align-items:center;gap:.6rem;margin-inline-end:auto;text-decoration:none;">
           <svg viewBox="370.38 318.94 130.81 107.06" style="height:34px;width:auto;flex:none;display:block;" aria-hidden="true">
             <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
@@ -63,7 +89,7 @@
             <circle cx="407.88" cy="356.44" r="13.65" fill="#1B2A4A"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FF7A59"/>
             <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFC24B"/>
           </svg>
-          <span style="line-height:1.1;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.125rem;color:#1B2A4A;">ワクコエ<span style="color:#FF7A59;">ラボ</span></span><span style="display:block;font-size:.66rem;color:#51607A;font-weight:500;letter-spacing:.04em;">発育AIコーチ WAKU-LOG</span></span>
+          <span style="line-height:1.1;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.125rem;color:#1B2A4A;">ワクコエ<span style="color:#FF7A59;">ラボ</span></span><span data-logo-sub style="display:block;font-size:.66rem;color:#51607A;font-weight:500;letter-spacing:.04em;">発育AIコーチ WAKU-LOG</span></span>
         </a>
         <ul style="display:flex;align-items:center;gap:.2rem;list-style:none;" data-navlinks>
           <li><a href="#kimochi" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">気持ち</a></li>
@@ -76,6 +102,8 @@
       </div>
     </div>
   </div>
+
+  <main id="content" tabindex="-1" style="display:block;">
 
   <!-- ============ HERO — 相談デモ ============ -->
   <section id="top" style="position:relative;padding-top:clamp(1.6rem,3vw,2.8rem);padding-bottom:clamp(2.8rem,6vw,4.5rem);overflow:clip;">
@@ -95,32 +123,42 @@
             <span style="padding:.4rem .85rem;border-radius:999px;background:#fff;border:1px solid rgba(27,42,74,.18);color:#51607A;font-size:.78rem;font-weight:700;">無料・本名不要</span>
             <span style="padding:.4rem .85rem;border-radius:999px;background:#fff;border:1px solid rgba(27,42,74,.18);color:#51607A;font-size:.78rem;font-weight:700;">当事者の家族発・福岡</span>
           </div>
+          <p style="margin-top:.9rem;font-size:.8rem;color:#5C6478;line-height:1.7;">発達支援の専門家と、3人の子の親である当事者でつくる、福岡の小さなチームです。</p>
         </div>
         <div style="position:relative;display:flex;justify-content:center;">
           <svg viewBox="0 0 24 24" fill="none" stroke="#FFC24B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;top:-10px;right:6%;width:46px;--r:8deg;animation:wkFloat 5s ease-in-out infinite;" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
           <svg viewBox="0 0 24 24" fill="none" stroke="#15B6C7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;bottom:7%;left:0;width:36px;--r:-6deg;animation:wkFloat 6s ease-in-out infinite .5s;" aria-hidden="true"><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/></svg>
-          <div style="position:relative;width:min(360px,84vw);background:#fff;border:3px solid #2A3A5C;border-radius:42px;padding:.8rem .8rem 1.1rem;box-shadow:0 30px 60px -24px rgba(27,42,74,.5);">
-            <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .55rem .7rem;border-bottom:1.5px solid rgba(27,42,74,.10);">
-              <span style="width:30px;height:30px;border-radius:50%;background:#EEF6F4;display:grid;place-items:center;"><svg viewBox="370.38 318.94 130.81 107.06" style="width:18px;height:18px;display:block;" aria-hidden="true"><path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.9rem;color:#1B2A4A;">WAKU-LOG<small style="display:block;font-size:.66rem;color:#0A6E7A;font-weight:700;letter-spacing:.04em;">はるみちの 発育コーチ</small></span>
-            </div>
-            <div style="padding:.9rem .55rem .3rem;display:flex;flex-direction:column;gap:.6rem;" aria-hidden="true">
-              <div style="align-self:flex-end;max-width:86%;padding:.65rem .9rem;font-size:.86rem;line-height:1.65;border-radius:16px;border-bottom-right-radius:5px;background:#FFF6EE;border:1.5px solid rgba(255,122,89,.4);color:#1B2A4A;">公園から帰る時間になると、毎回かんしゃくで…。今日も「帰らない！」って大泣き。</div>
-              <div style="align-self:flex-start;max-width:88%;padding:.65rem .9rem;font-size:.86rem;line-height:1.65;border-radius:16px;border-bottom-left-radius:5px;background:#EEF6F4;border:1.5px solid rgba(21,182,199,.32);color:#1B2A4A;">
-                <span style="display:block;color:#0A6E7A;font-weight:700;margin-bottom:.15rem;font-family:'Zen Maru Gothic',sans-serif;">それは大変でしたね。よく付き合いました🌱</span>
-                切り替えが苦手な子は、急な「終わり」が不安なんです。
-                <span style="display:block;margin-top:.4rem;padding-top:.4rem;border-top:1px dashed rgba(21,182,199,.4);">▶ 帰る5分前にタイマーをセットして「鳴ったら帰ろうね」と<b>先に予告</b>してみましょう。</span>
+          <div class="ipx" aria-hidden="true" style="width:min(330px,100%);">
+            <div class="ipx-screen" style="background:#fff;">
+              <div class="ipx-di"></div>
+              <div class="ipx-sb"><time style="color:#1B2A4A;">9:41</time><span class="ipx-stat" style="color:#1B2A4A;"><svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7.5" width="3" height="3.5" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="0" width="3" height="11" rx=".8"/></svg><svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.4c2.6 0 5 1 6.7 2.7l-1.5 1.5A7.3 7.3 0 0 0 8 4.6 7.3 7.3 0 0 0 2.8 6.6L1.3 5.1A9.5 9.5 0 0 1 8 2.4z"/><path d="M8 6.1c1.5 0 2.9.6 3.9 1.6l-1.5 1.5A3.4 3.4 0 0 0 8 8.1c-.9 0-1.7.35-2.4 1.05L4.1 7.7A5.6 5.6 0 0 1 8 6.1z"/><circle cx="8" cy="10.2" r="1.3"/></svg><svg width="25" height="12" viewBox="0 0 25 12" aria-hidden="true"><rect x=".6" y=".6" width="21" height="10.8" rx="3" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="23" y="4" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".45"/></svg></span></div>
+              <div style="display:flex;align-items:center;gap:.5rem;padding:.1rem .85rem .6rem;border-bottom:1.5px solid rgba(27,42,74,.10);">
+                <span style="width:30px;height:30px;border-radius:50%;background:#EEF6F4;display:grid;place-items:center;flex:none;"><svg viewBox="370.38 318.94 130.81 107.06" style="width:18px;height:18px;display:block;" aria-hidden="true"><path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.9rem;color:#1B2A4A;">WAKU-LOG<small style="display:block;font-size:.66rem;color:#0A6E7A;font-weight:700;letter-spacing:.04em;">はるみちの 発育コーチ</small></span>
               </div>
-            </div>
-            <div style="margin:.5rem .55rem 0;padding:.7rem .85rem;background:#fff;border:1.5px solid rgba(27,42,74,.18);border-radius:14px;">
-              <div style="display:flex;align-items:center;gap:.4rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.84rem;color:#1B2A4A;">📌 公園から帰れない<span style="margin-inline-start:auto;font-size:.6rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;padding:.1rem .5rem;border-radius:999px;">テーマ</span></div>
-              <div style="display:flex;gap:.4rem;margin-top:.55rem;">
-                <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.76rem;padding:.42rem;border-radius:10px;border:1.5px solid #FFC24B;background:#FFC24B;color:#1B2A4A;">効いた！</span>
-                <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.76rem;padding:.42rem;border-radius:10px;border:1.5px solid rgba(27,42,74,.18);background:#fff;color:#51607A;">違った</span>
-                <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.76rem;padding:.42rem;border-radius:10px;border:1.5px solid rgba(27,42,74,.18);background:#fff;color:#51607A;">また起きた</span>
+              <div style="padding:.9rem .85rem .3rem;display:flex;flex-direction:column;gap:.6rem;" aria-hidden="true">
+                <div style="align-self:flex-end;max-width:86%;padding:.65rem .9rem;font-size:.86rem;line-height:1.65;border-radius:16px;border-bottom-right-radius:5px;background:#FFF6EE;border:1.5px solid rgba(255,122,89,.4);color:#1B2A4A;">公園から帰る時間になると、毎回かんしゃくで…。今日も「帰らない！」って大泣き。</div>
+                <div style="align-self:flex-start;max-width:88%;padding:.65rem .9rem;font-size:.86rem;line-height:1.65;border-radius:16px;border-bottom-left-radius:5px;background:#EEF6F4;border:1.5px solid rgba(21,182,199,.32);color:#1B2A4A;">
+                  <span style="display:block;color:#0A6E7A;font-weight:700;margin-bottom:.15rem;font-family:'Zen Maru Gothic',sans-serif;">それは大変でしたね。よく付き合いました🌱</span>
+                  切り替えが苦手な子は、急な「終わり」が不安なんです。
+                  <span style="display:block;margin-top:.4rem;padding-top:.4rem;border-top:1px dashed rgba(21,182,199,.4);">▶ 帰る5分前にタイマーをセットして「鳴ったら帰ろうね」と<b>先に予告</b>してみましょう。</span>
+                </div>
               </div>
+              <div style="margin:.5rem .85rem 0;padding:.7rem .85rem;background:#fff;border:1.5px solid rgba(27,42,74,.18);border-radius:14px;">
+                <div style="display:flex;align-items:center;gap:.4rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.84rem;color:#1B2A4A;">📌 公園から帰れない<span style="margin-inline-start:auto;font-size:.6rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;padding:.1rem .5rem;border-radius:999px;">テーマ</span></div>
+                <div style="display:flex;gap:.4rem;margin-top:.55rem;">
+                  <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.76rem;padding:.42rem;border-radius:10px;border:1.5px solid #FFC24B;background:#FFC24B;color:#1B2A4A;">効いた！</span>
+                  <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.76rem;padding:.42rem;border-radius:10px;border:1.5px solid rgba(27,42,74,.18);background:#fff;color:#51607A;">違った</span>
+                  <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.76rem;padding:.42rem;border-radius:10px;border:1.5px solid rgba(27,42,74,.18);background:#fff;color:#51607A;">また起きた</span>
+                </div>
+              </div>
+              <div style="margin-top:auto;display:flex;align-items:center;gap:.5rem;padding:.55rem .85rem;border-top:1.5px solid rgba(27,42,74,.08);">
+                <span style="flex:1;background:#F1F3F6;border:1px solid rgba(27,42,74,.10);border-radius:999px;padding:.45rem .9rem;font-size:.78rem;color:#9aa3b2;">メッセージを入力…</span>
+                <span style="width:32px;height:32px;border-radius:50%;background:#0A6E7A;display:grid;place-items:center;flex:none;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              </div>
+              <div class="ipx-home"><i style="background:rgba(27,42,74,.32);"></i></div>
             </div>
-            <span style="position:absolute;right:-12px;bottom:24%;background:#1B2A4A;color:#fff;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.72rem;padding:.4rem .75rem;border-radius:999px;box-shadow:0 10px 24px -10px rgba(27,42,74,.6);transform:rotate(4deg);">使うほど、<span style="color:#FFC24B;">その子専用</span>に</span>
+            <span style="position:absolute;right:-12px;bottom:16%;background:#1B2A4A;color:#fff;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.72rem;padding:.4rem .75rem;border-radius:999px;box-shadow:0 10px 24px -10px rgba(27,42,74,.6);transform:rotate(4deg);z-index:6;">使うほど、<span style="color:#FFC24B;">その子専用</span>に</span>
           </div>
         </div>
       </div>
@@ -132,16 +170,49 @@
     <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
       <div style="display:grid;grid-template-columns:1fr .9fr;gap:clamp(1.6rem,4vw,3.2rem);align-items:center;" data-2col>
         <div>
-          <figure style="max-width:300px;margin-bottom:1.3rem;line-height:0;"><img src="assets/family-star.png" alt="家族みんなで大きな星を見上げる手描きのイラスト" loading="lazy" decoding="async" width="1536" height="1024" style="width:100%;height:auto;mix-blend-mode:multiply;" /></figure>
+          <figure style="max-width:300px;margin-bottom:1.3rem;line-height:0;"><img src="assets/family-star.webp" alt="家族みんなで大きな星を見上げる手描きのイラスト" loading="lazy" decoding="async" width="1536" height="1024" style="width:100%;height:auto;mix-blend-mode:multiply;" /></figure>
           <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>まず、これだけは言わせてください</span>
           <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:1.2rem;">あなたは、もう<br>十分がんばっています。</h2>
-          <p style="color:#51607A;font-size:1.0625rem;line-height:1.95;max-width:52ch;">何度言っても伝わらない。まわりの目も気になる。気づけば強い言葉が出て、子どもが寝たあと、ひとりで自分を責める。その夜を、私も数えきれないほど過ごしてきました。<br><br><b style="color:#1B2A4A;">だから、まずこれだけは言わせてください。<br>あなたのせいではありません。声かけのコツを、まだ誰も教えてくれなかっただけです。</b></p>
+          <p style="color:#51607A;font-size:1.0625rem;line-height:1.95;max-width:52ch;">何度言っても伝わらない。一見ふつうに見えるから、まわりには分かってもらえない。気づけば強い言葉が出て、子どもが寝たあと「今日のあれは、きっと私のせいだ」とひとりで責める。その夜を、私も数えきれないほど過ごしてきました。<br><br><b style="color:#1B2A4A;">だから、まずこれだけは言わせてください。<br>あなたのせいではありません。声かけのコツを、まだ誰も教えてくれなかっただけです。</b></p>
         </div>
         <div style="background:#1B2A4A;color:#EAF4F5;border-radius:24px;padding:clamp(1.7rem,4vw,2.6rem);box-shadow:0 22px 48px -24px rgba(27,42,74,.5);">
           <p style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.375rem;line-height:1.6;">ある夜、私が強く言ったとき、<br>子どもが小さくこぼしました。<br>「ぼく、<span style="color:#FF7A59;">ダメな子</span>だから」。</p>
           <p style="color:rgba(234,244,245,.66);font-size:.9rem;margin-top:1.4rem;line-height:1.9;">私には3人の子がいて、3人とも「グレーゾーン」と言われてきました。あの一言が、ワクコエラボの始まりです。つくっているのは、親を採点する道具ではありません。<span style="color:#15B6C7;">あの夜の私の隣に、いてほしかったもの</span>。それを、アプリにしています。</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ STRENGTHS — 見方を変える（Focus Strengths） ============ -->
+  <section id="strengths" style="background:linear-gradient(180deg,#FFF6EE 0%,#FCFBF7 100%);padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div style="text-align:center;max-width:60ch;margin:0 auto;">
+        <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>見方を、ちょっとだけ変える</span>
+        <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.45;color:#1B2A4A;margin-bottom:1rem;">「困った行動」の裏に、<br>その子の<span style="color:#0A6E7A;">「好き」</span>が<br>隠れている。</h2>
+        <p style="color:#51607A;font-size:1.0625rem;line-height:1.95;">「ふつうはこう」の正解さがしは、少しお休みしませんか。WAKU-LOGは、その子を直すための道具ではありません。困りごとの奥にある"夢中"を見つけて、いっしょに面白がるためのものです。</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem;margin-top:2.6rem;" data-3col>
+
+        <div style="background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:22px;padding:1.8rem 1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);text-align:center;">
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.95rem;color:#5C6478;">落ち着きが、ない</div>
+          <div style="display:grid;place-items:center;margin:.6rem 0;color:#15B6C7;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.3rem;color:#0A6E7A;">あふれる<span style="color:#1B2A4A;">行動力</span></div>
+        </div>
+
+        <div style="background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:22px;padding:1.8rem 1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);text-align:center;">
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.95rem;color:#5C6478;">こだわりが、強い</div>
+          <div style="display:grid;place-items:center;margin:.6rem 0;color:#15B6C7;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.3rem;color:#0A6E7A;">深い<span style="color:#1B2A4A;">探求心</span></div>
+        </div>
+
+        <div style="background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:22px;padding:1.8rem 1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);text-align:center;">
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.95rem;color:#5C6478;">切り替えが、苦手</div>
+          <div style="display:grid;place-items:center;margin:.6rem 0;color:#15B6C7;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.3rem;color:#0A6E7A;">とことん<span style="color:#1B2A4A;">集中</span></div>
+        </div>
+
+      </div>
+      <p style="text-align:center;margin-top:2rem;font-size:.92rem;color:#5C6478;line-height:1.8;">同じ行動でも、見方を変えれば“伸びしろ”になります。WAKU-LOGは、その視点の切り替えを、毎日そっと手伝います。</p>
     </div>
   </section>
 
@@ -197,21 +268,30 @@
         <!-- ① 相談 -->
         <div style="display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(1.4rem,4vw,3.2rem);align-items:center;background:#fff;border-radius:28px;padding:clamp(1.6rem,4vw,3rem);box-shadow:0 22px 48px -28px rgba(27,42,74,.35);" data-featcard>
           <div style="display:flex;justify-content:center;align-items:center;background:radial-gradient(110% 110% at 50% 20%,#EEF6F4,#fff 75%);border-radius:24px;padding:clamp(1rem,3vw,2rem);" data-featvis>
-            <div style="width:min(330px,82vw);background:#fff;border:3px solid #2A3A5C;border-radius:40px;padding:.8rem .8rem 1.1rem;box-shadow:0 26px 52px -24px rgba(27,42,74,.45);">
-              <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .55rem .7rem;border-bottom:1.5px solid rgba(27,42,74,.10);">
-                <span style="width:30px;height:30px;border-radius:50%;background:#EEF6F4;display:grid;place-items:center;"><svg viewBox="370.38 318.94 130.81 107.06" style="width:18px;height:18px;display:block;" aria-hidden="true"><path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.9rem;color:#1B2A4A;">WAKU-LOG<small style="display:block;font-size:.66rem;color:#0A6E7A;font-weight:700;">はるみちの 発育コーチ</small></span>
-              </div>
-              <div style="padding:.9rem .55rem .3rem;display:flex;flex-direction:column;gap:.6rem;" aria-hidden="true">
-                <div style="align-self:flex-end;max-width:86%;padding:.65rem .9rem;font-size:.84rem;line-height:1.65;border-radius:16px;border-bottom-right-radius:5px;background:#FFF6EE;border:1.5px solid rgba(255,122,89,.4);color:#1B2A4A;">朝の着替えを嫌がって、毎朝バトル…。今日も30分かかりました。</div>
-                <div style="align-self:flex-start;max-width:88%;padding:.65rem .9rem;font-size:.84rem;line-height:1.65;border-radius:16px;border-bottom-left-radius:5px;background:#EEF6F4;border:1.5px solid rgba(21,182,199,.32);color:#1B2A4A;"><span style="display:block;color:#0A6E7A;font-weight:700;margin-bottom:.15rem;font-family:'Zen Maru Gothic',sans-serif;">毎朝、本当におつかれさまです🌱</span>「次に何をするか」が見えないと、不安で動けない子もいます。<span style="display:block;margin-top:.4rem;padding-top:.4rem;border-top:1px dashed rgba(21,182,199,.4);">▶ 着る順番を<b>絵カード</b>にして、1枚ずつめくると進みやすいですよ。</span></div>
-              </div>
-              <div style="margin:.5rem .55rem 0;padding:.7rem .85rem;background:#fff;border:1.5px solid rgba(27,42,74,.18);border-radius:14px;">
-                <div style="display:flex;align-items:center;gap:.4rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.84rem;color:#1B2A4A;">📌 朝の着替え<span style="margin-inline-start:auto;font-size:.6rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;padding:.1rem .5rem;border-radius:999px;">テーマ</span></div>
-                <div style="display:flex;gap:.4rem;margin-top:.55rem;">
-                  <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.74rem;padding:.42rem;border-radius:10px;border:1.5px solid #FFC24B;background:#FFC24B;color:#1B2A4A;">効いた！</span>
-                  <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.74rem;padding:.42rem;border-radius:10px;border:1.5px solid rgba(27,42,74,.18);background:#fff;color:#51607A;">違った</span>
+            <div class="ipx" aria-hidden="true" style="width:min(300px,100%);">
+              <div class="ipx-screen" style="background:#fff;">
+                <div class="ipx-di"></div>
+                <div class="ipx-sb"><time style="color:#1B2A4A;">9:41</time><span class="ipx-stat" style="color:#1B2A4A;"><svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7.5" width="3" height="3.5" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="0" width="3" height="11" rx=".8"/></svg><svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.4c2.6 0 5 1 6.7 2.7l-1.5 1.5A7.3 7.3 0 0 0 8 4.6 7.3 7.3 0 0 0 2.8 6.6L1.3 5.1A9.5 9.5 0 0 1 8 2.4z"/><path d="M8 6.1c1.5 0 2.9.6 3.9 1.6l-1.5 1.5A3.4 3.4 0 0 0 8 8.1c-.9 0-1.7.35-2.4 1.05L4.1 7.7A5.6 5.6 0 0 1 8 6.1z"/><circle cx="8" cy="10.2" r="1.3"/></svg><svg width="25" height="12" viewBox="0 0 25 12" aria-hidden="true"><rect x=".6" y=".6" width="21" height="10.8" rx="3" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="23" y="4" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".45"/></svg></span></div>
+                <div style="display:flex;align-items:center;gap:.5rem;padding:.1rem .8rem .6rem;border-bottom:1.5px solid rgba(27,42,74,.10);">
+                  <span style="width:30px;height:30px;border-radius:50%;background:#EEF6F4;display:grid;place-items:center;flex:none;"><svg viewBox="370.38 318.94 130.81 107.06" style="width:18px;height:18px;display:block;" aria-hidden="true"><path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.9rem;color:#1B2A4A;">WAKU-LOG<small style="display:block;font-size:.66rem;color:#0A6E7A;font-weight:700;">はるみちの 発育コーチ</small></span>
                 </div>
+                <div style="padding:.9rem .8rem .3rem;display:flex;flex-direction:column;gap:.6rem;" aria-hidden="true">
+                  <div style="align-self:flex-end;max-width:86%;padding:.65rem .9rem;font-size:.84rem;line-height:1.65;border-radius:16px;border-bottom-right-radius:5px;background:#FFF6EE;border:1.5px solid rgba(255,122,89,.4);color:#1B2A4A;">朝の着替えを嫌がって、毎朝バトル…。今日も30分かかりました。</div>
+                  <div style="align-self:flex-start;max-width:88%;padding:.65rem .9rem;font-size:.84rem;line-height:1.65;border-radius:16px;border-bottom-left-radius:5px;background:#EEF6F4;border:1.5px solid rgba(21,182,199,.32);color:#1B2A4A;"><span style="display:block;color:#0A6E7A;font-weight:700;margin-bottom:.15rem;font-family:'Zen Maru Gothic',sans-serif;">毎朝、本当におつかれさまです🌱</span>「次に何をするか」が見えないと、不安で動けない子もいます。<span style="display:block;margin-top:.4rem;padding-top:.4rem;border-top:1px dashed rgba(21,182,199,.4);">▶ 着る順番を<b>絵カード</b>にして、1枚ずつめくると進みやすいですよ。</span></div>
+                </div>
+                <div style="margin:.5rem .8rem 0;padding:.7rem .85rem;background:#fff;border:1.5px solid rgba(27,42,74,.18);border-radius:14px;">
+                  <div style="display:flex;align-items:center;gap:.4rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.84rem;color:#1B2A4A;">📌 朝の着替え<span style="margin-inline-start:auto;font-size:.6rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;padding:.1rem .5rem;border-radius:999px;">テーマ</span></div>
+                  <div style="display:flex;gap:.4rem;margin-top:.55rem;">
+                    <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.74rem;padding:.42rem;border-radius:10px;border:1.5px solid #FFC24B;background:#FFC24B;color:#1B2A4A;">効いた！</span>
+                    <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.74rem;padding:.42rem;border-radius:10px;border:1.5px solid rgba(27,42,74,.18);background:#fff;color:#51607A;">違った</span>
+                  </div>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:.5rem;padding:.55rem .85rem;border-top:1.5px solid rgba(27,42,74,.08);">
+                  <span style="flex:1;background:#F1F3F6;border:1px solid rgba(27,42,74,.10);border-radius:999px;padding:.45rem .9rem;font-size:.78rem;color:#9aa3b2;">メッセージを入力…</span>
+                  <span style="width:32px;height:32px;border-radius:50%;background:#0A6E7A;display:grid;place-items:center;flex:none;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+                </div>
+                <div class="ipx-home"><i style="background:rgba(27,42,74,.32);"></i></div>
               </div>
             </div>
           </div>
@@ -240,21 +320,28 @@
             </ul>
           </div>
           <div style="display:flex;justify-content:center;align-items:center;background:radial-gradient(110% 110% at 50% 20%,#FFF6EE,#fff 75%);border-radius:24px;padding:clamp(1rem,3vw,2rem);" data-featvis>
-            <div style="width:min(310px,80vw);background:linear-gradient(165deg,#22335A,#12203A);border:3px solid #2A3A5C;border-radius:40px;padding:1.4rem .85rem 1.1rem;box-shadow:0 26px 52px -24px rgba(27,42,74,.5);color:#fff;">
-              <div style="text-align:center;margin-bottom:1.1rem;"><span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:2.7rem;line-height:1;">8:00</span><span style="font-size:.74rem;color:rgba(234,244,245,.66);">6月12日（金）</span></div>
-              <div style="display:flex;flex-direction:column;gap:.5rem;" aria-hidden="true">
-                <div style="display:flex;gap:.6rem;align-items:flex-start;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);border-radius:15px;padding:.6rem .7rem;">
-                  <span style="width:30px;height:30px;border-radius:9px;background:#fff;flex:none;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg></span>
-                  <div style="min-width:0;"><div style="display:flex;gap:.4rem;align-items:baseline;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#15B6C7;">WAKU-LOG ・ 朝のチェックイン</span><span style="font-size:.6rem;color:rgba(234,244,245,.66);margin-inline-start:auto;">今</span></div><div style="font-size:.74rem;color:#fff;line-height:1.5;margin-top:.15rem;">今朝のはるみちは、どうですか？</div></div>
+            <div class="ipx" aria-hidden="true" style="width:min(300px,100%);">
+              <div class="ipx-screen" style="background:linear-gradient(165deg,#22335A,#12203A);color:#fff;">
+                <div class="ipx-di"></div>
+                <div class="ipx-sb"><span></span><span class="ipx-stat" style="color:#fff;"><svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7.5" width="3" height="3.5" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="0" width="3" height="11" rx=".8"/></svg><svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.4c2.6 0 5 1 6.7 2.7l-1.5 1.5A7.3 7.3 0 0 0 8 4.6 7.3 7.3 0 0 0 2.8 6.6L1.3 5.1A9.5 9.5 0 0 1 8 2.4z"/><path d="M8 6.1c1.5 0 2.9.6 3.9 1.6l-1.5 1.5A3.4 3.4 0 0 0 8 8.1c-.9 0-1.7.35-2.4 1.05L4.1 7.7A5.6 5.6 0 0 1 8 6.1z"/><circle cx="8" cy="10.2" r="1.3"/></svg><svg width="25" height="12" viewBox="0 0 25 12" aria-hidden="true"><rect x=".6" y=".6" width="21" height="10.8" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="23" y="4" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".5"/></svg></span></div>
+                <div style="padding:1.6rem .9rem 1.1rem;flex:1;min-height:0;">
+                  <div style="text-align:center;margin-bottom:1.6rem;"><span style="display:block;font-size:.72rem;color:rgba(234,244,245,.72);font-weight:500;margin-bottom:.1rem;">6月12日（金）</span><span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:3.7rem;line-height:1;letter-spacing:-.02em;">8:00</span></div>
+                  <div style="display:flex;flex-direction:column;gap:.5rem;" aria-hidden="true">
+                    <div style="display:flex;gap:.6rem;align-items:flex-start;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.14);border-radius:15px;padding:.6rem .7rem;">
+                      <span style="width:30px;height:30px;border-radius:9px;background:#fff;flex:none;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg></span>
+                      <div style="min-width:0;"><div style="display:flex;gap:.4rem;align-items:baseline;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#15B6C7;">WAKU-LOG ・ 朝のチェックイン</span><span style="font-size:.6rem;color:rgba(234,244,245,.66);margin-inline-start:auto;">今</span></div><div style="font-size:.74rem;color:#fff;line-height:1.5;margin-top:.15rem;">今朝のはるみちは、どうですか？</div></div>
+                    </div>
+                    <div style="display:flex;gap:.6rem;align-items:flex-start;background:rgba(255,122,89,.18);backdrop-filter:blur(4px);border:1px solid #FF7A59;border-radius:15px;padding:.6rem .7rem;">
+                      <span style="width:30px;height:30px;border-radius:9px;background:#fff;flex:none;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#B23E18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg></span>
+                      <div style="min-width:0;"><div style="display:flex;gap:.4rem;align-items:baseline;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#FF7A59;">WAKU-LOG ・ 振り返り声かけ</span><span style="font-size:.6rem;color:rgba(234,244,245,.66);margin-inline-start:auto;">3日後</span></div><div style="font-size:.74rem;color:#fff;line-height:1.5;margin-top:.15rem;">先日の“公園から帰れない”、その後どうでしたか？</div></div>
+                    </div>
+                    <div style="display:flex;gap:.6rem;align-items:flex-start;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.14);border-radius:15px;padding:.6rem .7rem;">
+                      <span style="width:30px;height:30px;border-radius:9px;background:#fff;flex:none;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 17v-5M12 17V8M16 17v-3"/></svg></span>
+                      <div style="min-width:0;"><div style="display:flex;gap:.4rem;align-items:baseline;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#15B6C7;">WAKU-LOG ・ 週次まとめ</span><span style="font-size:.6rem;color:rgba(234,244,245,.66);margin-inline-start:auto;">日 10:00</span></div><div style="font-size:.74rem;color:#fff;line-height:1.5;margin-top:.15rem;">今週のはるみちまとめができました📋</div></div>
+                    </div>
+                  </div>
                 </div>
-                <div style="display:flex;gap:.6rem;align-items:flex-start;background:rgba(255,122,89,.16);border:1px solid #FF7A59;border-radius:15px;padding:.6rem .7rem;">
-                  <span style="width:30px;height:30px;border-radius:9px;background:#fff;flex:none;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#B23E18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg></span>
-                  <div style="min-width:0;"><div style="display:flex;gap:.4rem;align-items:baseline;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#FF7A59;">WAKU-LOG ・ 振り返り声かけ</span><span style="font-size:.6rem;color:rgba(234,244,245,.66);margin-inline-start:auto;">3日後</span></div><div style="font-size:.74rem;color:#fff;line-height:1.5;margin-top:.15rem;">先日の“公園から帰れない”、その後どうでしたか？</div></div>
-                </div>
-                <div style="display:flex;gap:.6rem;align-items:flex-start;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);border-radius:15px;padding:.6rem .7rem;">
-                  <span style="width:30px;height:30px;border-radius:9px;background:#fff;flex:none;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 17v-5M12 17V8M16 17v-3"/></svg></span>
-                  <div style="min-width:0;"><div style="display:flex;gap:.4rem;align-items:baseline;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#15B6C7;">WAKU-LOG ・ 週次まとめ</span><span style="font-size:.6rem;color:rgba(234,244,245,.66);margin-inline-start:auto;">日 10:00</span></div><div style="font-size:.74rem;color:#fff;line-height:1.5;margin-top:.15rem;">今週のはるみちまとめができました📋</div></div>
-                </div>
+                <div class="ipx-home"><i style="background:rgba(255,255,255,.55);"></i></div>
               </div>
             </div>
           </div>
@@ -263,13 +350,16 @@
         <!-- ③ 取扱説明書 -->
         <div style="display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(1.4rem,4vw,3.2rem);align-items:center;background:#fff;border-radius:28px;padding:clamp(1.6rem,4vw,3rem);box-shadow:0 22px 48px -28px rgba(27,42,74,.35);" data-featcard>
           <div style="display:flex;justify-content:center;align-items:center;background:radial-gradient(110% 110% at 50% 20%,rgba(255,194,75,.18),#fff 75%);border-radius:24px;padding:clamp(1rem,3vw,2rem);" data-featvis>
-            <div style="width:min(330px,82vw);background:#fff;border:3px solid #2A3A5C;border-radius:40px;padding:.9rem .85rem 1.1rem;box-shadow:0 26px 52px -24px rgba(27,42,74,.45);">
-              <div style="display:flex;align-items:center;gap:.55rem;padding:.2rem .4rem .7rem;border-bottom:1.5px solid rgba(27,42,74,.10);">
-                <span style="width:34px;height:34px;border-radius:50%;background:#EEF6F4;display:grid;place-items:center;color:#0A6E7A;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;flex:none;">は</span>
-                <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.9rem;color:#1B2A4A;">はるみち（6歳）<small style="display:block;font-size:.62rem;color:#0A6E7A;font-weight:700;">その子専用プロフィール</small></span>
-              </div>
-              <div style="padding:.7rem .45rem .2rem;">
-                <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#5C6478;margin-bottom:.4rem;">いまの "つよみ"</div>
+            <div class="ipx" aria-hidden="true" style="width:min(300px,100%);">
+              <div class="ipx-screen" style="background:#fff;">
+                <div class="ipx-di"></div>
+                <div class="ipx-sb"><time style="color:#1B2A4A;">9:41</time><span class="ipx-stat" style="color:#1B2A4A;"><svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7.5" width="3" height="3.5" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="0" width="3" height="11" rx=".8"/></svg><svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.4c2.6 0 5 1 6.7 2.7l-1.5 1.5A7.3 7.3 0 0 0 8 4.6 7.3 7.3 0 0 0 2.8 6.6L1.3 5.1A9.5 9.5 0 0 1 8 2.4z"/><path d="M8 6.1c1.5 0 2.9.6 3.9 1.6l-1.5 1.5A3.4 3.4 0 0 0 8 8.1c-.9 0-1.7.35-2.4 1.05L4.1 7.7A5.6 5.6 0 0 1 8 6.1z"/><circle cx="8" cy="10.2" r="1.3"/></svg><svg width="25" height="12" viewBox="0 0 25 12" aria-hidden="true"><rect x=".6" y=".6" width="21" height="10.8" rx="3" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="23" y="4" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".45"/></svg></span></div>
+                <div style="display:flex;align-items:center;gap:.55rem;padding:.1rem .8rem .7rem;border-bottom:1.5px solid rgba(27,42,74,.10);">
+                  <span style="width:34px;height:34px;border-radius:50%;background:#EEF6F4;display:grid;place-items:center;color:#0A6E7A;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;flex:none;">は</span>
+                  <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.9rem;color:#1B2A4A;">はるみち（6歳）<small style="display:block;font-size:.62rem;color:#0A6E7A;font-weight:700;">その子専用プロフィール</small></span>
+                </div>
+                <div style="padding:.7rem .8rem .2rem;">
+                  <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#5C6478;margin-bottom:.4rem;">いまの "つよみ"</div>
                 <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
                   <span style="font-size:.72rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;border:1px solid rgba(21,182,199,.28);border-radius:999px;padding:.22rem .6rem;">言葉より"見せる"が得意</span>
                   <span style="font-size:.72rem;font-weight:700;color:#8A5F00;background:rgba(255,194,75,.18);border:1px solid rgba(255,194,75,.4);border-radius:999px;padding:.22rem .6rem;">見通しが立つと動ける</span>
@@ -289,6 +379,8 @@
                   <span style="font-size:.72rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;border:1px solid rgba(21,182,199,.28);border-radius:999px;padding:.22rem .6rem;">公園から帰れない</span>
                   <span style="font-size:.72rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;border:1px solid rgba(21,182,199,.28);border-radius:999px;padding:.22rem .6rem;">朝の着替え</span>
                 </div>
+                </div>
+                <div class="ipx-home" style="margin-top:auto;"><i style="background:rgba(27,42,74,.32);"></i></div>
               </div>
             </div>
           </div>
@@ -317,7 +409,7 @@
           <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">使うほど、<span style="color:#0A6E7A;">この子と私の「二人だけの正解」</span>が貯まる。</h2>
           <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:50ch;">相談のたびに、このアプリはその子のことを覚えていきます。「何が効いて、何がダメだったか」が積み上がり、どこかの誰かへの答えが、だんだん「わが子だけの答え」に変わります。</p>
         </div>
-        <div style="background:#FFF6EE;border:1px solid rgba(255,122,89,.28);border-radius:20px;padding:1.4rem;font-size:.92rem;line-height:1.85;color:#1B2A4A;"><figure style="max-width:230px;margin:0 auto 1rem;line-height:0;"><img src="assets/family-star.png" alt="" loading="lazy" decoding="async" width="1536" height="1024" style="width:100%;height:auto;mix-blend-mode:multiply;" /></figure>最初は「ASD傾向の子 全般」へのアドバイス。でも使うほど、<b style="color:#B23E18;">「はるみちには、言葉より"見せる"予告が効く」</b>と、その子だけのクセを覚えていきます。</div>
+        <div style="background:#FFF6EE;border:1px solid rgba(255,122,89,.28);border-radius:20px;padding:1.4rem;font-size:.92rem;line-height:1.85;color:#1B2A4A;"><figure style="max-width:230px;margin:0 auto 1rem;line-height:0;"><img src="assets/family-star.webp" alt="" loading="lazy" decoding="async" width="1536" height="1024" style="width:100%;height:auto;mix-blend-mode:multiply;" /></figure>最初は「ASD傾向の子 全般」へのアドバイス。でも使うほど、<b style="color:#B23E18;">「はるみちには、言葉より"見せる"予告が効く」</b>と、その子だけのクセを覚えていきます。</div>
       </div>
 
       <div style="position:relative;margin-top:2.8rem;">
@@ -386,7 +478,7 @@
 
         <div style="display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:20px;padding:1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);">
           <span style="width:44px;height:44px;border-radius:13px;flex:none;display:grid;place-items:center;background:rgba(255,194,75,.2);color:#8A5F00;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
-          <div><h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.0625rem;color:#1B2A4A;margin-bottom:.3rem;">記録は、あなたとお子さんの資産</h3><p style="color:#51607A;font-size:.9rem;line-height:1.8;">相談や「効いた」の記録は大切に保管し、その子への提案の精度を高めるためだけに使います。勝手に消しません。</p></div>
+          <div><h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.0625rem;color:#1B2A4A;margin-bottom:.3rem;">記録は、あなたとお子さんのもの</h3><p style="color:#51607A;font-size:.9rem;line-height:1.8;">相談や「効いた」の記録は、その子への提案をよくするためだけに使います。許可なく誰かに渡したり、広告に使ったりしません。勝手に消すこともしません。</p></div>
         </div>
 
         <div style="display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:20px;padding:1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);">
@@ -420,7 +512,7 @@
     <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
       <div style="position:relative;background:radial-gradient(120% 130% at 78% 8%,#EEF6F4 0%,#fff 70%);border-radius:32px;padding:clamp(2rem,5vw,3.4rem);box-shadow:0 26px 56px -30px rgba(27,42,74,.4);text-align:center;overflow:hidden;">
         <figure style="max-width:520px;margin:0 auto 1.4rem;line-height:0;">
-          <img src="assets/family-star.png" alt="家族みんなで大きな星を掲げる手描きのイラスト" loading="lazy" decoding="async" width="1536" height="1024" style="width:100%;height:auto;mix-blend-mode:multiply;" />
+          <img src="assets/family-star.webp" alt="家族みんなで大きな星を掲げる手描きのイラスト" loading="lazy" decoding="async" width="1536" height="1024" style="width:100%;height:auto;mix-blend-mode:multiply;" />
         </figure>
         <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.7rem,3.2vw + .5rem,2.4rem);color:#1B2A4A;line-height:1.4;">いちばんの主役は、<br><span style="color:#0A6E7A;">この子と暮らす、あなた</span>です。</h2>
         <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;margin:1rem auto 1.8rem;max-width:46ch;">2026.6.14、先行βを始めます。今できるのは「責めない声かけ」が返る相談ひとつだけ。完成品ではありません。だからこそ、同じ夜を知っているあなたと、一緒に育てたいんです。</p>
@@ -445,6 +537,8 @@
       <div style="margin-top:1.8rem;padding:1.4rem;border-radius:14px;background:#FCFBF7;border:1px solid rgba(27,42,74,.10);color:#51607A;font-size:.85rem;line-height:1.9;max-width:62ch;margin-inline:auto;"><b style="color:#1B2A4A;">安心して関わっていただくために：</b>ワクコエラボは医学的な診断・治療・助言を行うサービスではありません。先行βでは本名や診断名の入力は必須ではなく、いただいた内容はプロダクト改善とご案内のためにのみ扱います。本ページの画面はイメージで、内容は開発中の構想を含み、提供内容・時期は変更になる可能性があります。</div>
     </div>
   </section>
+
+  </main>
 
   <!-- ============ FOOTER ============ -->
   <footer style="background:#1B2A4A;color:#EAF4F5;padding-top:clamp(3rem,7vw,5rem);">
