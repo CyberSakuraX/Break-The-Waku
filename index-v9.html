@@ -24,6 +24,8 @@
    * 主役: WAKU-LOGの相談デモ（ヒーローA）＋「使うほどその子専用に育つ」体験。
    * テイスト: 淡い色ブロック分け / 大きいスマホモック / 左右交互 / ゆったり余白 / 家族イラストを各所に。
    * Claude Design の dc.html（ヒーローA確定・家族イラスト各所配置）を静的HTMLとして実装。
+   * 文言: 一人称（実名なし）の当事者の声 × 肯定から入るトーンで全面改稿（AIっぽさ除去）。
+   *       創業者レターの ABOUT 節を追加し、具体的な声かけ例・限界の正直な明示を追加。
    */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -68,6 +70,7 @@
           <li><a href="#how" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">使い方</a></li>
           <li><a href="#feature" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">できること</a></li>
           <li><a href="#grow" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">育つしくみ</a></li>
+          <li><a href="#about" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">私たち</a></li>
         </ul>
         <a href="#join" style="padding:.6rem 1.2rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;background:#FF7A59;color:#fff;text-decoration:none;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center;box-shadow:0 8px 20px -10px rgba(255,122,89,.8);">先行βに参加</a>
       </div>
@@ -82,7 +85,7 @@
         <div>
           <span style="display:inline-flex;align-items:center;gap:.5rem;padding:.42rem .95rem;border-radius:999px;background:#FFC24B;color:#1B2A4A;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.82rem;white-space:nowrap;"><span style="width:8px;height:8px;border-radius:50%;background:#B23E18;animation:wkPulse 2.4s ease-in-out infinite;"></span>2026.6.14 先行β始動・保護者募集中</span>
           <h1 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(2.1rem,4.6vw + .5rem,3.4rem);line-height:1.32;letter-spacing:-.01em;color:#1B2A4A;margin:1.3rem 0 1rem;">困った行動を、<span style="background:linear-gradient(transparent 62%,rgba(255,194,75,.55) 0);padding-inline:.05em;">1行</span>。<br>返ってくるのは、<br><span style="color:#B23E18;">責めない声かけ</span>。</h1>
-          <p style="color:#51607A;font-size:1.125rem;max-width:40ch;line-height:1.9;margin-bottom:1.8rem;">「なんでできないの」と言ってしまう夜に。<b style="color:#1B2A4A;">WAKU-LOG</b> は、その場で“責めない声かけ案”を返す発育AIコーチ。使うほどその子のことを覚えて、<b style="color:#1B2A4A;">“その子専用”のアドバイス</b>に育っていきます。</p>
+          <p style="color:#51607A;font-size:1.125rem;max-width:40ch;line-height:1.9;margin-bottom:1.8rem;">「なんでできないの」。言いたくないのに、言ってしまう夜があります。<b style="color:#1B2A4A;">WAKU-LOG</b> は、困ったことを一行打つと、その子に合った声かけ案をその場で返すアプリ。つくっているのは、<b style="color:#1B2A4A;">同じ夜を何度も過ごしてきた家族</b>です。</p>
           <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.4rem;">
             <a href="#join" style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.7rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1rem;background:#0A6E7A;color:#fff;text-decoration:none;min-height:52px;box-shadow:0 14px 30px -14px rgba(10,110,122,.9);">先行βに参加する <span aria-hidden="true">→</span></a>
             <a href="#how" style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.7rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1rem;background:#fff;color:#1B2A4A;text-decoration:none;min-height:52px;border:2px solid #FF7A59;">使い方を見る</a>
@@ -130,13 +133,13 @@
       <div style="display:grid;grid-template-columns:1fr .9fr;gap:clamp(1.6rem,4vw,3.2rem);align-items:center;" data-2col>
         <div>
           <figure style="max-width:300px;margin-bottom:1.3rem;line-height:0;"><img src="assets/family-star.png" alt="家族みんなで大きな星を見上げる手描きのイラスト" loading="lazy" decoding="async" width="1536" height="1024" style="width:100%;height:auto;mix-blend-mode:multiply;" /></figure>
-          <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>その気持ち、わかります</span>
-          <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:1.2rem;">わかってるのに、<br>つよく言ってしまう夜。</h2>
-          <p style="color:#51607A;font-size:1.0625rem;line-height:1.95;max-width:52ch;">何度言っても伝わらない。まわりの目も気になる。気づけば「なんでできないの」と、強い言葉が出てしまう。そして子どもが寝たあと、ひとりで自分を責めてしまう ── そんな夜を、あなただけが過ごしているわけではありません。<br><br><b style="color:#1B2A4A;">直したいのは、子どもじゃなかった。<br>声のかけ方の方だったのかもしれません。</b></p>
+          <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>まず、これだけは言わせてください</span>
+          <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:1.2rem;">あなたは、もう<br>十分がんばっています。</h2>
+          <p style="color:#51607A;font-size:1.0625rem;line-height:1.95;max-width:52ch;">何度言っても伝わらない。まわりの目も気になる。気づけば強い言葉が出て、子どもが寝たあと、ひとりで自分を責める。その夜を、私も数えきれないほど過ごしてきました。<br><br><b style="color:#1B2A4A;">だから、まずこれだけは言わせてください。<br>あなたのせいではありません。声かけのコツを、まだ誰も教えてくれなかっただけです。</b></p>
         </div>
         <div style="background:#1B2A4A;color:#EAF4F5;border-radius:24px;padding:clamp(1.7rem,4vw,2.6rem);box-shadow:0 22px 48px -24px rgba(27,42,74,.5);">
-          <p style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.375rem;line-height:1.6;">ある夜、強く言ったとき、<br>子どもが小さくこぼしました。<br>「ぼく、<span style="color:#FF7A59;">ダメな子</span>だから」。</p>
-          <p style="color:rgba(234,244,245,.66);font-size:.9rem;margin-top:1.4rem;line-height:1.9;">創業メンバー自身も、3人の子が「グレーゾーン」。この一言が、ワクコエラボの出発点でした。だから私たちは、親を責める道具ではなく、<span style="color:#15B6C7;">親の隣に立つコーチ</span>をつくっています。</p>
+          <p style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.375rem;line-height:1.6;">ある夜、私が強く言ったとき、<br>子どもが小さくこぼしました。<br>「ぼく、<span style="color:#FF7A59;">ダメな子</span>だから」。</p>
+          <p style="color:rgba(234,244,245,.66);font-size:.9rem;margin-top:1.4rem;line-height:1.9;">私には3人の子がいて、3人とも「グレーゾーン」と言われてきました。あの一言が、ワクコエラボの始まりです。つくっているのは、親を採点する道具ではありません。<span style="color:#15B6C7;">あの夜の私の隣に、いてほしかったもの</span>。それを、アプリにしています。</p>
         </div>
       </div>
     </div>
@@ -146,8 +149,8 @@
   <section id="how" style="background:#EEF6F4;padding-block:clamp(3.4rem,7vw,5.6rem);">
     <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
       <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>使い方は、3ステップ</span>
-      <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">むずかしい設定は、いりません。</h2>
-      <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:50ch;">困ったその瞬間に、スマホで1行。専門用語も、長い入力も必要ありません。</p>
+      <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">登録も設定も、あとでいい。</h2>
+      <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:50ch;">困ったその瞬間に、スマホで一行。いま、いちばんしんどいことを、そのまま打つだけで大丈夫です。</p>
       <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-top:2.6rem;" data-3col>
 
         <div style="position:relative;background:#fff;border-radius:22px;padding:2.2rem 1.5rem 1.6rem;box-shadow:0 16px 36px -22px rgba(27,42,74,.4);">
@@ -186,8 +189,8 @@
     <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
       <div style="text-align:center;">
         <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>WAKU-LOGでできること</span>
-        <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">毎日の声かけに、<span style="color:#0A6E7A;">3つの寄りそい</span>。</h2>
-        <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:46ch;margin:0 auto;">むずかしい操作はいりません。スマホの中で、こんなふうに支えます。</p>
+        <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">アプリの中で、<span style="color:#0A6E7A;">こんなふうに隣にいます</span>。</h2>
+        <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:46ch;margin:0 auto;">困ったときも、なんとか乗りきった朝も。ひとりにしない、3つの場面です。</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:clamp(1.5rem,3.5vw,2.6rem);margin-top:2.8rem;">
 
@@ -215,7 +218,7 @@
           <div>
             <span style="display:inline-flex;align-items:center;gap:.45rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.875rem;color:#0A6E7A;margin-bottom:.6rem;"><span style="display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#EEF6F4;font-size:.8rem;">1</span>その場で相談</span>
             <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.3rem,2vw + .5rem,1.75rem);color:#1B2A4A;line-height:1.42;margin-bottom:.9rem;">困った行動を1行。<br><span style="color:#B23E18;">責めない声かけ</span>が、すぐ返る。</h3>
-            <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;">「公園から帰れない」「朝の着替えをしない」──いま困っていることを、そのまま打つだけ。その子の特性傾向をふまえた、共感のひと言と具体的な声かけ案が、その場で返ります。</p>
+            <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;">たとえば「算数のプリントで鉛筆を投げた」と打つと、「焦ってたんだね。一緒に一問だけ、やってみようか」のような言葉が返ってきます。叱り方ではなく、どう言えば伝わるかを、その場で一緒に考えます。</p>
             <ul style="list-style:none;margin-top:1.2rem;display:flex;flex-direction:column;gap:.5rem;">
               <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>専門用語も、長い入力もいりません</li>
               <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>「叱る」ではなく「どう言えば伝わるか」を一緒に</li>
@@ -311,8 +314,8 @@
       <div style="display:grid;grid-template-columns:1fr .82fr;gap:clamp(1.2rem,4vw,2.6rem);align-items:end;" data-2col>
         <div>
           <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>いちばんの特長</span>
-          <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">使うほど、<span style="color:#0A6E7A;">"その子専用"の名医</span>に育つ。</h2>
-          <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:50ch;">WAKU-LOGは、相談のたびにその子のことを覚えていきます。「何が効いて、何が効かなかったか」を記憶に積み上げ、汎用的な答えから"わが子だけの答え"へ変わっていきます。</p>
+          <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">使うほど、<span style="color:#0A6E7A;">この子と私の「二人だけの正解」</span>が貯まる。</h2>
+          <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:50ch;">相談のたびに、このアプリはその子のことを覚えていきます。「何が効いて、何がダメだったか」が積み上がり、どこかの誰かへの答えが、だんだん「わが子だけの答え」に変わります。</p>
         </div>
         <div style="background:#FFF6EE;border:1px solid rgba(255,122,89,.28);border-radius:20px;padding:1.4rem;font-size:.92rem;line-height:1.85;color:#1B2A4A;"><figure style="max-width:230px;margin:0 auto 1rem;line-height:0;"><img src="assets/family-star.png" alt="" loading="lazy" decoding="async" width="1536" height="1024" style="width:100%;height:auto;mix-blend-mode:multiply;" /></figure>最初は「ASD傾向の子 全般」へのアドバイス。でも使うほど、<b style="color:#B23E18;">「はるみちには、言葉より"見せる"予告が効く」</b>と、その子だけのクセを覚えていきます。</div>
       </div>
@@ -346,7 +349,7 @@
         <div style="position:relative;padding:0 0 1.8rem 56px;">
           <span style="position:absolute;left:2px;top:0;min-width:34px;height:34px;padding-inline:5px;border-radius:999px;display:grid;place-items:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.72rem;z-index:1;box-sizing:border-box;background:#fff;border:3px solid #15B6C7;color:#0A6E7A;">14</span>
           <span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.04em;color:#B23E18;">DAY 14 ／ 2回目の相談</span>
-          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.15rem 0 .35rem;">「着替えをしない」── 別の悩みにも応用</h3>
+          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.15rem 0 .35rem;">「着替えをしない」。前のコツが、今度も効く</h3>
           <p style="color:#51607A;font-size:.95rem;line-height:1.85;max-width:58ch;">WAKU-LOGは先週の成功を覚えていて、「この子には予告と"見せる"が効く」と判断。着替えにも「タイマー＋ステップ絵カード」を提案します。</p>
           <span style="display:inline-block;margin-top:.6rem;padding:.6rem .9rem;border-radius:0 14px 14px 0;font-size:.9rem;line-height:1.7;color:#1B2A4A;background:#EEF6F4;border-left:3px solid #15B6C7;">先週の"効いたコツ"が、はじめての悩みにも自然に活かされる。</span>
         </div>
@@ -368,7 +371,7 @@
     <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
       <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>安心して、使っていただくために</span>
       <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">これは、診断でも、テストでもありません。</h2>
-      <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:52ch;">わが子のことだから、安心が何より大事。WAKU-LOGが約束することを、正直にお伝えします。</p>
+      <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:52ch;">正直に言います。これでお子さんがすぐ変わるわけではありません。変わるのは、明日の私たちの一言だけです。そのうえで、約束できることを書きます。</p>
       <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;margin-top:2.4rem;" data-2col>
 
         <div style="display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:20px;padding:1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);">
@@ -395,6 +398,23 @@
     </div>
   </section>
 
+  <!-- ============ ABOUT — つくっている私たち（一人称の手紙） ============ -->
+  <section id="about" style="background:#FCFBF7;border-block:1px solid rgba(27,42,74,.10);padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div style="max-width:760px;margin:0 auto;background:#fff;border:1px solid rgba(27,42,74,.12);border-radius:28px;padding:clamp(1.8rem,5vw,3.2rem);box-shadow:0 22px 48px -28px rgba(27,42,74,.35);">
+        <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>つくっている私たちのこと</span>
+        <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.5rem,3vw + .5rem,2.2rem);line-height:1.5;color:#1B2A4A;margin-bottom:1.4rem;">私たちも、<br>同じ食卓にいます。</h2>
+        <div style="color:#51607A;font-size:1.0625rem;line-height:2;">
+          <p style="margin-bottom:1.1rem;">ワクコエラボは、福岡の小さなチームです。発達支援の専門家と、当事者の親が集まってつくっています。私自身、3人の子の父で、3人とも「グレーゾーン」と言われてきました。</p>
+          <p style="margin-bottom:1.1rem;">だから、夜の食卓に流れる空気も、面談で言葉に詰まるあの感じも、知っているつもりです。私たちは自分たちのことを<b style="color:#1B2A4A;">「自由研究員」</b>と呼んでいます。まだ正解の無いことを、あきらめずに一緒に研究する人、という意味です。</p>
+          <p style="margin-bottom:1.1rem;">守っているのは3つだけ。<b style="color:#0A6E7A;">できることに目を向ける</b>。<b style="color:#0A6E7A;">小さな一歩でいい</b>。<b style="color:#0A6E7A;">ひとりで抱えず、一緒に築く</b>。</p>
+          <p style="margin-bottom:0;">正直、まだ完成にはほど遠いです。それでも、<b style="color:#1B2A4A;">あの夜の自分がほしかったもの</b>を、今日も少しずつ形にしています。</p>
+        </div>
+        <p style="margin-top:1.8rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.95rem;color:#1B2A4A;">ワクコエラボ ／ 自由研究員一同　<span style="color:#51607A;font-weight:500;font-size:.85rem;">福岡より</span></p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ JOIN ============ -->
   <section id="join" style="background:#fff;padding-block:clamp(3.4rem,7vw,5.6rem);">
     <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
@@ -403,7 +423,7 @@
           <img src="assets/family-star.png" alt="家族みんなで大きな星を掲げる手描きのイラスト" loading="lazy" decoding="async" width="1536" height="1024" style="width:100%;height:auto;mix-blend-mode:multiply;" />
         </figure>
         <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.7rem,3.2vw + .5rem,2.4rem);color:#1B2A4A;line-height:1.4;">いちばんの主役は、<br><span style="color:#0A6E7A;">この子と暮らす、あなた</span>です。</h2>
-        <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;margin:1rem auto 1.8rem;max-width:46ch;">2026.6.14、WAKU-LOG の先行βを始めます。体験できるのは「責めない声かけ」が返る相談機能ひとつ。まずはここから、いっしょに育てていきませんか。</p>
+        <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;margin:1rem auto 1.8rem;max-width:46ch;">2026.6.14、先行βを始めます。今できるのは「責めない声かけ」が返る相談ひとつだけ。完成品ではありません。だからこそ、同じ夜を知っているあなたと、一緒に育てたいんです。</p>
         <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
           <a href="mailto:contact@wakukoelabo.jp?subject=%E5%85%88%E8%A1%8C%CE%B2%E5%8F%82%E5%8A%A0%E5%B8%8C%E6%9C%9B" style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1rem;background:#0A6E7A;color:#fff;text-decoration:none;min-height:52px;box-shadow:0 14px 30px -14px rgba(10,110,122,.9);">先行βに参加する <span aria-hidden="true">→</span></a>
           <a href="#how" style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1rem;background:#fff;color:#1B2A4A;text-decoration:none;min-height:52px;border:2px solid #FF7A59;">もう一度、使い方を見る</a>
