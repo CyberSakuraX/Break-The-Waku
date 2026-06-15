@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="robots" content="noindex,nofollow" />
-  <title>ワクコエラボ｜Break The Waku! — 発育AIコーチ</title>
-  <meta name="description" content="診断名がなくても大丈夫。グレーゾーンの子どもと家族の毎日の困りごとを、責めない声かけと小さな発見に変える発育AIコーチ「WAKU-LOG」。ワクコエラボの先行βプロジェクト。" />
-  <meta property="og:title" content="ワクコエラボ｜Break The Waku! — 発育AIコーチ" />
-  <meta property="og:description" content="グレーゾーンの子どもと家族のための先行βプロジェクト。診断ではなく、今日の困りごとを責めない声かけと小さな発見に変えていきます。" />
+  <meta name="robots" content="index,follow" />
+  <title>ワクコエラボ｜WAKU-LOG ― 使うほど“その子専用”に育つ、責めない声かけが返る発育AIコーチ</title>
+  <meta name="description" content="「なんでできないの」と言ってしまう夜に。困った行動を1行入れると、その場で責めない声かけ案が返る発育AIコーチ WAKU-LOG。使うほどその子のことを覚えて、“その子専用”のアドバイスに育ちます。診断しない・責めない。2026年初夏 先行β、保護者を募集中。" />
+  <meta property="og:title" content="ワクコエラボ｜WAKU-LOG ― 使うほど“その子専用”に育つ発育AIコーチ" />
+  <meta property="og:description" content="困った行動を1行で、責めない声かけ案がその場で返る。使うほどその子を覚えていく発育AIコーチ。2026年初夏 先行β、保護者募集中。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cybersakurax.github.io/Break-The-Waku/" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -19,971 +19,605 @@
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
-  /* Hallmark · pre-emit critique: P5 H4 E5 S5 R4 V5
-   * Hallmark · genre: playful · macrostructure: Narrative Workflow · theme: brand-locked (wakukoelab Brand Basic Guide v1.0)
-   * design-system: official brand guide (locked) · nav: N5 floating pill · footer: Ft5 statement + Ft8 marquee
-   * colours specified in HEX by the official guide → tokens use HEX for exact fidelity; accessible text-on-light uses derived -ink tokens
-   * contrast: pass (46–50) · slop: pass (51–55) · honest: pass (56) · chrome: pass (57) · tokens: pass (58) · responsive: pass (59) · icons: pass (60) · mobile: pass (36,59,61–69)
+  /* ワクコエラボ v9 — とちぎんLP流リデザイン（v6ベース）
+   * 宛先: 実際に使う保護者（3〜12歳グレーゾーンの子の親）。
+   * 主役: WAKU-LOGの相談デモ（ヒーローA）＋「使うほどその子専用に育つ」体験。
+   * テイスト: 淡い色ブロック分け / 大きいスマホモック / 左右交互 / ゆったり余白 / 家族イラストを各所に。
+   * Claude Design の dc.html（ヒーローA確定・家族イラスト各所配置）を静的HTMLとして実装。
+   * 文言: 一人称（実名なし）の当事者の声 × 肯定から入るトーンで全面改稿（AIっぽさ除去）。
+   *       創業者レターの ABOUT 節を追加し、具体的な声かけ例・限界の正直な明示を追加。
+   * リサーチ反映(LP_RESEARCH.md): 強み/希望(Focus Strengths)節を新設、ヒーロー近傍に信頼ライン、
+   *       共感にVOC実語彙(私のせい/一見ふつうに見える)、プライバシー明示。NG表現(治す/普通になる)回避。
    */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Zen Kaku Gothic New","Hiragino Sans","Meiryo",sans-serif;background:#FCFBF7;color:#1B2A4A;line-height:1.85;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  img{max-width:100%;display:block;}
+  ::selection{background:#FFC24B;color:#1B2A4A;}
+  @keyframes wkPulse{0%,100%{box-shadow:0 0 0 4px rgba(178,62,24,.25);}50%{box-shadow:0 0 0 9px rgba(178,62,24,.05);}}
+  @keyframes wkScroll{to{transform:translateX(-50%);}}
+  @keyframes wkFloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg));}50%{transform:translateY(-10px) rotate(var(--r,0deg));}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation-duration:.001ms !important;}}
 
-  /* ─── TOKENS ─── */
-  :root {
-    /* Brand canon — wakukoelab Brand Basic Guide v1.0 */
-    --navy:        #1B2A4A;   /* 親・基調色 */
-    --turquoise:   #15B6C7;   /* W・メイン */
-    --coral:       #FF7A59;   /* 子・アクセント */
-    --sun:         #FFC24B;   /* きらめき・補助 */
+  /* skip link (a11y) */
+  .wk-skip{position:absolute;left:-9999px;top:0;z-index:200;background:#0A6E7A;color:#fff;padding:.6rem 1rem;border-radius:0 0 12px 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.85rem;text-decoration:none;}
+  .wk-skip:focus{left:0;}
 
-    /* Derived for AA contrast on light paper (same hue family, darker) */
-    --teal-ink:    #0A6E7A;
-    --coral-ink:   #B23E18;
-    --navy-soft:   #33456A;
-    --navy-deep:   #12203A;
-    --sun-ink:     #9A6B00;
+  /* iPhone mockup chrome（最新iPhone風：フレーム/Dynamic Island/ステータスバー/ホームインジケータ） */
+  .ipx{position:relative;background:linear-gradient(150deg,#56585d 0%,#2b2d31 40%,#191a1d 100%);border-radius:48px;padding:10px;box-shadow:0 32px 64px -24px rgba(27,42,74,.55),inset 0 0 0 1px rgba(255,255,255,.10),inset 0 0 3px 2px rgba(0,0,0,.45);}
+  .ipx-screen{position:relative;border-radius:39px;overflow:hidden;aspect-ratio:9/19.5;display:flex;flex-direction:column;}
+  .ipx-di{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:30%;max-width:98px;height:26px;background:#000;border-radius:999px;z-index:5;}
+  .ipx-sb{position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;height:40px;padding:0 17px 0 22px;font-family:'Zen Maru Gothic',sans-serif;}
+  .ipx-sb time{font-weight:700;font-size:.82rem;letter-spacing:.01em;}
+  .ipx-stat{display:inline-flex;align-items:center;gap:5px;}
+  .ipx-home{display:grid;place-items:center;padding:7px 0 9px;}
+  .ipx-home i{display:block;width:36%;max-width:128px;height:5px;border-radius:999px;}
 
-    /* Neutrals */
-    --paper:       #FCFDFD;
-    --paper-cool:  #ECF6F7;
-    --paper-warm:  #FFF5EE;
-    --surface:     #ffffff;
-    --ink:         #1B2A4A;
-    --ink-2:       #51607A;
-    --ink-3:       #5C6478;
-    --rule:        rgba(27,42,74,.10);
-    --rule-2:      rgba(27,42,74,.18);
-
-    /* On dark (navy band) */
-    --on-navy:     #EAF4F5;
-    --on-navy-2:   rgba(234,244,245,.64);
-    --surf-light:  rgba(255,255,255,.06);
-    --hair-light:  rgba(255,255,255,.12);
-
-    --focus:       #0A6E7A;
-
-    /* Fonts */
-    --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif;
-    --font-body:    "Zen Kaku Gothic New", "Hiragino Sans", "Meiryo", "Yu Gothic", sans-serif;
-
-    /* Type scale (1.25 major third), display via clamp */
-    --text-xs:   0.78rem;
-    --text-sm:   0.875rem;
-    --text-base: 1rem;
-    --text-md:   1.125rem;
-    --text-lg:   1.375rem;
-    --text-xl:   1.75rem;
-    --text-2xl:  2.1875rem;
-    --text-3xl:  2.7rem;
-    --text-display:   clamp(3rem, 8vw + 0.5rem, 5.25rem);
-    --text-display-s: clamp(2.1rem, 4.5vw + 0.5rem, 3.4rem);
-
-    /* Spacing (4pt) */
-    --space-3xs: 0.25rem; --space-2xs: 0.5rem; --space-xs: 0.75rem;
-    --space-sm: 1rem; --space-md: 1.5rem; --space-lg: 2rem;
-    --space-xl: 3rem; --space-2xl: 4.5rem; --space-3xl: 7rem;
-
-    --radius-card: 18px;
-    --radius-sm: 12px;
-    --radius-pill: 999px;
-
-    --shadow-soft: 0 14px 34px -18px rgba(27,42,74,.30);
-    --shadow-lift: 0 22px 48px -20px rgba(27,42,74,.38);
-
-    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-in:  cubic-bezier(0.7, 0, 0.84, 0);
-    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-    --dur-short: 200ms;
-    --dur-mid:   360ms;
-
-    --max: 1080px;
-    --z-nav: 100;
+  @media (max-width:900px){
+    [data-2col],[data-3col],[data-featcard]{grid-template-columns:1fr !important;}
+    [data-featcard] > div,[data-featvis]{min-width:0 !important;}
+  }
+  @media (max-width:760px){
+    [data-herogrid]{grid-template-columns:1fr !important;}
+    [data-herogrid] > div{min-width:0;}
+    /* モバイルはソース順（見出し→モック）。主役メッセージを先頭に。 */
+  }
+  @media (max-width:620px){
+    [data-navlinks]{display:none !important;}
+  }
+  @media (max-width:560px){
+    [data-2col][style*="repeat(2"]{grid-template-columns:1fr !important;}
+  }
+  @media (max-width:430px){
+    [data-logo-sub]{display:none !important;}
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; overflow-x: clip; }
-  body {
-    font-family: var(--font-body);
-    background: var(--paper);
-    color: var(--ink);
-    line-height: 1.8;
-    font-size: var(--text-base);
-    overflow-x: clip;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    padding-inline: max(0px, env(safe-area-inset-left));
+  /* ===== イラスト・デザインシステム（サイズ・余白・寄せを“1か所”で管理） =====
+   * 個々の figure に数値を直書きせず、役割（intro/card/hero）でクラス化。
+   * サイズ変更は下記トークンを書き換えるだけで全挿絵に反映される。 */
+  :root{
+    --fig-h:180px;                          /* 導入挿絵の基準“高さ”（横長・正方をこの高さで揃える） */
+    --fig-w-square:var(--fig-h);            /* 1:1 素材の幅（= 高さ） */
+    --fig-w-wide:calc(var(--fig-h) * 1.5);  /* 3:2 素材の幅（高さが揃う） */
+    --fig-card-w:200px;                     /* カード内の補足挿絵 */
+    --fig-hero-w:520px;                     /* CTAの主役ビジュアル */
+    --fig-gap:1.25rem;                      /* 挿絵まわりの下余白 */
   }
-  a { color: inherit; text-decoration: none; }
-  svg { display: block; }
-  ::selection { background: var(--sun); color: var(--navy); }
-
-  .container { width: 100%; max-width: var(--max); margin: 0 auto; padding-inline: clamp(1.1rem, 4vw, 2rem); }
-
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; overflow-wrap: anywhere; min-width: 0; }
-
-  :where(a, button, input, summary):focus-visible {
-    outline: 3px solid var(--focus);
-    outline-offset: 3px;
-    border-radius: 6px;
-  }
-
-  /* ─── SECTION SHELL ─── */
-  section { padding-block: clamp(3.5rem, 8vw, 6rem); position: relative; scroll-margin-top: 6rem; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: var(--space-2xs);
-    font-family: var(--font-display); font-weight: 700;
-    font-size: var(--text-sm); color: var(--teal-ink);
-    letter-spacing: .02em; margin-bottom: var(--space-sm);
-  }
-  .eyebrow::before { content: ""; width: 18px; height: 2px; background: var(--coral); border-radius: 2px; }
-  .sec-title { font-size: var(--text-2xl); font-weight: 900; margin-bottom: var(--space-sm); }
-  .sec-lead { color: var(--ink-2); font-size: var(--text-md); max-width: 46ch; line-height: 1.85; }
-
-  /* ─── BUTTONS ─── */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2xs);
-    padding: 0.85rem 1.5rem; border-radius: var(--radius-pill);
-    font-family: var(--font-display); font-weight: 700; font-size: var(--text-base);
-    cursor: pointer; border: 2px solid transparent; white-space: nowrap;
-    min-height: 48px;
-    transition: transform var(--dur-short) var(--ease-out),
-                box-shadow var(--dur-short) var(--ease-out),
-                background-color var(--dur-short) var(--ease-out),
-                color var(--dur-short) var(--ease-out);
-  }
-  .btn .ar { transition: transform var(--dur-short) var(--ease-out); }
-  .btn-primary { background: var(--teal-ink); color: #fff; box-shadow: var(--shadow-soft); }
-  .btn-secondary { background: var(--surface); color: var(--navy); border-color: var(--coral); }
-  .btn-ghost { background: transparent; color: var(--navy); border-color: var(--rule-2); }
-  @media (hover: hover) {
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
-    .btn-secondary:hover { transform: translateY(-2px); background: var(--paper-warm); }
-    .btn-ghost:hover { background: var(--paper-cool); border-color: var(--teal-ink); }
-    .btn:hover .ar { transform: translateX(3px); }
-  }
-  .btn:active { transform: translateY(0); }
-
-  /* ─── NAV · N5 floating pill ─── */
-  .nav-wrap { position: sticky; top: 0; z-index: var(--z-nav); padding-top: clamp(0.6rem, 2vw, 1rem); }
-  .nav {
-    display: flex; align-items: center; gap: var(--space-md);
-    max-width: var(--max); margin: 0 auto;
-    padding: 0.55rem 0.7rem 0.55rem 1.1rem;
-    background: rgba(252,253,253,.82);
-    backdrop-filter: blur(14px) saturate(1.4);
-    -webkit-backdrop-filter: blur(14px) saturate(1.4);
-    border: 1px solid var(--rule);
-    border-radius: var(--radius-pill);
-    box-shadow: 0 10px 30px -16px rgba(27,42,74,.35);
-  }
-  .brand { display: flex; align-items: center; gap: 0.6rem; margin-inline-end: auto; }
-  .brand-mark { height: 32px; width: auto; flex: none; }
-  .brand-name { font-family: var(--font-display); font-weight: 900; font-size: var(--text-md); color: var(--navy); line-height: 1.1; }
-  .brand-sub { font-size: 0.66rem; color: var(--ink-2); font-weight: 500; letter-spacing: .04em; }
-  .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
-  .nav-links a {
-    padding: 0.5rem 0.85rem; border-radius: var(--radius-pill);
-    font-size: var(--text-sm); font-weight: 500; color: var(--ink-2); white-space: nowrap;
-    transition: color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out);
-  }
-  @media (hover: hover) { .nav-links a:hover { color: var(--navy); background: var(--paper-cool); } }
-  .nav-cta {
-    padding: 0.55rem 1.15rem; border-radius: var(--radius-pill);
-    font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm);
-    background: var(--navy); color: #fff; white-space: nowrap; min-height: 44px;
-    display: inline-flex; align-items: center;
-    transition: transform var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out);
-  }
-  @media (hover: hover) { .nav-cta:hover { background: var(--navy-soft); transform: translateY(-1px); } }
-  .nav-links a:active, .nav-cta:active { transform: translateY(1px); }
-  .nav-toggle { display: none; width: 44px; height: 44px; border: none; background: transparent; cursor: pointer; align-items: center; justify-content: center; border-radius: 12px; color: var(--navy); }
-  .nav-toggle svg { width: 24px; height: 24px; }
-  @media (hover: hover) { .nav-toggle:hover { background: var(--paper-cool); } }
-  .nav-toggle:active { background: var(--rule); }
-
-  /* ─── HERO ─── */
-  .hero { padding-top: clamp(1.8rem, 4vw, 3rem); padding-bottom: clamp(3rem, 8vw, 5rem); overflow: clip; }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-    background:
-      radial-gradient(560px 420px at 92% -8%, rgba(21,182,199,.12), transparent 62%),
-      radial-gradient(620px 460px at 8% 108%, rgba(255,194,75,.09), transparent 64%);
-  }
-  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
-  .badge {
-    display: inline-flex; align-items: center; gap: var(--space-2xs);
-    padding: 0.4rem 0.9rem; border-radius: var(--radius-pill);
-    background: var(--sun); color: var(--navy);
-    font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm);
-  }
-  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral-ink); box-shadow: 0 0 0 4px rgba(178,62,24,.25); animation: pulse 2.4s var(--ease-in-out) infinite; }
-  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 4px rgba(178,62,24,.25);} 50% { box-shadow: 0 0 0 8px rgba(178,62,24,.06);} }
-  .hero-catch {
-    font-family: var(--font-display); font-weight: 900;
-    font-size: var(--text-display); line-height: 1.02; letter-spacing: -0.02em;
-    margin: var(--space-md) 0 var(--space-sm);
-  }
-  .hero-catch .b { color: var(--navy); }
-  .hero-catch .t { color: var(--coral-ink); }
-  .hero-catch .w { color: var(--teal-ink); }
-  .hero-tagline { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--navy); margin-bottom: var(--space-sm); line-height: 1.5; }
-  .hero-sub { color: var(--ink-2); font-size: var(--text-md); max-width: 46ch; line-height: 1.9; margin-bottom: var(--space-lg); }
-  .hero-btns { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-bottom: var(--space-lg); }
-  .trust { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
-  .pill { padding: 0.4rem 0.85rem; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--rule-2); color: var(--ink-2); font-size: var(--text-xs); font-weight: 700; }
-
-  /* hero side card — the reframe at a glance */
-  .hero-card {
-    background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-card);
-    padding: var(--space-lg); box-shadow: var(--shadow-soft);
-  }
-  .hero-card .hc-h { font-size: var(--text-base); color: var(--ink-2); font-weight: 700; margin-bottom: var(--space-sm); letter-spacing: .02em; font-family: var(--font-display); }
-  .reframe { display: grid; gap: 0.7rem; }
-  .reframe-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0.6rem; }
-  .reframe-row .from { color: var(--ink-3); font-size: var(--text-sm); text-align: right; }
-  .reframe-row .to { color: var(--navy); font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); }
-  .reframe-row .arrow { color: var(--coral); font-weight: 700; }
-
-  /* one-time entrance */
-  .rise { opacity: 0; transform: translateY(14px); animation: rise 0.7s var(--ease-out) forwards; }
-  .rise.d1 { animation-delay: .06s; } .rise.d2 { animation-delay: .14s; } .rise.d3 { animation-delay: .22s; } .rise.d4 { animation-delay: .30s; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
-
-  /* ─── PROBLEM · stat strip (T4) ─── */
-  .problem { background: var(--surface); border-block: 1px solid var(--rule); }
-  .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: clamp(0.8rem,2vw,1.4rem); margin-top: var(--space-lg); }
-  .stat { padding: var(--space-md) 0; border-top: 3px solid var(--turquoise); }
-  .stat:nth-child(2) { border-color: var(--coral); }
-  .stat:nth-child(3) { border-color: var(--sun); }
-  .stat:nth-child(4) { border-color: var(--navy); }
-  .stat-num { font-family: var(--font-display); font-weight: 900; font-size: clamp(2rem, 5vw, 2.9rem); color: var(--navy); line-height: 1.05; font-variant-numeric: tabular-nums; }
-  .stat-num small { font-size: 0.5em; font-weight: 700; }
-  .stat-label { color: var(--ink-2); font-size: var(--text-sm); margin-top: var(--space-2xs); line-height: 1.6; }
-  .stat-note { margin-top: var(--space-lg); padding: var(--space-md) var(--space-lg); border-radius: var(--radius-sm); background: var(--paper-warm); border: 1px solid rgba(178,62,24,.18); color: var(--navy); font-size: var(--text-md); line-height: 1.85; }
-  .stat-note b { color: var(--coral-ink); }
-
-  /* ─── STORY ─── */
-  .story-grid { display: grid; grid-template-columns: 1fr 0.9fr; gap: clamp(1.5rem,4vw,3rem); align-items: center; }
-  .quote-block {
-    background: var(--navy); color: var(--on-navy); border-radius: var(--radius-card);
-    padding: clamp(1.8rem, 4vw, 2.6rem); box-shadow: var(--shadow-soft);
-  }
-  .quote-block .q { font-family: var(--font-display); font-weight: 900; font-size: var(--text-xl); line-height: 1.5; }
-  .quote-block .q .tq { color: var(--turquoise); }
-  .quote-block .q .co { color: var(--coral); }
-  .quote-block .q-sub { color: var(--on-navy-2); font-size: var(--text-sm); margin-top: var(--space-md); line-height: 1.8; }
-  .tag-row { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-md); }
-  .tag { padding: 0.4rem 0.85rem; border-radius: var(--radius-pill); font-size: var(--text-sm); font-weight: 700; font-family: var(--font-display); }
-  .tag.tq { background: rgba(21,182,199,.14); color: var(--teal-ink); }
-  .tag.co { background: rgba(255,122,89,.16); color: var(--coral-ink); }
-
-  /* ─── SHIFT · 教育→発育 ─── */
-  .shift { background: var(--paper-cool); }
-  .shift-table { margin-top: var(--space-lg); border: 1px solid var(--rule-2); border-radius: var(--radius-card); overflow: hidden; background: var(--surface); }
-  .shift-head, .shift-row { display: grid; grid-template-columns: 0.8fr 1fr 1fr; }
-  .shift-head > div, .shift-row > div { padding: clamp(0.9rem,2.4vw,1.3rem) clamp(1rem,2.5vw,1.5rem); }
-  .shift-head { background: var(--navy); color: var(--on-navy); font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); }
-  .shift-head .old { color: var(--on-navy-2); }
-  .shift-head .new { color: var(--turquoise); }
-  .shift-row { border-top: 1px solid var(--rule); }
-  .shift-row .axis { font-family: var(--font-display); font-weight: 700; color: var(--ink-2); font-size: var(--text-sm); background: var(--paper); }
-  .shift-row .old { color: var(--ink-2); }
-  .shift-row .new { color: var(--navy); font-weight: 500; }
-  .shift-row .new b { font-family: var(--font-display); font-weight: 700; color: var(--teal-ink); }
-
-  /* ─── VISION · dark navy band ─── */
-  .vision { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%); color: var(--on-navy); }
-  .vision .eyebrow { color: var(--turquoise); }
-  .vision .eyebrow::before { background: var(--sun); }
-  .vision-main { font-family: var(--font-display); font-weight: 900; font-size: var(--text-display-s); line-height: 1.45; margin: var(--space-md) 0 var(--space-xl); max-width: 22ch; }
-  .vision-main .tq { color: var(--turquoise); }
-  .vision-main .co { color: var(--coral); }
-  .values { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--space-md); }
-  .value { padding: var(--space-md); border-radius: var(--radius-card); background: var(--surf-light); border: 1px solid var(--hair-light); }
-  .value .en { font-family: var(--font-display); font-weight: 700; color: var(--turquoise); font-size: var(--text-sm); letter-spacing: .03em; }
-  .value .ja { font-family: var(--font-display); font-weight: 700; color: #fff; font-size: var(--text-md); margin: var(--space-2xs) 0; }
-  .value .de { color: var(--on-navy-2); font-size: var(--text-sm); line-height: 1.75; }
-
-  /* ─── PVMV ─── */
-  .pvmv { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-lg); }
-  .pv-card { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-card); padding: var(--space-lg); }
-  .pv-card.wide { grid-column: 1 / -1; }
-  .pv-k { font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); color: var(--teal-ink); letter-spacing: .04em; }
-  .pv-sub { font-size: var(--text-xs); color: var(--ink-3); margin: 2px 0 var(--space-xs); }
-  .pv-t { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--navy); line-height: 1.65; }
-  .pv-t .tq { color: var(--teal-ink); } .pv-t .co { color: var(--coral-ink); }
-  .pv-t ol { margin: 0; padding-left: 1.3em; } .pv-t li { margin-block: 0.3em; }
-
-  /* ─── WAKU-LOG centerpiece ─── */
-  .wakulog { background: var(--surface); border-block: 1px solid var(--rule); }
-  .wl-head { display: grid; grid-template-columns: 1fr auto; gap: var(--space-md); align-items: end; }
-  .wl-name { font-family: var(--font-display); font-weight: 900; font-size: clamp(2rem, 7vw, 2.7rem); color: var(--navy); letter-spacing: -0.01em; overflow-wrap: anywhere; }
-  .wl-name .dash { color: var(--turquoise); }
-  .wl-kw { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: var(--radius-pill); background: var(--turquoise); color: var(--navy); font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); height: max-content; }
-  .wl-intro { color: var(--ink-2); font-size: var(--text-md); max-width: 48ch; line-height: 1.9; margin-top: var(--space-sm); }
-
-  .fn-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--space-md); margin-top: var(--space-xl); }
-  .fn { display: grid; grid-template-columns: auto 1fr; gap: var(--space-sm); padding: var(--space-md); border-radius: var(--radius-card); background: var(--paper); border: 1px solid var(--rule); transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out); }
-  @media (hover: hover) { .fn:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); } }
-  .fn-ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--paper-cool); color: var(--teal-ink); }
-  .fn:nth-child(2) .fn-ic { background: var(--paper-warm); color: var(--coral-ink); }
-  .fn:nth-child(3) .fn-ic { background: rgba(255,194,75,.18); color: var(--sun-ink); }
-  .fn:nth-child(4) .fn-ic { background: rgba(27,42,74,.08); color: var(--navy); }
-  .fn-ic svg { width: 24px; height: 24px; }
-  .fn h3 { font-size: var(--text-md); color: var(--navy); margin-bottom: 0.2rem; }
-  .fn p { color: var(--ink-2); font-size: var(--text-sm); line-height: 1.75; }
-
-  .layers { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-xl); }
-  .layer { border-radius: var(--radius-card); padding: var(--space-lg); position: relative; }
-  .layer.l1 { background: var(--navy); color: var(--on-navy); }
-  .layer.l2 { background: var(--paper-cool); border: 1px solid var(--rule-2); color: var(--navy); }
-  .layer .lk { font-family: var(--font-display); font-weight: 700; font-size: var(--text-xs); letter-spacing: .06em; opacity: .85; }
-  .layer.l1 .lk { color: var(--turquoise); opacity: 1; }
-  .layer.l2 .lk { color: var(--teal-ink); }
-  .layer h3 { font-size: var(--text-lg); margin: 0.3rem 0 var(--space-xs); }
-  .layer.l1 h3 { color: #fff; } .layer.l2 h3 { color: var(--navy); }
-  .layer p { font-size: var(--text-sm); line-height: 1.85; }
-  .layer.l1 p { color: var(--on-navy-2); } .layer.l2 p { color: var(--ink-2); }
-  .layer .beta-flag { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: var(--space-md); padding: 0.35rem 0.8rem; border-radius: var(--radius-pill); background: var(--sun); color: var(--navy); font-family: var(--font-display); font-weight: 700; font-size: var(--text-xs); }
-  .layer .soon { display: inline-block; margin-top: var(--space-md); padding: 0.35rem 0.8rem; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--rule-2); color: var(--ink-2); font-size: var(--text-xs); font-weight: 700; }
-
-  /* beta strip */
-  .beta-strip { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); align-items: center; margin-top: var(--space-xl); padding: clamp(1.4rem,3vw,2rem); border-radius: var(--radius-card); background: var(--paper-warm); border: 1px solid rgba(178,62,24,.18); }
-  .beta-strip h3 { font-size: var(--text-lg); color: var(--navy); line-height: 1.5; }
-  .beta-strip p { color: var(--ink-2); font-size: var(--text-sm); margin-top: var(--space-2xs); line-height: 1.8; }
-  .beta-points { display: grid; gap: 0.55rem; }
-  .beta-point { display: flex; align-items: flex-start; gap: 0.5rem; font-size: var(--text-sm); color: var(--navy); font-weight: 500; }
-  .beta-point::before { content: ""; flex: none; width: 8px; height: 8px; margin-top: 0.55em; border-radius: 50%; background: var(--coral); }
-
-  /* process — narrative workflow heart */
-  .process { margin-top: var(--space-xl); }
-  .proc-h { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--ink-2); margin-bottom: var(--space-md); }
-  .steps { display: grid; gap: 0; }
-  .step { display: grid; grid-template-columns: auto 1fr; gap: var(--space-md); padding-block: var(--space-md); border-top: 2px solid var(--rule-2); }
-  .step:last-child { border-bottom: 2px solid var(--rule-2); }
-  .step-n { font-family: var(--font-display); font-weight: 900; font-size: var(--text-xl); color: var(--turquoise); line-height: 1; font-variant-numeric: tabular-nums; }
-  .step:nth-child(2) .step-n { color: var(--coral); }
-  .step:nth-child(3) .step-n { color: var(--sun); }
-  .step h3 { font-size: var(--text-md); color: var(--navy); margin-bottom: 0.2rem; }
-  .step p { color: var(--ink-2); font-size: var(--text-sm); line-height: 1.8; max-width: 60ch; }
-
-  /* ─── FUTURE (ココロ/カラダ/シャカイ) ─── */
-  .future { background: var(--paper); }
-  .future-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
-  .fcard { border-radius: var(--radius-card); border: 1px solid var(--rule); background: var(--surface); padding: var(--space-md); }
-  .fcard .axis { font-family: var(--font-display); font-weight: 700; font-size: var(--text-xs); letter-spacing: .04em; color: var(--teal-ink); }
-  .fcard:nth-child(2) .axis { color: var(--coral-ink); }
-  .fcard:nth-child(3) .axis { color: var(--navy); }
-  .fcard .fname { font-family: var(--font-display); font-weight: 900; font-size: var(--text-md); color: var(--navy); margin: 0.2rem 0; }
-  .fcard p { color: var(--ink-2); font-size: var(--text-sm); line-height: 1.75; }
-  .fcard .state { display: inline-block; margin-top: var(--space-sm); padding: 0.25rem 0.7rem; border-radius: var(--radius-pill); font-size: var(--text-xs); font-weight: 700; }
-  .fcard .state.live { background: var(--sun); color: var(--navy); }
-  .fcard .state.soon { background: var(--paper-cool); color: var(--ink-2); border: 1px solid var(--rule); }
-  .future-note { margin-top: var(--space-md); font-size: var(--text-sm); color: var(--ink-3); }
-
-  /* ─── RESEARCHERS ─── */
-  .res-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
-  .res { padding: var(--space-lg); border-radius: var(--radius-card); border: 1px solid var(--rule); background: var(--surface); transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out); }
-  @media (hover: hover) { .res:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); } }
-  .res-role { font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); color: var(--teal-ink); }
-  .res:nth-child(2) .res-role { color: var(--coral-ink); }
-  .res:nth-child(3) .res-role { color: var(--navy); }
-  .res-title { font-family: var(--font-display); font-weight: 900; font-size: var(--text-md); color: var(--navy); margin: 0.15rem 0 var(--space-sm); }
-  .res ul { list-style: none; display: grid; gap: 0.4rem; }
-  .res li { position: relative; padding-left: 1.4em; font-size: var(--text-sm); color: var(--ink-2); }
-  .res li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px; border-radius: 50%; background: var(--turquoise); }
-  .res:nth-child(2) li::before { background: var(--coral); }
-  .res:nth-child(3) li::before { background: var(--navy-soft); }
-
-  /* ─── PERSONA ─── */
-  .persona { background: var(--paper-cool); }
-  .persona-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(1.5rem,4vw,3rem); align-items: center; margin-top: var(--space-lg); }
-  .persona-who { background: var(--surface); border-radius: var(--radius-card); border: 1px solid var(--rule); padding: var(--space-lg); }
-  .persona-name { font-family: var(--font-display); font-weight: 900; font-size: var(--text-lg); color: var(--navy); }
-  .persona-meta { color: var(--ink-2); font-size: var(--text-sm); margin-top: 0.2rem; }
-  .market { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0.7rem; margin-top: var(--space-md); }
-  .market div { text-align: left; }
-  .market .m-num { font-family: var(--font-display); font-weight: 900; font-size: var(--text-md); color: var(--teal-ink); font-variant-numeric: tabular-nums; }
-  .market .m-lab { font-size: var(--text-xs); color: var(--ink-2); line-height: 1.5; }
-  .worries { list-style: none; display: grid; gap: 0.2rem; }
-  .worries li { padding: 0.85rem 0 0.85rem 1.6em; border-bottom: 1px solid var(--rule); position: relative; color: var(--ink-2); font-size: var(--text-md); line-height: 1.7; }
-  .worries li:last-child { border-bottom: none; }
-  .worries li::before { content: ""; position: absolute; left: 0; top: 1.25em; width: 10px; height: 10px; border-radius: 3px; background: var(--coral); transform: rotate(45deg); }
-
-  /* ─── FLOW ─── */
-  .flow-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
-  .flow { padding: var(--space-md); border-radius: var(--radius-card); background: var(--surface); border: 1px solid var(--rule); }
-  .flow-n { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--navy); color: #fff; font-family: var(--font-display); font-weight: 900; margin-bottom: var(--space-sm); }
-  .flow h3 { font-size: var(--text-md); color: var(--navy); margin-bottom: 0.3rem; }
-  .flow p { font-size: var(--text-sm); color: var(--ink-2); line-height: 1.7; }
-
-  /* ─── CTA ─── */
-  .cta { background: var(--paper-warm); border-top: 1px solid var(--rule); }
-  .cta-head { max-width: 40ch; }
-  .cta-cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-lg); }
-  .cta-card { background: var(--surface); border-radius: var(--radius-card); border: 1px solid var(--rule); padding: var(--space-lg); display: flex; flex-direction: column; }
-  .cta-card h3 { font-size: var(--text-lg); color: var(--navy); margin-bottom: 0.4rem; }
-  .cta-card p { color: var(--ink-2); font-size: var(--text-sm); line-height: 1.8; margin-bottom: var(--space-md); flex: 1; }
-  .cta-card .btn { width: 100%; }
-  .cta-note { margin-top: var(--space-md); padding: var(--space-md); border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--rule); color: var(--ink-2); font-size: var(--text-sm); line-height: 1.85; }
-  .cta-note b { color: var(--navy); }
-
-  /* ─── FOOTER · Ft5 statement + Ft8 marquee ─── */
-  footer { background: var(--navy); color: var(--on-navy); padding-top: clamp(3rem,7vw,5rem); }
-  .foot-statement { font-family: var(--font-display); font-weight: 900; font-size: var(--text-3xl); line-height: 1.35; max-width: 16ch; }
-  .foot-statement .tq { color: var(--turquoise); }
-  .foot-statement .co { color: var(--coral); }
-  .marquee { margin-top: clamp(2rem,5vw,3rem); overflow: clip; border-block: 1px solid var(--hair-light); padding-block: 0.9rem; }
-  .marquee-track { display: inline-flex; gap: 0; white-space: nowrap; will-change: transform; animation: scroll 32s linear infinite; }
-  .marquee-track span { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: rgba(234,244,245,.7); padding-inline: 1.2rem; }
-  .marquee-track span::after { content: "·"; margin-left: 2.4rem; color: var(--turquoise); }
-  @keyframes scroll { to { transform: translateX(-50%); } }
-  .foot-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-lg); padding-block: clamp(2rem,5vw,3rem); }
-  .foot-brand .brand-name { color: #fff; }
-  .foot-brand .brand-sub { color: var(--on-navy-2); }
-  .foot-note { font-size: var(--text-xs); line-height: 1.85; max-width: 52ch; color: var(--on-navy-2); }
-  .foot-note b { color: var(--on-navy); }
-  .foot-copy { text-align: center; padding-block: var(--space-md); border-top: 1px solid var(--hair-light); font-size: var(--text-xs); color: rgba(234,244,245,.62); }
-
-  /* ─── MOBILE ─── */
-  @media (max-width: 60rem) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-card { max-width: 460px; }
-    .story-grid, .persona-grid { grid-template-columns: 1fr; }
-    .layers { grid-template-columns: 1fr; }
-    .beta-strip { grid-template-columns: 1fr; }
-    .future-grid, .res-grid, .values { grid-template-columns: 1fr; }
-    .pvmv { grid-template-columns: 1fr; }
-    .flow-grid { grid-template-columns: 1fr 1fr; }
-    .stat-grid { grid-template-columns: 1fr 1fr; }
-    .wl-head { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 52rem) {
-    .nav { flex-wrap: wrap; row-gap: 0.45rem; }
-    .nav-links, .nav-cta { display: none; }
-    .nav-toggle { display: inline-grid; }
-    .nav.open { border-radius: var(--radius-card); }
-    .nav.open .nav-links {
-      display: flex; flex-direction: column; align-items: stretch;
-      flex-basis: 100%; order: 3; gap: 0.15rem;
-      padding-top: 0.5rem; border-top: 1px solid var(--rule);
-    }
-    .nav.open .nav-links a { padding: 0.8rem 0.9rem; border-radius: 12px; }
-    .nav.open .nav-cta { display: inline-flex; justify-content: center; flex-basis: 100%; order: 4; }
-  }
-  @media (max-width: 40rem) {
-    .fn-grid, .cta-cards, .pvmv { grid-template-columns: 1fr; }
-    .flow-grid, .stat-grid, .market { grid-template-columns: 1fr; }
-    .shift-head, .shift-row { grid-template-columns: 1fr; }
-    .shift-head .axis-h { display: none; }
-    .shift-row { border-top: 4px solid var(--rule-2); }
-    .shift-row .axis { background: var(--paper-cool); }
-    .shift-row .old::before { content: "従来：　"; font-weight: 700; color: var(--ink-3); }
-    .shift-row .new::before { content: "発育：　"; font-weight: 700; color: var(--teal-ink); }
-    .step { grid-template-columns: 1fr; gap: 0.3rem; }
-    .reframe-row { grid-template-columns: 1fr; text-align: left; gap: 0.1rem; }
-    .reframe-row .from { text-align: left; }
-    .reframe-row .arrow { display: none; }
-    .hero-catch { font-size: clamp(2.6rem, 13vw, 3.4rem); }
-    .btn { width: 100%; white-space: normal; }
-    .hero-btns .btn { width: 100%; }
-  }
-
-  /* ─── REDUCED MOTION ─── */
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
-    .rise { opacity: 1; transform: none; }
-    .marquee-track { animation: none; transform: none; }
-  }
+  .fig{line-height:0;}
+  .fig img{width:100%;height:auto;mix-blend-mode:multiply;}
+  .fig-intro{max-width:var(--fig-w-square);margin:0 0 var(--fig-gap);}   /* 地に置く導入挿絵：左寄せ・正方基準 */
+  .fig-intro.is-wide{max-width:var(--fig-w-wide);}                       /* 横長素材だけ幅を広げ、高さを揃える */
+  .fig-card{max-width:var(--fig-card-w);margin:0 0 var(--fig-gap);}      /* カード内の補足挿絵：左寄せ */
+  .fig-hero{max-width:var(--fig-hero-w);margin:0 auto var(--fig-gap);}   /* 主役ビジュアル：中央 */
+  .fig-center{margin-left:auto;margin-right:auto;}                       /* 必要な挿絵だけ中央寄せにする時に付与 */
   </style>
 </head>
 <body>
+<a href="#content" class="wk-skip">本文へスキップ</a>
 
-<!-- ─── NAV (N5 floating pill) ─── -->
-<div class="nav-wrap">
-  <div class="container">
-    <nav class="nav" id="nav" aria-label="メインナビゲーション">
-      <a href="#top" class="brand" aria-label="ワクコエラボ ホーム">
-        <svg class="brand-mark" viewBox="370.38 318.94 130.81 107.06" aria-hidden="true">
-          <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="407.88" cy="356.44" r="13.65" fill="#1B2A4A"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FF7A59"/>
-          <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFC24B"/>
-        </svg>
-        <span>
-          <span class="brand-name">ワクコエ<span style="color:var(--coral)">ラボ</span></span>
-          <span class="brand-sub">発育AIコーチ</span>
-        </span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#problem">課題</a></li>
-        <li><a href="#shift">発育とは</a></li>
-        <li><a href="#wakulog">WAKU-LOG</a></li>
-        <li><a href="#flow">参加の流れ</a></li>
-      </ul>
-      <a href="#cta" class="nav-cta">先行登録</a>
-      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </nav>
+<div style="--navy:#1B2A4A;--turquoise:#15B6C7;--teal:#0A6E7A;--coral:#FF7A59;--coralink:#B23E18;--sun:#FFC24B;--sunink:#8A5F00;--paper:#FCFBF7;--mint:#EEF6F4;--warm:#FFF6EE;--ink2:#51607A;--rule:rgba(27,42,74,.10);font-family:'Zen Kaku Gothic New',sans-serif;overflow-x:clip;">
+
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:100;padding-top:clamp(.6rem,2vw,1rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <nav aria-label="グローバルナビゲーション" style="display:flex;align-items:center;gap:1.4rem;padding:.55rem .7rem .55rem 1.2rem;background:rgba(252,251,247,.85);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(27,42,74,.10);border-radius:999px;box-shadow:0 10px 30px -16px rgba(27,42,74,.35);">
+        <a href="#top" style="display:flex;align-items:center;gap:.6rem;margin-inline-end:auto;text-decoration:none;">
+          <svg viewBox="370.38 318.94 130.81 107.06" style="height:34px;width:auto;flex:none;display:block;" aria-hidden="true">
+            <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="407.88" cy="356.44" r="13.65" fill="#1B2A4A"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FF7A59"/>
+            <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFC24B"/>
+          </svg>
+          <span style="line-height:1.1;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.125rem;color:#1B2A4A;">ワクコエ<span style="color:#FF7A59;">ラボ</span></span><span data-logo-sub style="display:block;font-size:.66rem;color:#51607A;font-weight:500;letter-spacing:.04em;">発育AIコーチ WAKU-LOG</span></span>
+        </a>
+        <ul style="display:flex;align-items:center;gap:.2rem;list-style:none;" data-navlinks>
+          <li><a href="#kimochi" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">気持ち</a></li>
+          <li><a href="#how" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">使い方</a></li>
+          <li><a href="#feature" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">できること</a></li>
+          <li><a href="#grow" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">育つしくみ</a></li>
+          <li><a href="#about" style="display:block;padding:.5rem .85rem;border-radius:999px;font-size:.875rem;font-weight:500;color:#51607A;text-decoration:none;white-space:nowrap;">私たち</a></li>
+        </ul>
+        <a href="#join" data-cta="join" style="padding:.6rem 1.2rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;background:#B23E18;color:#fff;text-decoration:none;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center;box-shadow:0 8px 20px -10px rgba(178,62,24,.8);">先行βに参加</a>
+      </div>
+    </div>
   </div>
+
+  <main id="content" tabindex="-1" style="display:block;">
+
+  <!-- ============ HERO — 相談デモ ============ -->
+  <section id="top" style="position:relative;padding-top:clamp(1.6rem,3vw,2.8rem);padding-bottom:clamp(2.8rem,6vw,4.5rem);overflow:clip;">
+    <div style="position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(640px 480px at 94% 2%,rgba(21,182,199,.14),transparent 60%),radial-gradient(680px 520px at 0% 108%,rgba(255,194,75,.16),transparent 62%);"></div>
+    <div style="position:relative;z-index:1;width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div style="display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(1.5rem,4vw,3.2rem);align-items:center;" data-herogrid>
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:.5rem;padding:.42rem .95rem;border-radius:999px;background:#FFC24B;color:#1B2A4A;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.82rem;white-space:nowrap;"><span style="width:8px;height:8px;border-radius:50%;background:#B23E18;animation:wkPulse 2.4s ease-in-out infinite;"></span>2026年初夏 先行β始動・保護者募集中</span>
+          <h1 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(2.1rem,4.6vw + .5rem,3.4rem);line-height:1.32;letter-spacing:-.01em;color:#1B2A4A;margin:1.3rem 0 1rem;">困った行動を、<span style="background:linear-gradient(transparent 62%,rgba(255,194,75,.55) 0);padding-inline:.05em;">1行</span>。<br>返ってくるのは、<br><span style="color:#B23E18;">責めない声かけ</span>。</h1>
+          <p style="color:#51607A;font-size:1.125rem;max-width:40ch;line-height:1.9;margin-bottom:1.8rem;">「なんでできないの」。言いたくないのに、言ってしまう夜に。<b style="color:#1B2A4A;">WAKU-LOG</b> は、困ったことを一行打つと、その子に合った声かけ案をその場で返します。</p>
+          <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.4rem;">
+            <a href="#join" data-cta="join" style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.7rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1rem;background:#0A6E7A;color:#fff;text-decoration:none;min-height:52px;box-shadow:0 14px 30px -14px rgba(10,110,122,.9);">先行βに参加する <span aria-hidden="true">→</span></a>
+            <a href="#how" style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.7rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1rem;background:#fff;color:#1B2A4A;text-decoration:none;min-height:52px;border:2px solid #FF7A59;">使い方を見る</a>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+            <span style="padding:.4rem .85rem;border-radius:999px;background:#fff;border:1px solid rgba(27,42,74,.18);color:#51607A;font-size:.78rem;font-weight:700;">診断しない・責めない</span>
+            <span style="padding:.4rem .85rem;border-radius:999px;background:#fff;border:1px solid rgba(27,42,74,.18);color:#51607A;font-size:.78rem;font-weight:700;">無料・本名不要</span>
+            <span style="padding:.4rem .85rem;border-radius:999px;background:#fff;border:1px solid rgba(27,42,74,.18);color:#51607A;font-size:.78rem;font-weight:700;">当事者の家族発・福岡</span>
+          </div>
+          <p style="margin-top:.9rem;font-size:.8rem;color:#5C6478;line-height:1.7;">発達支援の専門家と、3人の子の親である当事者でつくる、福岡の小さなチームです。</p>
+        </div>
+        <div style="position:relative;display:flex;justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFC24B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;top:-10px;right:6%;width:46px;--r:8deg;animation:wkFloat 5s ease-in-out infinite;" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#15B6C7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;bottom:7%;left:0;width:36px;--r:-6deg;animation:wkFloat 6s ease-in-out infinite .5s;" aria-hidden="true"><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/></svg>
+          <div class="ipx" aria-hidden="true" style="width:min(330px,100%);">
+            <div class="ipx-screen" style="background:#fff;">
+              <div class="ipx-di"></div>
+              <div class="ipx-sb"><time style="color:#1B2A4A;">9:41</time><span class="ipx-stat" style="color:#1B2A4A;"><svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7.5" width="3" height="3.5" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="0" width="3" height="11" rx=".8"/></svg><svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.4c2.6 0 5 1 6.7 2.7l-1.5 1.5A7.3 7.3 0 0 0 8 4.6 7.3 7.3 0 0 0 2.8 6.6L1.3 5.1A9.5 9.5 0 0 1 8 2.4z"/><path d="M8 6.1c1.5 0 2.9.6 3.9 1.6l-1.5 1.5A3.4 3.4 0 0 0 8 8.1c-.9 0-1.7.35-2.4 1.05L4.1 7.7A5.6 5.6 0 0 1 8 6.1z"/><circle cx="8" cy="10.2" r="1.3"/></svg><svg width="25" height="12" viewBox="0 0 25 12" aria-hidden="true"><rect x=".6" y=".6" width="21" height="10.8" rx="3" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="23" y="4" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".45"/></svg></span></div>
+              <div style="display:flex;align-items:center;gap:.5rem;padding:.1rem .85rem .6rem;border-bottom:1.5px solid rgba(27,42,74,.10);">
+                <span style="width:30px;height:30px;border-radius:50%;background:#EEF6F4;display:grid;place-items:center;flex:none;"><svg viewBox="370.38 318.94 130.81 107.06" style="width:18px;height:18px;display:block;" aria-hidden="true"><path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.9rem;color:#1B2A4A;">WAKU-LOG<small style="display:block;font-size:.66rem;color:#0A6E7A;font-weight:700;letter-spacing:.04em;">はるみちの 発育コーチ</small></span>
+              </div>
+              <div style="padding:.9rem .85rem .3rem;display:flex;flex-direction:column;gap:.6rem;" aria-hidden="true">
+                <div style="align-self:flex-end;max-width:86%;padding:.65rem .9rem;font-size:.86rem;line-height:1.65;border-radius:16px;border-bottom-right-radius:5px;background:#FFF6EE;border:1.5px solid rgba(255,122,89,.4);color:#1B2A4A;">公園から帰る時間になると、毎回かんしゃくで…。今日も「帰らない！」って大泣き。</div>
+                <div style="align-self:flex-start;max-width:88%;padding:.65rem .9rem;font-size:.86rem;line-height:1.65;border-radius:16px;border-bottom-left-radius:5px;background:#EEF6F4;border:1.5px solid rgba(21,182,199,.32);color:#1B2A4A;">
+                  <span style="display:block;color:#0A6E7A;font-weight:700;margin-bottom:.15rem;font-family:'Zen Maru Gothic',sans-serif;">それは大変でしたね。よく付き合いました🌱</span>
+                  切り替えが苦手な子は、急な「終わり」が不安なんです。
+                  <span style="display:block;margin-top:.4rem;padding-top:.4rem;border-top:1px dashed rgba(21,182,199,.4);">▶ 帰る5分前にタイマーをセットして「鳴ったら帰ろうね」と<b>先に予告</b>してみましょう。</span>
+                </div>
+              </div>
+              <div style="margin:.5rem .85rem 0;padding:.7rem .85rem;background:#fff;border:1.5px solid rgba(27,42,74,.18);border-radius:14px;">
+                <div style="display:flex;align-items:center;gap:.4rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.84rem;color:#1B2A4A;">📌 公園から帰れない<span style="margin-inline-start:auto;font-size:.6rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;padding:.1rem .5rem;border-radius:999px;">テーマ</span></div>
+                <div style="display:flex;gap:.4rem;margin-top:.55rem;">
+                  <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.76rem;padding:.42rem;border-radius:10px;border:1.5px solid #FFC24B;background:#FFC24B;color:#1B2A4A;">効いた！</span>
+                  <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.76rem;padding:.42rem;border-radius:10px;border:1.5px solid rgba(27,42,74,.18);background:#fff;color:#51607A;">違った</span>
+                  <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.76rem;padding:.42rem;border-radius:10px;border:1.5px solid rgba(27,42,74,.18);background:#fff;color:#51607A;">また起きた</span>
+                </div>
+              </div>
+              <div style="margin-top:auto;display:flex;align-items:center;gap:.5rem;padding:.55rem .85rem;border-top:1.5px solid rgba(27,42,74,.08);">
+                <span style="flex:1;background:#F1F3F6;border:1px solid rgba(27,42,74,.10);border-radius:999px;padding:.45rem .9rem;font-size:.78rem;color:#9aa3b2;">メッセージを入力…</span>
+                <span style="width:32px;height:32px;border-radius:50%;background:#0A6E7A;display:grid;place-items:center;flex:none;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              </div>
+              <div class="ipx-home"><i style="background:rgba(27,42,74,.32);"></i></div>
+            </div>
+            <span style="position:absolute;right:-12px;bottom:16%;background:#1B2A4A;color:#fff;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.72rem;padding:.4rem .75rem;border-radius:999px;box-shadow:0 10px 24px -10px rgba(27,42,74,.6);transform:rotate(4deg);z-index:6;">使うほど、<span style="color:#FFC24B;">その子専用</span>に</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KIMOCHI ============ -->
+  <section id="kimochi" style="background:#fff;border-block:1px solid rgba(27,42,74,.10);padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div style="display:grid;grid-template-columns:1fr .9fr;gap:clamp(1.6rem,4vw,3.2rem);align-items:center;" data-2col>
+        <div>
+          <figure class="fig fig-intro is-wide"><img src="assets/family-star.webp" alt="家族みんなで大きな星を見上げる手描きのイラスト" loading="lazy" decoding="async" width="1536" height="1024" /></figure>
+          <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>まず、これだけは言わせてください</span>
+          <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">あなたは、もう<br>十分がんばっています。</h2>
+          <p style="color:#51607A;font-size:1.0625rem;line-height:1.95;max-width:52ch;">何度言っても伝わらない。一見ふつうに見えるから、まわりには分かってもらえない。気づけば強い言葉が出て、子どもが寝たあと「今日のあれは、きっと私のせいだ」とひとりで責める。その夜を、私も数えきれないほど過ごしてきました。<br><br><b style="color:#1B2A4A;">だから、まずこれだけは言わせてください。<br>あなたのせいではありません。声かけのコツを、まだ誰も教えてくれなかっただけです。</b></p>
+        </div>
+        <div style="background:#1B2A4A;color:#EAF4F5;border-radius:24px;padding:clamp(1.7rem,4vw,2.6rem);box-shadow:0 22px 48px -24px rgba(27,42,74,.5);">
+          <p style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.375rem;line-height:1.6;">ある夜、私が強く言ったとき、<br>子どもが小さくこぼしました。<br>「ぼく、<span style="color:#FF7A59;">ダメな子</span>だから」。</p>
+          <p style="color:rgba(234,244,245,.66);font-size:.9rem;margin-top:1.4rem;line-height:1.9;">私には3人の子がいて、3人とも「グレーゾーン」と言われてきました。あの一言が、ワクコエラボの始まりです。つくっているのは、親を採点する道具ではありません。<span style="color:#15B6C7;">あの夜の私の隣に、いてほしかったもの</span>。それを、アプリにしています。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STRENGTHS — 見方を変える（Focus Strengths） ============ -->
+  <section id="strengths" style="background:linear-gradient(180deg,#FFF6EE 0%,#FCFBF7 100%);padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div style="max-width:56ch;">
+        <figure class="fig fig-intro"><img src="assets/hero/child-focus.webp" alt="虫めがねで小さな芽をのぞきこむ子どもの手描きのイラスト" loading="lazy" decoding="async" width="760" height="760" /></figure>
+        <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>見方を、ちょっとだけ変える</span>
+        <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.45;color:#1B2A4A;margin-bottom:.8rem;">「困った行動」の裏に、<br>その子の<span style="color:#0A6E7A;">「好き」</span>が<br>隠れている。</h2>
+        <p style="color:#51607A;font-size:1.0625rem;line-height:1.95;">「ふつうはこう」の正解さがしは、少しお休みしませんか。WAKU-LOGは、その子を直すための道具ではありません。困りごとの奥にある"夢中"を見つけて、いっしょに面白がるためのものです。</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem;margin-top:2.6rem;" data-3col>
+
+        <div style="background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:22px;padding:1.8rem 1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);text-align:center;">
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.95rem;color:#5C6478;">落ち着きが、ない</div>
+          <div style="display:grid;place-items:center;margin:.6rem 0;color:#15B6C7;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.3rem;color:#0A6E7A;">あふれる<span style="color:#1B2A4A;">行動力</span></div>
+        </div>
+
+        <div style="background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:22px;padding:1.8rem 1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);text-align:center;">
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.95rem;color:#5C6478;">こだわりが、強い</div>
+          <div style="display:grid;place-items:center;margin:.6rem 0;color:#15B6C7;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.3rem;color:#0A6E7A;">深い<span style="color:#1B2A4A;">探求心</span></div>
+        </div>
+
+        <div style="background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:22px;padding:1.8rem 1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);text-align:center;">
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.95rem;color:#5C6478;">切り替えが、苦手</div>
+          <div style="display:grid;place-items:center;margin:.6rem 0;color:#15B6C7;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.3rem;color:#0A6E7A;">とことん<span style="color:#1B2A4A;">集中</span></div>
+        </div>
+
+      </div>
+      <p style="margin-top:2rem;max-width:56ch;font-size:.92rem;color:#5C6478;line-height:1.8;">同じ行動でも、見方を変えれば“伸びしろ”になります。WAKU-LOGは、その視点の切り替えを、毎日そっと手伝います。</p>
+    </div>
+  </section>
+
+  <!-- ============ HOW ============ -->
+  <section id="how" style="background:#EEF6F4;padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>使い方は、3ステップ</span>
+      <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">登録も設定も、あとでいい。</h2>
+      <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:50ch;">困ったその瞬間に、スマホで一行。いま、いちばんしんどいことを、そのまま打つだけで大丈夫です。</p>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-top:2.6rem;" data-3col>
+
+        <div style="position:relative;background:#fff;border-radius:22px;padding:2.2rem 1.5rem 1.6rem;box-shadow:0 16px 36px -22px rgba(27,42,74,.4);">
+          <span style="position:absolute;top:-18px;left:20px;width:40px;height:40px;border-radius:50%;background:#FF7A59;color:#1B2A4A;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;display:grid;place-items:center;font-size:1.125rem;box-shadow:0 10px 22px -10px rgba(27,42,74,.5);">1</span>
+          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.4rem 0 .5rem;">困りごとを1行いれる</h3>
+          <p style="color:#51607A;font-size:.9rem;line-height:1.8;">「公園から帰れない」「朝の着替えをしない」など、いま困っていることをそのまま打つだけ。</p>
+          <div style="margin-top:1rem;padding:.75rem .85rem;border-radius:12px;background:#FCFBF7;border:1px solid rgba(27,42,74,.10);font-size:.82rem;line-height:1.6;color:#1B2A4A;">
+            <span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.68rem;color:#5C6478;margin-bottom:.25rem;">あなた</span>歯みがきから逃げ回って…
+          </div>
+        </div>
+
+        <div style="position:relative;background:#fff;border-radius:22px;padding:2.2rem 1.5rem 1.6rem;box-shadow:0 16px 36px -22px rgba(27,42,74,.4);">
+          <span style="position:absolute;top:-18px;left:20px;width:40px;height:40px;border-radius:50%;background:#15B6C7;color:#1B2A4A;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;display:grid;place-items:center;font-size:1.125rem;box-shadow:0 10px 22px -10px rgba(27,42,74,.5);">2</span>
+          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.4rem 0 .5rem;">責めない声かけ案が返る</h3>
+          <p style="color:#51607A;font-size:.9rem;line-height:1.8;">その子の特性傾向をふまえて、共感のひと言と「こう言ってみては？」を、その場で返します。</p>
+          <div style="margin-top:1rem;padding:.75rem .85rem;border-radius:12px;background:#FCFBF7;border:1px solid rgba(27,42,74,.10);font-size:.82rem;line-height:1.6;color:#1B2A4A;">
+            <span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.68rem;color:#5C6478;margin-bottom:.25rem;">WAKU-LOG</span>「10数えたらおしまい」と先に予告を。
+          </div>
+        </div>
+
+        <div style="position:relative;background:#fff;border-radius:22px;padding:2.2rem 1.5rem 1.6rem;box-shadow:0 16px 36px -22px rgba(27,42,74,.4);">
+          <span style="position:absolute;top:-18px;left:20px;width:40px;height:40px;border-radius:50%;background:#FFC24B;color:#1B2A4A;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;display:grid;place-items:center;font-size:1.125rem;box-shadow:0 10px 22px -10px rgba(27,42,74,.5);">3</span>
+          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.4rem 0 .5rem;">やってみて、記録する</h3>
+          <p style="color:#51607A;font-size:.9rem;line-height:1.8;">試した結果を1タップで。「効いた／違った」が積み重なるほど、提案がその子に合っていきます。</p>
+          <div style="margin-top:1rem;padding:.75rem .85rem;border-radius:12px;background:#FCFBF7;border:1px solid rgba(27,42,74,.10);font-size:.82rem;line-height:1.6;color:#1B2A4A;">
+            <span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.68rem;color:#5C6478;margin-bottom:.25rem;">あとで振り返り</span>その子に効いたコツが貯まる
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE — とちぎん流アプリ見せ ============ -->
+  <section id="feature" style="background:#FCFBF7;border-block:1px solid rgba(27,42,74,.10);padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>WAKU-LOGでできること</span>
+        <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">アプリの中で、<span style="color:#0A6E7A;">こんなふうに隣にいます</span>。</h2>
+        <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:46ch;">困ったときも、なんとか乗りきった朝も。ひとりにしない、3つの場面です。</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:clamp(1.5rem,3.5vw,2.6rem);margin-top:2.8rem;">
+
+        <!-- ① 相談 -->
+        <div style="display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(1.4rem,4vw,3.2rem);align-items:center;background:#fff;border-radius:28px;padding:clamp(1.6rem,4vw,3rem);box-shadow:0 22px 48px -28px rgba(27,42,74,.35);" data-featcard>
+          <div style="display:flex;justify-content:center;align-items:center;background:radial-gradient(110% 110% at 50% 20%,#EEF6F4,#fff 75%);border-radius:24px;padding:clamp(1rem,3vw,2rem);" data-featvis>
+            <div class="ipx" aria-hidden="true" style="width:min(300px,100%);">
+              <div class="ipx-screen" style="background:#fff;">
+                <div class="ipx-di"></div>
+                <div class="ipx-sb"><time style="color:#1B2A4A;">9:41</time><span class="ipx-stat" style="color:#1B2A4A;"><svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7.5" width="3" height="3.5" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="0" width="3" height="11" rx=".8"/></svg><svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.4c2.6 0 5 1 6.7 2.7l-1.5 1.5A7.3 7.3 0 0 0 8 4.6 7.3 7.3 0 0 0 2.8 6.6L1.3 5.1A9.5 9.5 0 0 1 8 2.4z"/><path d="M8 6.1c1.5 0 2.9.6 3.9 1.6l-1.5 1.5A3.4 3.4 0 0 0 8 8.1c-.9 0-1.7.35-2.4 1.05L4.1 7.7A5.6 5.6 0 0 1 8 6.1z"/><circle cx="8" cy="10.2" r="1.3"/></svg><svg width="25" height="12" viewBox="0 0 25 12" aria-hidden="true"><rect x=".6" y=".6" width="21" height="10.8" rx="3" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="23" y="4" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".45"/></svg></span></div>
+                <div style="display:flex;align-items:center;gap:.5rem;padding:.1rem .8rem .6rem;border-bottom:1.5px solid rgba(27,42,74,.10);">
+                  <span style="width:30px;height:30px;border-radius:50%;background:#EEF6F4;display:grid;place-items:center;flex:none;"><svg viewBox="370.38 318.94 130.81 107.06" style="width:18px;height:18px;display:block;" aria-hidden="true"><path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#15B6C7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.9rem;color:#1B2A4A;">WAKU-LOG<small style="display:block;font-size:.66rem;color:#0A6E7A;font-weight:700;">はるみちの 発育コーチ</small></span>
+                </div>
+                <div style="padding:.9rem .8rem .3rem;display:flex;flex-direction:column;gap:.6rem;" aria-hidden="true">
+                  <div style="align-self:flex-end;max-width:86%;padding:.65rem .9rem;font-size:.84rem;line-height:1.65;border-radius:16px;border-bottom-right-radius:5px;background:#FFF6EE;border:1.5px solid rgba(255,122,89,.4);color:#1B2A4A;">朝の着替えを嫌がって、毎朝バトル…。今日も30分かかりました。</div>
+                  <div style="align-self:flex-start;max-width:88%;padding:.65rem .9rem;font-size:.84rem;line-height:1.65;border-radius:16px;border-bottom-left-radius:5px;background:#EEF6F4;border:1.5px solid rgba(21,182,199,.32);color:#1B2A4A;"><span style="display:block;color:#0A6E7A;font-weight:700;margin-bottom:.15rem;font-family:'Zen Maru Gothic',sans-serif;">毎朝、本当におつかれさまです🌱</span>「次に何をするか」が見えないと、不安で動けない子もいます。<span style="display:block;margin-top:.4rem;padding-top:.4rem;border-top:1px dashed rgba(21,182,199,.4);">▶ 着る順番を<b>絵カード</b>にして、1枚ずつめくると進みやすいですよ。</span></div>
+                </div>
+                <div style="margin:.5rem .8rem 0;padding:.7rem .85rem;background:#fff;border:1.5px solid rgba(27,42,74,.18);border-radius:14px;">
+                  <div style="display:flex;align-items:center;gap:.4rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.84rem;color:#1B2A4A;">📌 朝の着替え<span style="margin-inline-start:auto;font-size:.6rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;padding:.1rem .5rem;border-radius:999px;">テーマ</span></div>
+                  <div style="display:flex;gap:.4rem;margin-top:.55rem;">
+                    <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.74rem;padding:.42rem;border-radius:10px;border:1.5px solid #FFC24B;background:#FFC24B;color:#1B2A4A;">効いた！</span>
+                    <span style="flex:1;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.74rem;padding:.42rem;border-radius:10px;border:1.5px solid rgba(27,42,74,.18);background:#fff;color:#51607A;">違った</span>
+                  </div>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:.5rem;padding:.55rem .85rem;border-top:1.5px solid rgba(27,42,74,.08);">
+                  <span style="flex:1;background:#F1F3F6;border:1px solid rgba(27,42,74,.10);border-radius:999px;padding:.45rem .9rem;font-size:.78rem;color:#9aa3b2;">メッセージを入力…</span>
+                  <span style="width:32px;height:32px;border-radius:50%;background:#0A6E7A;display:grid;place-items:center;flex:none;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+                </div>
+                <div class="ipx-home"><i style="background:rgba(27,42,74,.32);"></i></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span style="display:inline-flex;align-items:center;gap:.45rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.875rem;color:#0A6E7A;margin-bottom:.6rem;"><span style="display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#EEF6F4;font-size:.8rem;">1</span>その場で相談<span style="margin-inline-start:.55rem;font-size:.62rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;border:1px solid rgba(21,182,199,.34);border-radius:999px;padding:.15rem .55rem;letter-spacing:.02em;">先行βで体験</span></span>
+            <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.3rem,2vw + .5rem,1.75rem);color:#1B2A4A;line-height:1.42;margin-bottom:.9rem;">困った行動を1行。<br><span style="color:#B23E18;">責めない声かけ</span>が、すぐ返る。</h3>
+            <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;">たとえば「算数のプリントで鉛筆を投げた」と打つと、「焦ってたんだね。一緒に一問だけ、やってみようか」のような言葉が返ってきます。叱り方ではなく、どう言えば伝わるかを、その場で一緒に考えます。</p>
+            <ul style="list-style:none;margin-top:1.2rem;display:flex;flex-direction:column;gap:.5rem;">
+              <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>専門用語も、長い入力もいりません</li>
+              <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>「叱る」ではなく「どう言えば伝わるか」を一緒に</li>
+              <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>試した結果は「効いた／違った」を1タップで記録</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ② 通知（反転） -->
+        <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.4rem,4vw,3.2rem);align-items:center;background:#fff;border-radius:28px;padding:clamp(1.6rem,4vw,3rem);box-shadow:0 22px 48px -28px rgba(27,42,74,.35);" data-featcard>
+          <div>
+            <span style="display:inline-flex;align-items:center;gap:.45rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.875rem;color:#B23E18;margin-bottom:.6rem;"><span style="display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(255,122,89,.16);font-size:.8rem;">2</span>そっと声かけ通知<span style="margin-inline-start:.55rem;font-size:.62rem;font-weight:700;color:#5C6478;background:#F1F3F6;border:1px solid rgba(27,42,74,.16);border-radius:999px;padding:.15rem .55rem;letter-spacing:.02em;">開発中の構想</span></span>
+            <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.3rem,2vw + .5rem,1.75rem);color:#1B2A4A;line-height:1.42;margin-bottom:.9rem;">先生と毎週は話せないから、<br><span style="color:#B23E18;">面談がわり</span>の声かけを。</h3>
+            <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;">本当はかかりつけの先生に、こまめに相談できたらいい。WAKU-LOGの通知は、その“面談”をアプリの中で代わりにつくります。出しゃばらず、ちょうどいいタイミングで。</p>
+            <ul style="list-style:none;margin-top:1.2rem;display:flex;flex-direction:column;gap:.5rem;">
+              <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span><b>いちばん大切なのは「振り返り声かけ」</b>。数日後にそっと様子を</li>
+              <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>「効いた」を押すほど、次の提案がその子に合っていきます</li>
+              <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>急かすためではなく、ひとりで抱えこませないために</li>
+            </ul>
+          </div>
+          <div style="display:flex;justify-content:center;align-items:center;background:radial-gradient(110% 110% at 50% 20%,#FFF6EE,#fff 75%);border-radius:24px;padding:clamp(1rem,3vw,2rem);" data-featvis>
+            <div class="ipx" aria-hidden="true" style="width:min(300px,100%);">
+              <div class="ipx-screen" style="background:linear-gradient(165deg,#22335A,#12203A);color:#fff;">
+                <div class="ipx-di"></div>
+                <div class="ipx-sb"><span></span><span class="ipx-stat" style="color:#fff;"><svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7.5" width="3" height="3.5" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="0" width="3" height="11" rx=".8"/></svg><svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.4c2.6 0 5 1 6.7 2.7l-1.5 1.5A7.3 7.3 0 0 0 8 4.6 7.3 7.3 0 0 0 2.8 6.6L1.3 5.1A9.5 9.5 0 0 1 8 2.4z"/><path d="M8 6.1c1.5 0 2.9.6 3.9 1.6l-1.5 1.5A3.4 3.4 0 0 0 8 8.1c-.9 0-1.7.35-2.4 1.05L4.1 7.7A5.6 5.6 0 0 1 8 6.1z"/><circle cx="8" cy="10.2" r="1.3"/></svg><svg width="25" height="12" viewBox="0 0 25 12" aria-hidden="true"><rect x=".6" y=".6" width="21" height="10.8" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="23" y="4" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".5"/></svg></span></div>
+                <div style="padding:1.6rem .9rem 1.1rem;flex:1;min-height:0;">
+                  <div style="text-align:center;margin-bottom:1.6rem;"><span style="display:block;font-size:.72rem;color:rgba(234,244,245,.72);font-weight:500;margin-bottom:.1rem;">6月12日（金）</span><span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:3.7rem;line-height:1;letter-spacing:-.02em;">8:00</span></div>
+                  <div style="display:flex;flex-direction:column;gap:.5rem;" aria-hidden="true">
+                    <div style="display:flex;gap:.6rem;align-items:flex-start;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.14);border-radius:15px;padding:.6rem .7rem;">
+                      <span style="width:30px;height:30px;border-radius:9px;background:#fff;flex:none;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg></span>
+                      <div style="min-width:0;"><div style="display:flex;gap:.4rem;align-items:baseline;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#15B6C7;">WAKU-LOG ・ 朝のチェックイン</span><span style="font-size:.6rem;color:rgba(234,244,245,.66);margin-inline-start:auto;">今</span></div><div style="font-size:.74rem;color:#fff;line-height:1.5;margin-top:.15rem;">今朝のはるみちは、どうですか？</div></div>
+                    </div>
+                    <div style="display:flex;gap:.6rem;align-items:flex-start;background:rgba(255,122,89,.18);backdrop-filter:blur(4px);border:1px solid #FF7A59;border-radius:15px;padding:.6rem .7rem;">
+                      <span style="width:30px;height:30px;border-radius:9px;background:#fff;flex:none;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#B23E18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg></span>
+                      <div style="min-width:0;"><div style="display:flex;gap:.4rem;align-items:baseline;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#FF7A59;">WAKU-LOG ・ 振り返り声かけ</span><span style="font-size:.6rem;color:rgba(234,244,245,.66);margin-inline-start:auto;">3日後</span></div><div style="font-size:.74rem;color:#fff;line-height:1.5;margin-top:.15rem;">先日の“公園から帰れない”、その後どうでしたか？</div></div>
+                    </div>
+                    <div style="display:flex;gap:.6rem;align-items:flex-start;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.14);border-radius:15px;padding:.6rem .7rem;">
+                      <span style="width:30px;height:30px;border-radius:9px;background:#fff;flex:none;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 17v-5M12 17V8M16 17v-3"/></svg></span>
+                      <div style="min-width:0;"><div style="display:flex;gap:.4rem;align-items:baseline;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#15B6C7;">WAKU-LOG ・ 週次まとめ</span><span style="font-size:.6rem;color:rgba(234,244,245,.66);margin-inline-start:auto;">日 10:00</span></div><div style="font-size:.74rem;color:#fff;line-height:1.5;margin-top:.15rem;">今週のはるみちまとめができました📋</div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ipx-home"><i style="background:rgba(255,255,255,.55);"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ③ 取扱説明書 -->
+        <div style="display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(1.4rem,4vw,3.2rem);align-items:center;background:#fff;border-radius:28px;padding:clamp(1.6rem,4vw,3rem);box-shadow:0 22px 48px -28px rgba(27,42,74,.35);" data-featcard>
+          <div style="display:flex;justify-content:center;align-items:center;background:radial-gradient(110% 110% at 50% 20%,rgba(255,194,75,.18),#fff 75%);border-radius:24px;padding:clamp(1rem,3vw,2rem);" data-featvis>
+            <div class="ipx" aria-hidden="true" style="width:min(300px,100%);">
+              <div class="ipx-screen" style="background:#fff;">
+                <div class="ipx-di"></div>
+                <div class="ipx-sb"><time style="color:#1B2A4A;">9:41</time><span class="ipx-stat" style="color:#1B2A4A;"><svg width="18" height="11" viewBox="0 0 18 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7.5" width="3" height="3.5" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="0" width="3" height="11" rx=".8"/></svg><svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.4c2.6 0 5 1 6.7 2.7l-1.5 1.5A7.3 7.3 0 0 0 8 4.6 7.3 7.3 0 0 0 2.8 6.6L1.3 5.1A9.5 9.5 0 0 1 8 2.4z"/><path d="M8 6.1c1.5 0 2.9.6 3.9 1.6l-1.5 1.5A3.4 3.4 0 0 0 8 8.1c-.9 0-1.7.35-2.4 1.05L4.1 7.7A5.6 5.6 0 0 1 8 6.1z"/><circle cx="8" cy="10.2" r="1.3"/></svg><svg width="25" height="12" viewBox="0 0 25 12" aria-hidden="true"><rect x=".6" y=".6" width="21" height="10.8" rx="3" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="2.2" y="2.2" width="15" height="7.6" rx="1.6" fill="currentColor"/><rect x="23" y="4" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".45"/></svg></span></div>
+                <div style="display:flex;align-items:center;gap:.55rem;padding:.1rem .8rem .7rem;border-bottom:1.5px solid rgba(27,42,74,.10);">
+                  <span style="width:34px;height:34px;border-radius:50%;background:#EEF6F4;display:grid;place-items:center;color:#0A6E7A;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;flex:none;">は</span>
+                  <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.9rem;color:#1B2A4A;">はるみち（6歳）<small style="display:block;font-size:.62rem;color:#0A6E7A;font-weight:700;">その子専用プロフィール</small></span>
+                </div>
+                <div style="padding:.7rem .8rem .2rem;">
+                  <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#5C6478;margin-bottom:.4rem;">いまの "つよみ"</div>
+                <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
+                  <span style="font-size:.72rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;border:1px solid rgba(21,182,199,.28);border-radius:999px;padding:.22rem .6rem;">言葉より"見せる"が得意</span>
+                  <span style="font-size:.72rem;font-weight:700;color:#8A5F00;background:rgba(255,194,75,.18);border:1px solid rgba(255,194,75,.4);border-radius:999px;padding:.22rem .6rem;">見通しが立つと動ける</span>
+                  <span style="font-size:.72rem;font-weight:700;color:#B23E18;background:#FFF6EE;border:1px solid rgba(255,122,89,.32);border-radius:999px;padding:.22rem .6rem;">集中力がつよい</span>
+                </div>
+              </div>
+              <div style="padding:.7rem .45rem .2rem;">
+                <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#5C6478;margin-bottom:.4rem;">効いたコツ</div>
+                <div style="display:flex;flex-direction:column;gap:.4rem;">
+                  <div style="display:flex;gap:.5rem;align-items:flex-start;background:#FCFBF7;border:1px solid rgba(27,42,74,.10);border-radius:12px;padding:.5rem .6rem;font-size:.74rem;color:#1B2A4A;line-height:1.5;"><span style="color:#0A6E7A;font-weight:900;flex:none;">✓</span>タイマー予告で、切り替えがスムーズに</div>
+                  <div style="display:flex;gap:.5rem;align-items:flex-start;background:#FCFBF7;border:1px solid rgba(27,42,74,.10);border-radius:12px;padding:.5rem .6rem;font-size:.74rem;color:#1B2A4A;line-height:1.5;"><span style="color:#0A6E7A;font-weight:900;flex:none;">✓</span>絵カードで、朝の着替えが進むように</div>
+                </div>
+              </div>
+              <div style="padding:.7rem .45rem .2rem;">
+                <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.66rem;color:#5C6478;margin-bottom:.4rem;">相談したテーマ</div>
+                <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
+                  <span style="font-size:.72rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;border:1px solid rgba(21,182,199,.28);border-radius:999px;padding:.22rem .6rem;">公園から帰れない</span>
+                  <span style="font-size:.72rem;font-weight:700;color:#0A6E7A;background:#EEF6F4;border:1px solid rgba(21,182,199,.28);border-radius:999px;padding:.22rem .6rem;">朝の着替え</span>
+                </div>
+                </div>
+                <div class="ipx-home" style="margin-top:auto;"><i style="background:rgba(27,42,74,.32);"></i></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span style="display:inline-flex;align-items:center;gap:.45rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.875rem;color:#8A5F00;margin-bottom:.6rem;"><span style="display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(255,194,75,.24);font-size:.8rem;">3</span>その子の取扱説明書<span style="margin-inline-start:.55rem;font-size:.62rem;font-weight:700;color:#5C6478;background:#F1F3F6;border:1px solid rgba(27,42,74,.16);border-radius:999px;padding:.15rem .55rem;letter-spacing:.02em;">開発中の構想</span></span>
+            <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.3rem,2vw + .5rem,1.75rem);color:#1B2A4A;line-height:1.42;margin-bottom:.9rem;">「効いた」が貯まって、<br><span style="color:#0A6E7A;">その子専用</span>に育っていく。</h3>
+            <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;">相談と「効いた」の記録が積み重なるほど、WAKU-LOGはその子のことを覚えていきます。「この子には何が効くか」が、まるで“わが子の取扱説明書”のように貯まっていきます。</p>
+            <ul style="list-style:none;margin-top:1.2rem;display:flex;flex-direction:column;gap:.5rem;">
+              <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>はじめは一般的な提案。使うほど“その子だけの答え”へ</li>
+              <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>つよみ・効いたコツ・相談テーマが、ひと目で分かる</li>
+              <li style="position:relative;padding-left:1.6rem;font-size:.92rem;color:#1B2A4A;line-height:1.7;"><span style="position:absolute;left:0;color:#0A6E7A;font-weight:900;">✓</span>記録は、あなたとお子さんの資産。勝手に消しません</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GROW — タイムライン ============ -->
+  <section id="grow" style="background:#fff;padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div style="display:grid;grid-template-columns:1fr .82fr;gap:clamp(1.2rem,4vw,2.6rem);align-items:end;" data-2col>
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>いちばんの特長</span>
+          <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">使うほど、<span style="color:#0A6E7A;">この子と私の「二人だけの正解」</span>が貯まる。</h2>
+          <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:50ch;">相談のたびに、このアプリはその子のことを覚えていきます。「何が効いて、何がダメだったか」が積み上がり、どこかの誰かへの答えが、だんだん「わが子だけの答え」に変わります。</p>
+        </div>
+        <div style="background:#FFF6EE;border:1px solid rgba(255,122,89,.28);border-radius:20px;padding:1.4rem;font-size:.92rem;line-height:1.85;color:#1B2A4A;"><figure class="fig fig-card"><img src="assets/hero/hero-people.webp" alt="芽を手のひらにのせて一緒に見守る親子の手描きのイラスト" loading="lazy" decoding="async" width="720" height="480" /></figure>最初は「ASD傾向の子 全般」へのアドバイス。でも使うほど、<b style="color:#B23E18;">「はるみちには、言葉より"見せる"予告が効く」</b>と、その子だけのクセを覚えていきます。</div>
+      </div>
+
+      <p style="margin-top:1.6rem;font-size:.82rem;color:#5C6478;line-height:1.75;max-width:60ch;">※ 下記は、使い続けたときの体験イメージです。進み方は<span style="white-space:nowrap;">お子さんによって</span>異なります。</p>
+      <div style="position:relative;margin-top:2.4rem;">
+        <div style="position:absolute;left:18px;top:8px;bottom:8px;width:3px;background:repeating-linear-gradient(#15B6C7 0 8px,transparent 8px 16px);border-radius:3px;"></div>
+
+        <div style="position:relative;padding:0 0 1.8rem 56px;">
+          <span style="position:absolute;left:2px;top:0;min-width:34px;height:34px;padding-inline:5px;border-radius:999px;display:grid;place-items:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.72rem;z-index:1;box-sizing:border-box;background:#fff;border:3px solid #15B6C7;color:#0A6E7A;">1</span>
+          <span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.04em;color:#B23E18;">DAY 1 ／ はじめの設定</span>
+          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.15rem 0 .35rem;">かんたんな質問に答える</h3>
+          <p style="color:#51607A;font-size:.95rem;line-height:1.85;max-width:58ch;">30問ほどのチェックに答えると、その子の傾向を初期プロフィールに。この時点ではまだ「傾向の近い子 向け」の一般的なアドバイスです。</p>
+        </div>
+
+        <div style="position:relative;padding:0 0 1.8rem 56px;">
+          <span style="position:absolute;left:2px;top:0;min-width:34px;height:34px;padding-inline:5px;border-radius:999px;display:grid;place-items:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.72rem;z-index:1;box-sizing:border-box;background:#fff;border:3px solid #15B6C7;color:#0A6E7A;">4</span>
+          <span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.04em;color:#B23E18;">DAY 4 ／ はじめての相談</span>
+          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.15rem 0 .35rem;">「公園から帰れない」</h3>
+          <p style="color:#51607A;font-size:.95rem;line-height:1.85;max-width:58ch;">傾向をふまえ「見通しを立てる」アプローチを提案。テーマカード「公園から帰れない」が自動で生まれます。</p>
+          <span style="display:inline-block;margin-top:.6rem;padding:.6rem .9rem;border-radius:0 14px 14px 0;font-size:.9rem;line-height:1.7;color:#1B2A4A;background:#EEF6F4;border-left:3px solid #15B6C7;">「帰る5分前にタイマーで“鳴ったら帰ろうね”と伝えてみましょう」</span>
+        </div>
+
+        <div style="position:relative;padding:0 0 1.8rem 56px;">
+          <span style="position:absolute;left:2px;top:0;min-width:34px;height:34px;padding-inline:5px;border-radius:999px;display:grid;place-items:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.72rem;z-index:1;box-sizing:border-box;background:#FF7A59;border:3px solid #FF7A59;color:#1B2A4A;">★</span>
+          <span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.04em;color:#B23E18;">DAY 7 ／ 「効いた！」をタップ</span>
+          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.15rem 0 .35rem;">うまくいったコツを、覚えていく</h3>
+          <p style="color:#51607A;font-size:.95rem;line-height:1.85;max-width:58ch;">「タイマーでの予告が効いた」と記録。これがその子の"効くコツ"として、次の相談に引き継がれます。</p>
+          <span style="display:inline-block;margin-top:.6rem;padding:.6rem .9rem;border-radius:0 14px 14px 0;font-size:.9rem;line-height:1.7;color:#1B2A4A;background:#FFF6EE;border-left:3px solid #FF7A59;">この一回が、次から「はるみちにはタイマーが効く」という記憶になります。</span>
+        </div>
+
+        <div style="position:relative;padding:0 0 1.8rem 56px;">
+          <span style="position:absolute;left:2px;top:0;min-width:34px;height:34px;padding-inline:5px;border-radius:999px;display:grid;place-items:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.72rem;z-index:1;box-sizing:border-box;background:#fff;border:3px solid #15B6C7;color:#0A6E7A;">14</span>
+          <span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.04em;color:#B23E18;">DAY 14 ／ 2回目の相談</span>
+          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.15rem 0 .35rem;">「着替えをしない」。前のコツが、今度も効く</h3>
+          <p style="color:#51607A;font-size:.95rem;line-height:1.85;max-width:58ch;">WAKU-LOGは先週の成功を覚えていて、「この子には予告と"見せる"が効く」と判断。着替えにも「タイマー＋ステップ絵カード」を提案します。</p>
+          <span style="display:inline-block;margin-top:.6rem;padding:.6rem .9rem;border-radius:0 14px 14px 0;font-size:.9rem;line-height:1.7;color:#1B2A4A;background:#EEF6F4;border-left:3px solid #15B6C7;">先週の"効いたコツ"が、はじめての悩みにも自然に活かされる。</span>
+        </div>
+
+        <div style="position:relative;padding:0 0 1.8rem 56px;">
+          <span style="position:absolute;left:2px;top:0;min-width:34px;height:34px;padding-inline:5px;border-radius:999px;display:grid;place-items:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:.72rem;z-index:1;box-sizing:border-box;background:#FF7A59;border:3px solid #FF7A59;color:#1B2A4A;">2ヶ月</span>
+          <span style="display:block;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.04em;color:#B23E18;">2ヶ月後 ／ すっかり、わが子の理解者</span>
+          <h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:#1B2A4A;margin:.15rem 0 .35rem;">「この子はこうすれば動く」を知っている</h3>
+          <p style="color:#51607A;font-size:.95rem;line-height:1.85;max-width:58ch;">相談と「効いた」の記録が積み重なり、新しい悩みが来ても、もう"はるみち専用の解き方"を持っています。まるで、かかりつけの先生のように。</p>
+        </div>
+
+      </div>
+      <p style="margin-top:2.4rem;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.375rem;color:#1B2A4A;line-height:1.6;">毎日のひと相談が、<span style="color:#0A6E7A;">わが子だけの「取扱説明書」</span>になっていく。</p>
+    </div>
+  </section>
+
+  <!-- ============ ANSHIN ============ -->
+  <section id="anshin" style="background:#FFF6EE;border-block:1px solid rgba(27,42,74,.10);padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>安心して、使っていただくために</span>
+      <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw + .5rem,2.3rem);line-height:1.4;color:#1B2A4A;margin-bottom:.8rem;">これは、診断でも、テストでもありません。</h2>
+      <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;max-width:52ch;">正直に言います。これでお子さんがすぐ変わるわけではありません。変わるのは、明日の私たちの一言だけです。そのうえで、約束できることを書きます。</p>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;margin-top:2.4rem;" data-2col>
+
+        <div style="display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:20px;padding:1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);">
+          <span style="width:44px;height:44px;border-radius:13px;flex:none;display:grid;place-items:center;background:#EEF6F4;color:#0A6E7A;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <div><h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.0625rem;color:#1B2A4A;margin-bottom:.3rem;">診断しない・ラベルを貼らない</h3><p style="color:#51607A;font-size:.9rem;line-height:1.8;">特性に「病名」をつけるためのものではありません。目的は、今日の声かけをほんの少しラクにすること。</p></div>
+        </div>
+
+        <div style="display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:20px;padding:1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);">
+          <span style="width:44px;height:44px;border-radius:13px;flex:none;display:grid;place-items:center;background:#FFF6EE;color:#B23E18;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <div><h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.0625rem;color:#1B2A4A;margin-bottom:.3rem;">無料・本名不要・いつでも辞退OK</h3><p style="color:#51607A;font-size:.9rem;line-height:1.8;">先行βは無料です。本名も診断名も入力は必須ではありません。合わなければ、いつでもやめられます。</p></div>
+        </div>
+
+        <div style="display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:20px;padding:1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);">
+          <span style="width:44px;height:44px;border-radius:13px;flex:none;display:grid;place-items:center;background:rgba(255,194,75,.2);color:#8A5F00;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <div><h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.0625rem;color:#1B2A4A;margin-bottom:.3rem;">記録は、あなたとお子さんのもの</h3><p style="color:#51607A;font-size:.9rem;line-height:1.8;">相談や「効いた」の記録は、その子への提案をよくするためだけに使います。許可なく誰かに渡したり、広告に使ったりしません。勝手に消すこともしません。</p></div>
+        </div>
+
+        <div style="display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:20px;padding:1.5rem;box-shadow:0 16px 36px -26px rgba(27,42,74,.35);">
+          <span style="width:44px;height:44px;border-radius:13px;flex:none;display:grid;place-items:center;background:#EEF6F4;color:#1B2A4A;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <div><h3 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.0625rem;color:#1B2A4A;margin-bottom:.3rem;">「直す」より、「面白がる」を大切に</h3><p style="color:#51607A;font-size:.9rem;line-height:1.8;">困りごとの奥にある得意を、いっしょに探す道具です。落ち着きのなさは行動力、こだわりは探求心かもしれません。</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT — つくっている私たち（一人称の手紙） ============ -->
+  <section id="about" style="background:#FCFBF7;border-block:1px solid rgba(27,42,74,.10);padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div style="max-width:760px;margin:0 auto;background:#fff;border:1px solid rgba(27,42,74,.12);border-radius:28px;padding:clamp(1.8rem,5vw,3.2rem);box-shadow:0 22px 48px -28px rgba(27,42,74,.35);">
+        <figure class="fig fig-intro"><img src="assets/hero/parent-child.webp" alt="手をつないで見つめ合う親子の手描きのイラスト" loading="lazy" decoding="async" width="760" height="760" /></figure>
+        <span style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;color:#0A6E7A;margin-bottom:1rem;"><span style="width:18px;height:2px;background:#FF7A59;border-radius:2px;"></span>つくっている私たちのこと</span>
+        <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.5rem,3vw + .5rem,2.2rem);line-height:1.5;color:#1B2A4A;margin-bottom:1.4rem;">私たちも、<br>同じ食卓にいます。</h2>
+        <div style="color:#51607A;font-size:1.0625rem;line-height:2;">
+          <p style="margin-bottom:1.1rem;">ワクコエラボは、福岡の小さなチームです。発達支援の専門家と、当事者の親が集まってつくっています。私自身、3人の子の父で、3人とも「グレーゾーン」と言われてきました。</p>
+          <p style="margin-bottom:1.1rem;">だから、夜の食卓に流れる空気も、面談で言葉に詰まるあの感じも、知っているつもりです。私たちは自分たちのことを<b style="color:#1B2A4A;">「自由研究員」</b>と呼んでいます。まだ正解の無いことを、あきらめずに一緒に研究する人、という意味です。</p>
+          <p style="margin-bottom:1.1rem;">守っているのは3つだけ。<b style="color:#0A6E7A;">できることに目を向ける</b>。<b style="color:#0A6E7A;">小さな一歩でいい</b>。<b style="color:#0A6E7A;">ひとりで抱えず、一緒に築く</b>。</p>
+          <p style="margin-bottom:0;">正直、まだ完成にはほど遠いです。それでも、<b style="color:#1B2A4A;">あの夜の自分がほしかったもの</b>を、今日も少しずつ形にしています。</p>
+        </div>
+        <p style="margin-top:1.8rem;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.95rem;color:#1B2A4A;">ワクコエラボ ／ 自由研究員一同　<span style="color:#51607A;font-weight:500;font-size:.85rem;">福岡より</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOIN ============ -->
+  <section id="join" style="background:#fff;padding-block:clamp(3.4rem,7vw,5.6rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div style="position:relative;background:radial-gradient(120% 130% at 78% 8%,#EEF6F4 0%,#fff 70%);border-radius:32px;padding:clamp(2rem,5vw,3.4rem);box-shadow:0 26px 56px -30px rgba(27,42,74,.4);text-align:center;overflow:hidden;">
+        <figure class="fig fig-hero">
+          <img src="assets/family-star.webp" alt="家族みんなで大きな星を掲げる手描きのイラスト" loading="lazy" decoding="async" width="1536" height="1024" />
+        </figure>
+        <h2 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.7rem,3.2vw + .5rem,2.4rem);color:#1B2A4A;line-height:1.4;">いちばんの主役は、<br><span style="color:#0A6E7A;">この子と暮らす、あなた</span>です。</h2>
+        <p style="color:#51607A;font-size:1.0625rem;line-height:1.9;margin:1rem auto 1.8rem;max-width:46ch;">2026年初夏、先行βを始めます。今できるのは「責めない声かけ」が返る相談ひとつだけ。完成品ではありません。だからこそ、同じ夜を知っているあなたと、一緒に育てたいんです。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
+          <a href="mailto:contact@wakukoelabo.jp?subject=%E5%85%88%E8%A1%8C%CE%B2%E5%8F%82%E5%8A%A0%E5%B8%8C%E6%9C%9B" data-cta="join" style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1rem;background:#0A6E7A;color:#fff;text-decoration:none;min-height:52px;box-shadow:0 14px 30px -14px rgba(10,110,122,.9);">先行βに参加する <span aria-hidden="true">→</span></a>
+          <a href="#how" style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1rem;background:#fff;color:#1B2A4A;text-decoration:none;min-height:52px;border:2px solid #FF7A59;">もう一度、使い方を見る</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1.3rem;color:#5C6478;font-size:.78rem;">
+          <span style="display:inline-flex;align-items:center;gap:.3rem;"><span style="color:#0A6E7A;font-weight:900;">✓</span>無料</span>
+          <span style="display:inline-flex;align-items:center;gap:.3rem;"><span style="color:#0A6E7A;font-weight:900;">✓</span>本名不要</span>
+          <span style="display:inline-flex;align-items:center;gap:.3rem;"><span style="color:#0A6E7A;font-weight:900;">✓</span>診断名不要</span>
+          <span style="display:inline-flex;align-items:center;gap:.3rem;"><span style="color:#0A6E7A;font-weight:900;">✓</span>いつでも辞退OK</span>
+        </div>
+      </div>
+      <div style="margin-top:2.6rem;text-align:center;">
+        <p style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;color:#51607A;font-size:.9rem;margin-bottom:1rem;">同じ夜を過ごしている、どこかの家族へ。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;">
+          <a href="https://twitter.com/intent/tweet?text=%E3%80%8C%E3%81%AA%E3%82%93%E3%81%A7%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84%E3%81%AE%E3%80%8D%E3%81%A8%E8%A8%80%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E5%A4%9C%E3%81%AB%E3%80%82WAKU-LOG&url=https%3A%2F%2Fcybersakurax.github.io%2FBreak-The-Waku%2F" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.3rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;background:#1B2A4A;color:#fff;text-decoration:none;">Xでシェア</a>
+          <a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fcybersakurax.github.io%2FBreak-The-Waku%2F" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.3rem;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:.875rem;background:#06C755;color:#fff;text-decoration:none;">LINEで送る</a>
+        </div>
+      </div>
+      <div style="margin-top:1.8rem;padding:1.4rem;border-radius:14px;background:#FCFBF7;border:1px solid rgba(27,42,74,.10);color:#51607A;font-size:.85rem;line-height:1.9;max-width:62ch;margin-inline:auto;"><b style="color:#1B2A4A;">安心して関わっていただくために：</b>ワクコエラボは医学的な診断・治療・助言を行うサービスではありません。先行βでは本名や診断名の入力は必須ではなく、いただいた内容はプロダクト改善とご案内のためにのみ扱います。本ページの画面はイメージで、内容は開発中の構想を含み、提供内容・時期は変更になる可能性があります。</div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#1B2A4A;color:#EAF4F5;padding-top:clamp(3rem,7vw,5rem);">
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <p style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(1.9rem,4vw + .5rem,2.7rem);line-height:1.4;max-width:16ch;">ワクをコエ、<br><span style="color:#15B6C7;">ワクワク</span>の<span style="color:#FF7A59;">コエ</span>へ。</p>
+    </div>
+    <div style="margin-top:clamp(2rem,5vw,3rem);overflow:clip;border-block:1px solid rgba(255,255,255,.12);padding-block:.9rem;">
+      <div style="display:inline-flex;gap:0;white-space:nowrap;animation:wkScroll 32s linear infinite;">
+        <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">Break The Waku!　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">WAKU-LOG　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">違いは特性　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">Focus Strengths　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">Small Steps Win　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">Build Together　·</span>
+        <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">Break The Waku!　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">WAKU-LOG　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">違いは特性　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">Focus Strengths　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">Small Steps Win　·</span><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:1.125rem;color:rgba(234,244,245,.7);padding-inline:1.2rem;">Build Together　·</span>
+      </div>
+    </div>
+    <div style="width:100%;max-width:1120px;margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem);">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;padding-block:clamp(2rem,5vw,3rem);">
+        <div style="display:flex;align-items:center;gap:.6rem;">
+          <svg viewBox="370.38 318.94 130.81 107.06" style="height:34px;width:auto;display:block;" aria-hidden="true"><path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/><path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/><circle cx="407.88" cy="356.44" r="13.65" fill="#FFFFFF"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FFFFFF"/><path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFFFFF"/></svg>
+          <span style="line-height:1.2;"><span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.125rem;color:#fff;">ワクコエラボ</span><span style="display:block;font-size:.66rem;color:rgba(234,244,245,.66);">wakukoelab ／ 発育AIコーチ WAKU-LOG</span></span>
+        </div>
+        <p style="font-size:.78rem;line-height:1.9;max-width:52ch;color:rgba(234,244,245,.82);"><b style="color:#EAF4F5;">本ページの画面はイメージです。</b>提供内容・時期は変更になる可能性があります。ワクコエラボは医学的な診断・治療・助言を行うものではありません。グレーゾーンの子と暮らす保護者の先行βユーザー（無料）、ヒアリング協力者を募集しています。</p>
+      </div>
+    </div>
+    <div style="text-align:center;padding-block:1.2rem;border-top:1px solid rgba(255,255,255,.12);font-size:.75rem;color:rgba(234,244,245,.74);">© 2026 ワクコエラボ — Break The Waku! All rights reserved.</div>
+  </footer>
+
 </div>
 
-<!-- ─── HERO ─── -->
-<section class="hero" id="top">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <span class="badge rise"><span class="dot"></span>β準備中 ― 先行ユーザー募集中</span>
-        <h1 class="hero-catch rise d1"><span class="b">Break </span><span class="t">The </span><span class="w">Waku!</span></h1>
-        <p class="hero-tagline rise d2">今日の困りごとを、責めない声かけと小さな発見に変える。</p>
-        <p class="hero-sub rise d2">グレーゾーンの子どもと家族のための、発育AIコーチ。診断名がなくても大丈夫。「違い」を「特性」として見つめる自由研究ラボです。</p>
-        <div class="hero-btns rise d3">
-          <a href="#cta" class="btn btn-primary">先行案内を受け取る <span class="ar">→</span></a>
-          <a href="#cta" class="btn btn-secondary">ヒアリングに協力する</a>
-        </div>
-        <div class="trust rise d4" aria-label="安心して参加できる条件">
-          <span class="pill">無料β</span>
-          <span class="pill">診断名不要</span>
-          <span class="pill">本名不要</span>
-          <span class="pill">いつでも辞退OK</span>
-        </div>
-      </div>
-      <aside class="hero-card rise d3">
-        <p class="hc-h">「違い」の見方を、変える。</p>
-        <div class="reframe">
-          <div class="reframe-row"><span class="from">落ち着きのなさ</span><span class="arrow">→</span><span class="to">行動力</span></div>
-          <div class="reframe-row"><span class="from">こだわり</span><span class="arrow">→</span><span class="to">探求心</span></div>
-          <div class="reframe-row"><span class="from">マイペース</span><span class="arrow">→</span><span class="to">集中力</span></div>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PROBLEM · 空白地帯 (stat strip) ─── -->
-<section class="problem" id="problem">
-  <div class="container">
-    <span class="eyebrow">Social Issue</span>
-    <h2 class="sec-title">支援の「空白地帯」に置かれた子どもたち</h2>
-    <p class="sec-lead">日本の通常学級で、学習や行動に特性上の困難を抱える子どもは約8.8%。35人のクラスに約3人。でも、その多くが診断のないまま「困った子」と呼ばれています。</p>
-    <div class="stat-grid">
-      <div class="stat">
-        <div class="stat-num">8.8<small>%</small></div>
-        <div class="stat-label">通常学級で学習・行動に著しい困難を抱える児童（35人クラスに約3人）</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">約59<small>万人</small></div>
-        <div class="stat-label">全国でこの困難に該当する小学生</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">72.8<small>%</small></div>
-        <div class="stat-label">医師の診断がない＝いわゆる「グレーゾーン」</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">約1.2<small>万人</small></div>
-        <div class="stat-label">福岡市・北九州市に潜在するグレーゾーン児童（推定）</div>
-      </div>
-    </div>
-    <p class="stat-note"><b>障害者手帳がないために、公的支援につながれない。</b>制度の狭間で、子どもは自己肯定感を失い、親は「どう接していいか分からない」と孤立していきます。</p>
-  </div>
-</section>
-
-<!-- ─── STORY ─── -->
-<section class="story">
-  <div class="container">
-    <div class="story-grid">
-      <div>
-        <span class="eyebrow">Founder's Story</span>
-        <h2 class="sec-title">自分の振り返りから。</h2>
-        <p class="sec-lead">私自身の3人の子どもたちも「グレーゾーン」。「普通」に近づけることが本当に正しいのか、ずっと悩んできました。落ち着きのなさも、こだわりも、見方を変えれば、その子だけの才能の原石です。</p>
-        <div class="tag-row">
-          <span class="tag tq">落ち着きのなさ＝行動力</span>
-          <span class="tag tq">こだわり＝探求心</span>
-          <span class="tag co">違いは特性</span>
-        </div>
-      </div>
-      <div class="quote-block">
-        <p class="q">「<span class="tq">違い</span>」は「間違い」ではなく、<br>「<span class="co">特性</span>」である。</p>
-        <p class="q-sub">欠点を直す「教育」ではなく、強みを伸ばす「発育」へ。その子だけの才能の原石を、一緒に解き放ちます。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── SHIFT · 教育→発育 ─── -->
-<section class="shift" id="shift">
-  <div class="container">
-    <span class="eyebrow">Paradigm Shift</span>
-    <h2 class="sec-title">「教育」から「発育」へ。</h2>
-    <p class="sec-lead">欠点を直す「管理・矯正」から、強みを伸ばす「理解・伴走」へ。脳の習慣を、叱責ではなくポジティブフィードバックで育てます。</p>
-    <div class="shift-table">
-      <div class="shift-head">
-        <div class="axis-h">視点</div>
-        <div class="old">従来の「教育」</div>
-        <div class="new">これからの「発育」</div>
-      </div>
-      <div class="shift-row">
-        <div class="axis">アプローチ</div>
-        <div class="old">管理・矯正</div>
-        <div class="new"><b>理解・伴走</b></div>
-      </div>
-      <div class="shift-row">
-        <div class="axis">視点</div>
-        <div class="old">欠点探し（平均との比較）</div>
-        <div class="new"><b>才能の発見</b>（強みの最大化）</div>
-      </div>
-      <div class="shift-row">
-        <div class="axis">脳の習慣化</div>
-        <div class="old">叱責による萎縮</div>
-        <div class="new"><b>ポジティブフィードバック</b></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── VISION ─── -->
-<section class="vision" id="vision">
-  <div class="container">
-    <span class="eyebrow">Vision</span>
-    <h2 class="sec-title" style="color:#fff;">目指したい未来</h2>
-    <p class="vision-main"><span class="tq">ニューロダイバーシティ</span>の才能を解き放ち、<span class="co">誰もが自分らしく輝ける社会</span>をつくる。</p>
-    <div class="values">
-      <div class="value">
-        <div class="en">Focus Strengths</div>
-        <div class="ja">できることに着目</div>
-        <div class="de">できないことではなく、その子ならではの強みと可能性に光を当てる。</div>
-      </div>
-      <div class="value">
-        <div class="en">Small Steps Win</div>
-        <div class="ja">スモールステップでいい</div>
-        <div class="de">完璧を求めず、小さな一歩と一歩の積み重ねを大切にする。</div>
-      </div>
-      <div class="value">
-        <div class="en">Build Together</div>
-        <div class="ja">多様共創で築く</div>
-        <div class="de">子ども・親・専門家・社会が、対等な研究員として共に未来を創る。</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PVMV ─── -->
-<section class="concept">
-  <div class="container">
-    <span class="eyebrow">Purpose / Vision / Mission</span>
-    <h2 class="sec-title">想いの言語化</h2>
-    <div class="pvmv">
-      <div class="pv-card">
-        <div class="pv-k">Purpose</div>
-        <div class="pv-sub">Why ― 存在意義</div>
-        <p class="pv-t">ワクをコエ、<span class="tq">ワクワクのコエ</span>にあふれる社会を探求する。</p>
-      </div>
-      <div class="pv-card">
-        <div class="pv-k">Vision</div>
-        <div class="pv-sub">Where ― 理想の世界</div>
-        <p class="pv-t">ニューロダイバーシティの才能を解き放ち、<span class="co">誰もが自分らしく輝ける社会</span>をつくる。</p>
-      </div>
-      <div class="pv-card wide">
-        <div class="pv-k">Mission</div>
-        <div class="pv-sub">What ― 何をする組織</div>
-        <div class="pv-t">
-          <ol>
-            <li>「自由研究」で「ワク」を「コエ」た未来をつくる（＝挑戦・探求）</li>
-            <li>多様性を尊重し、個性として認め合う社会をつくる（＝受容・共創）</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── WAKU-LOG centerpiece ─── -->
-<section class="wakulog" id="wakulog">
-  <div class="container">
-    <span class="eyebrow">First Beta — 主役プロダクト</span>
-    <div class="wl-head">
-      <div>
-        <h2 class="wl-name">WAKU<span class="dash">-</span>LOG</h2>
-        <p class="wl-intro">個性を才能に変える、発育AIコーチ。子どもの「できないこと」ではなく、日常の「何に夢中か（没頭）」を記録・分析するアプリです。</p>
-      </div>
-      <span class="wl-kw">ココロ</span>
-    </div>
-
-    <!-- 4 functions -->
-    <div class="fn-grid">
-      <div class="fn">
-        <div class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 3.5 20.5 8.5 8 21H3v-5z"/><path d="M13.5 5.5 18.5 10.5"/></svg></div>
-        <div><h3>記録する</h3><p>「できないこと」ではなく、日常の「何に夢中か（没頭）」をログに残す。</p></div>
-      </div>
-      <div class="fn">
-        <div class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-        <div><h3>発見する</h3><p>専門家の暗黙知を形式知化。AIが親の脳内フィルターを「良いところ探し」に転換する。</p></div>
-      </div>
-      <div class="fn">
-        <div class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
-        <div><h3>理解する</h3><p>なぜその行動をとるのか、どう伝えれば円滑になるか、特性理解を深める。</p></div>
-      </div>
-      <div class="fn">
-        <div class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="7" r="2.5"/><circle cx="18" cy="7" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 8.5 10.5 16M16 8.5 13.5 16"/></svg></div>
-        <div><h3>つながる</h3><p>家庭で見つけた「才能の芽生え」をエビデンス化し、学校や療育機関と共有する。</p></div>
-      </div>
-    </div>
-
-    <!-- 2 layers -->
-    <div class="layers">
-      <div class="layer l1">
-        <div class="lk">LAYER 01 ― 即時解決層</div>
-        <h3>AI相談（リフレーミング・コンバーター）</h3>
-        <p>衝突の瞬間に介入。ABA（応用行動分析）など学術的根拠に基づいた「正解の声掛け案」を即座に提示し、親の孤独を癒やすケアメッセージを添えます。</p>
-        <span class="beta-flag">先行βはここから</span>
-      </div>
-      <div class="layer l2">
-        <div class="lk">LAYER 02 ― 長期的資産層</div>
-        <h3>統合特性マップ（わが子のトリセツ）</h3>
-        <p>散在する日々の記録（点）をAIが統合し、才能の輪郭（線）へと構造化。将来の進路や最適な学習環境をレコメンドするデータ資産になります。</p>
-        <span class="soon">今後のアップデートで提供予定</span>
-      </div>
-    </div>
-
-    <!-- beta strip -->
-    <div class="beta-strip">
-      <div>
-        <h3>まずは「Layer 01 のAI相談」から。</h3>
-        <p>先行βは相談機能のみ。1分のキーワード入力で、責めない声かけ案とケアメッセージを返し、試した結果を次の提案に活かしていきます。</p>
-      </div>
-      <div class="beta-points">
-        <div class="beta-point">1分で相談できるキーワード入力</div>
-        <div class="beta-point">2〜3個の短い声かけ案</div>
-        <div class="beta-point">好き・苦手の小さな記録</div>
-        <div class="beta-point">診断ではなく、日々の理解を支える設計</div>
-      </div>
-    </div>
-
-    <!-- process (narrative workflow) -->
-    <div class="process">
-      <p class="proc-h">親子に起きる、3つの変化のプロセス</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-n">1.0</div>
-          <div><h3>認知の転換</h3><p>「欠点探し」から「没頭探し」へ。AIのサポートで、親の脳内フィルターを切り替える。</p></div>
-        </div>
-        <div class="step">
-          <div class="step-n">2.0</div>
-          <div><h3>物語の構築</h3><p>日々の記録（点）がつながり、一貫した強み（線）が見えてくる。見えない特性が可視化される。</p></div>
-        </div>
-        <div class="step">
-          <div class="step-n">3.0</div>
-          <div><h3>自己肯定感の定着</h3><p>「早くしなさい」が「今の集中、凄かったね！」に変わる。子どもの自己効力感と家庭のウェルビーイングが向上する。</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── FUTURE (ココロ/カラダ/シャカイ) ─── -->
-<section class="future">
-  <div class="container">
-    <span class="eyebrow">The Bigger Picture</span>
-    <h2 class="sec-title">「ココロ・カラダ・シャカイ」の3つの軸で。</h2>
-    <p class="sec-lead">WAKU-LOG（ココロ）を起点に、食から支える Waku-GUMI（カラダ）、社会とつながる Waku-SPACE（シャカイ）へ。グレーゾーンの子どもと家族を、多面的に伴走していく構想です。</p>
-    <div class="future-grid">
-      <div class="fcard">
-        <div class="axis">ココロ ／ HealthTech</div>
-        <div class="fname">WAKU-LOG</div>
-        <p>見えない特性を可視化する発育AIコーチ。観察・記録・AIレコメンドで、特性理解を深める。</p>
-        <span class="state live">先行β・提供準備中</span>
-      </div>
-      <div class="fcard">
-        <div class="axis">カラダ ／ D2C Food</div>
-        <div class="fname">Waku-GUMI</div>
-        <p>コンディションを整える機能性ハードグミ。栄養面から集中力・安定感をサポートする構想。</p>
-        <span class="state soon">構想中</span>
-      </div>
-      <div class="fcard">
-        <div class="axis">シャカイ ／ EdTech</div>
-        <div class="fname">Waku-SPACE</div>
-        <p>クリエイティビティが「価値」になるコミュニティ。作品・探求を社会に発信し、放課後等デイとも連携する構想。</p>
-        <span class="state soon">構想中</span>
-      </div>
-    </div>
-    <p class="future-note">※ Waku-GUMI・Waku-SPACE は構想段階です。提供内容・時期は変更になる可能性があります。</p>
-  </div>
-</section>
-
-<!-- ─── RESEARCHERS ─── -->
-<section class="about" id="about">
-  <div class="container">
-    <span class="eyebrow">About Us</span>
-    <h2 class="sec-title">全員が、「研究員」。</h2>
-    <p class="sec-lead">ワクコエラボのメンバーは「会社員」ではなく、共に「ワク」を「コエ」る自由研究員。子どもも、親も、私たちも、対等な研究員として未来を創ります。</p>
-    <div class="res-grid">
-      <div class="res">
-        <div class="res-role">子ども研究員</div>
-        <div class="res-title">冒険者（Adventurer）</div>
-        <ul>
-          <li>自分の「好き」を突き詰める</li>
-          <li>失敗すらも「発見」に変える</li>
-          <li>能動的に実験する</li>
-        </ul>
-      </div>
-      <div class="res">
-        <div class="res-role">親・保護者</div>
-        <div class="res-title">共同研究者（Partner）</div>
-        <ul>
-          <li>「指導」ではなく「観察」</li>
-          <li>同じ目線で対話する</li>
-          <li>安全基地になる</li>
-        </ul>
-      </div>
-      <div class="res">
-        <div class="res-role">ワクコエラボ</div>
-        <div class="res-title">管理人（Manager）</div>
-        <ul>
-          <li>最高の探求ツールを提供</li>
-          <li>心理的安全性の確保</li>
-          <li>社会との接続をつくる</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PERSONA ─── -->
-<section class="persona">
-  <div class="container">
-    <span class="eyebrow">For You</span>
-    <h2 class="sec-title">こんな方へ。</h2>
-    <div class="persona-grid">
-      <div class="persona-who">
-        <div class="persona-name">32歳、ワーキングマザー</div>
-        <div class="persona-meta">未就学児〜小学生（3〜12歳）の子を持つ親</div>
-        <div class="market">
-          <div><div class="m-num">50万人</div><div class="m-lab">全国のグレーゾーン<br>3〜12歳の子ども</div></div>
-          <div><div class="m-num">1.5〜1.7万</div><div class="m-lab">福岡市の<br>対象人口（推定）</div></div>
-          <div><div class="m-num">9千〜1万</div><div class="m-lab">北九州市の<br>対象人口（推定）</div></div>
-        </div>
-      </div>
-      <ul class="worries">
-        <li>ただの特性なのか？性格なのか？診断すべきか迷っている</li>
-        <li>学校・園で「ちょっと変わった子」「困った子」扱いをされている</li>
-        <li>公的支援に繋がりにくい、制度の狭間で困っている</li>
-        <li>「将来、社会で生きていけるか？」「進学をどうするのか？」の不安</li>
-        <li>子どもへの接し方が分からず、自分を責めてしまう</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ─── FLOW ─── -->
-<section class="flow-section" id="flow">
-  <div class="container">
-    <span class="eyebrow">Beta Program</span>
-    <h2 class="sec-title">先行β参加の流れ</h2>
-    <p class="sec-lead">まずは無理なく話せる範囲から。登録後にいきなり個人情報や診断名を求めることはありません。</p>
-    <div class="flow-grid">
-      <div class="flow">
-        <div class="flow-n">1</div>
-        <h3>先行登録</h3>
-        <p>メールで参加希望を送ります。保護者・支援者・施設関係者のどなたでも登録できます。</p>
-      </div>
-      <div class="flow">
-        <div class="flow-n">2</div>
-        <h3>案内を受け取る</h3>
-        <p>βの開始時期、参加条件、ヒアリング候補日などをお送りします。</p>
-      </div>
-      <div class="flow">
-        <div class="flow-n">3</div>
-        <h3>希望者だけ話す</h3>
-        <p>30分ほど、日々の困りごとや「こうなら使えそう」を聞かせてください。</p>
-      </div>
-      <div class="flow">
-        <div class="flow-n">4</div>
-        <h3>βを試す</h3>
-        <p>準備ができ次第、WAKU-LOGを試し、声かけ提案の手応えを一緒に確かめます。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CTA ─── -->
-<section class="cta" id="cta">
-  <div class="container">
-    <div class="cta-head">
-      <span class="eyebrow">Join Us</span>
-      <h2 class="sec-title">先行βに、参加しませんか。</h2>
-      <p class="sec-lead">子どもを変えるためではなく、親子の毎日を少し軽くするために。先行ユーザー・ヒアリング協力者を無料で募集しています。</p>
-    </div>
-    <div class="cta-cards">
-      <div class="cta-card">
-        <h3>先行案内を受け取る</h3>
-        <p>β招待・進捗共有・参加条件をお届けします。まずは「興味あり」だけでも大丈夫です。</p>
-        <a href="mailto:contact@wakukoelabo.jp?subject=%E5%85%88%E8%A1%8C%E6%A1%88%E5%86%85%E7%99%BB%E9%8C%B2%E5%B8%8C%E6%9C%9B&body=%E5%85%88%E8%A1%8C%E6%A1%88%E5%86%85%E3%82%92%E5%B8%8C%E6%9C%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0D%0A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%88%E3%83%8B%E3%83%83%E3%82%AF%E3%83%8D%E3%83%BC%E3%83%A0%E5%8F%AF%EF%BC%89%EF%BC%9A%0D%0A%E7%AB%8B%E5%A0%B4%EF%BC%88%E4%BF%9D%E8%AD%B7%E8%80%85%E3%83%BB%E6%94%AF%E6%8F%B4%E8%80%85%E3%83%BB%E6%96%BD%E8%A8%AD%E9%96%A2%E4%BF%82%E8%80%85%E3%81%AA%E3%81%A9%EF%BC%89%EF%BC%9A%0D%0A%E9%96%A2%E5%BF%83%E3%81%AE%E3%81%82%E3%82%8B%E5%86%85%E5%AE%B9%EF%BC%9A" class="btn btn-primary">1分で登録する <span class="ar">→</span></a>
-      </div>
-      <div class="cta-card">
-        <h3>ヒアリングに協力する</h3>
-        <p>日々の困りごと、既存サービスで続かなかった理由、欲しい安心感を聞かせてください。</p>
-        <a href="mailto:contact@wakukoelabo.jp?subject=%E3%83%92%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E5%8F%82%E5%8A%A0%E5%B8%8C%E6%9C%9B&body=%E3%83%92%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E5%8F%82%E5%8A%A0%E3%82%92%E5%B8%8C%E6%9C%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0D%0A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%88%E3%83%8B%E3%83%83%E3%82%AF%E3%83%8D%E3%83%BC%E3%83%A0%E5%8F%AF%EF%BC%89%EF%BC%9A%0D%0A%E7%AB%8B%E5%A0%B4%EF%BC%88%E4%BF%9D%E8%AD%B7%E8%80%85%E3%83%BB%E6%94%AF%E6%8F%B4%E8%80%85%E3%83%BB%E6%96%BD%E8%A8%AD%E9%96%A2%E4%BF%82%E8%80%85%E3%81%AA%E3%81%A9%EF%BC%89%EF%BC%9A%0D%0A%E8%A9%B1%E3%81%9B%E3%82%8B%E6%9B%9C%E6%97%A5%E3%83%BB%E6%99%82%E9%96%93%E5%B8%AF%EF%BC%9A%0D%0A%E8%A9%B1%E3%81%97%E3%81%9F%E3%81%84%E3%83%86%E3%83%BC%E3%83%9E%EF%BC%9A" class="btn btn-secondary">30分話す</a>
-      </div>
-    </div>
-    <div class="cta-note">
-      <b>安心して参加いただくために：</b>ワクコエラボは医学的な診断や治療を行うサービスではありません。先行βでは本名や診断名の入力は必須ではなく、いただいた内容はプロダクト改善とご案内のためにのみ扱います。
-    </div>
-  </div>
-</section>
-
-<!-- ─── FOOTER (Ft5 statement + Ft8 marquee) ─── -->
-<footer>
-  <div class="container">
-    <p class="foot-statement">ワクをコエ、<br><span class="tq">ワクワク</span>の<span class="co">コエ</span>へ。</p>
-  </div>
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Break The Waku!</span><span>ワクコエラボ</span><span>発育AIコーチ</span><span>Focus Strengths</span><span>Small Steps Win</span><span>Build Together</span>
-      <span>Break The Waku!</span><span>ワクコエラボ</span><span>発育AIコーチ</span><span>Focus Strengths</span><span>Small Steps Win</span><span>Build Together</span>
-    </div>
-  </div>
-  <div class="container">
-    <div class="foot-meta">
-      <div class="foot-brand">
-        <div class="brand">
-          <svg class="brand-mark" viewBox="370.38 318.94 130.81 107.06" aria-hidden="true">
-            <path d="M379.38 376.62 C386.50 403.54 393.62 417.00 400.75 417.00 C408.67 417.00 415.79 405.92 422.12 383.75" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M422.12 383.75 C429.25 405.92 436.38 417.00 443.50 417.00 C453.79 417.00 464.88 394.04 476.75 348.12" fill="none" stroke="#FFFFFF" stroke-width="14.84" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="407.88" cy="356.44" r="13.65" fill="#FFFFFF"/><circle cx="437.56" cy="356.44" r="8.43" fill="#FFFFFF"/>
-            <path d="M483.88 327.94 C483.88 333.48 486.65 336.25 492.19 336.25 C486.65 336.25 483.88 339.02 483.88 344.56 C483.88 339.02 481.10 336.25 475.56 336.25 C481.10 336.25 483.88 333.48 483.88 327.94 Z" fill="#FFFFFF"/>
-          </svg>
-          <span>
-            <span class="brand-name">ワクコエラボ</span>
-            <span class="brand-sub">wakukoelab ／ Break The Waku!</span>
-          </span>
-        </div>
-      </div>
-      <p class="foot-note">
-        <b>本ページの内容は開発中の構想を含みます。</b>提供内容・時期・価格は変更になる可能性があります。ワクコエラボは医学的な診断・治療・助言を行うものではありません。現在プロトタイプ開発中。先行ユーザー（無料）とヒアリング協力者を募集しています。
-      </p>
-    </div>
-  </div>
-  <div class="foot-copy">© 2026 ワクコエラボ — Break The Waku! All rights reserved.</div>
-</footer>
-
 <script>
+  /* ▼▼▼ 先行β登録フォームのURLをここに入れてください ▼▼▼
+     URLを入れると、ページ内すべての「先行βに参加」ボタンが
+     自動でそのフォーム（別タブ）に切り替わります。
+     空のままなら、本文テンプレ入りのメール作成に自動フォールバックします（リンクは壊れません）。 */
+  var WAKU_FORM_URL = "";
+  /* ▲▲▲ 例: "https://forms.gle/xxxxxxxx" や "https://tally.so/r/xxxxxx" ▲▲▲ */
+
+  var WAKU_MAILTO = "mailto:contact@wakukoelabo.jp"
+    + "?subject=" + encodeURIComponent("先行β参加希望")
+    + "&body=" + encodeURIComponent(
+        "WAKU-LOG の先行βに参加を希望します。\n\n"
+      + "（お答えできる範囲で大丈夫です。本名は不要です）\n"
+      + "・お子さんの年齢：\n"
+      + "・いま一番困っていること：\n"
+      + "・お呼びする名前（ニックネーム可）：\n"
+      );
+
   (function () {
-    var nav = document.getElementById('nav');
-    var toggle = document.getElementById('navToggle');
-    if (!toggle) return;
-    toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
-    });
-    nav.querySelectorAll('.nav-links a, .nav-cta').forEach(function (a) {
-      a.addEventListener('click', function () {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
+    var useForm = typeof WAKU_FORM_URL === "string" && WAKU_FORM_URL.indexOf("http") === 0;
+    var ctas = document.querySelectorAll('[data-cta="join"]');
+    for (var i = 0; i < ctas.length; i++) {
+      if (useForm) {
+        ctas[i].href = WAKU_FORM_URL;
+        ctas[i].target = "_blank";
+        ctas[i].rel = "noopener";
+      } else {
+        ctas[i].href = WAKU_MAILTO;
+      }
+    }
   })();
 </script>
-
 </body>
 </html>
